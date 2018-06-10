@@ -1,0 +1,80 @@
+<!-- To be included inside template.html -->
+
+<div class="page-header">
+    <h1>@MODIFICATION@</h1>
+</div>
+
+<h2>Genome Browser</h2>
+<div id="svgHolder"></div>
+
+<h2>Sessions</h2>
+Download IGV session for IGV genome browser and UCSC for UCSC genome browser.
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Session</th>
+        <th>Extended</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>IGV</th>
+        <th>
+            <a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/Y20O20/@MODIFICATION@_aging_session.xml">URL</a>
+        </th>
+        <th>
+            <a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/Y20O20/@MODIFICATION@_aging_session_extended.xml">URL</a>
+        </th>
+    </tr>
+    <tr>
+        <th>UCSC</th>
+        <th>
+            <a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/Y20O20/@MODIFICATION@_aging_session.txt">URL</a>
+        </th>
+        <th>
+            <a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/Y20O20/@MODIFICATION@_aging_session_extended.txt">URL</a>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Download</h2>
+<p>Download @MODIFICATION@ files <a href="download_chipseq.html">here</a>.</p>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        new Browser({
+            // 5:42,334,449..42,811,409 # GHR gene - see http://genomics.senescence.info/genes/
+            chr: '5',
+            viewStart: 42334449,
+            viewEnd: 42811409,
+
+            coordSystem: {
+                speciesName: 'Human',
+                auth: 'GRCh',
+                version: '37',
+                ucscName: 'hg19'
+            },
+
+            sources: [{
+                name: 'Genome',
+                twoBitURI: 'https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/hg19.2bit',
+                tier_type: 'sequence'
+            },
+                {
+                    name: 'Genes',
+                    desc: 'Gene structures from GENCODE 19',
+                    bwgURI: '//www.biodalliance.org/datasets/gencode.bb',
+                    stylesheet_uri: '//www.biodalliance.org/stylesheets/gencode.xml',
+                    collapseSuperGroups: true,
+                    trixURI: '//www.biodalliance.org/datasets/geneIndex.ix'
+                },
+//@TRACKS@
+            ],
+        });
+    });
+</script>
+

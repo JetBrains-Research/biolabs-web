@@ -1,0 +1,28 @@
+.content {
+    width: 1000px;
+    margin: 60px auto;
+}
+
+#footer {
+    text-align: center;
+    color: #777;
+}
+
+#footer a {
+    color: #777;
+}
+
+#footer li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#footer ul {
+    margin-left: 20px;
+    margin-right: 20px;
+    position: center;
+}
+
+.dalliance-root {
+    max-height: 800px !important;
+}

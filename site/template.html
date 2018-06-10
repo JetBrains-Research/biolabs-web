@@ -1,0 +1,86 @@
+<!-- TEMPLATE TO SUBSTITUTE are wrapped with '@' character:
+@TITLE@
+@SCRIPTS@
+@CONTENT@
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ENhttp://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>@TITLE@</title>
+    <meta http-equiv="content-type" content="application/xhtml; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    @SCRIPTS@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#includedContent').load("@CONTENT@");
+        });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Explore Data<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="h3k27ac.html">H3K27ac</a></li>
+                        <li><a href="h3k27me3.html">H3K27me3</a></li>
+                        <li><a href="h3k36me3.html">H3K36me3</a></li>
+                        <li><a href="h3k4me1.html">H3K4me1</a></li>
+                        <li><a href="h3k4me3.html">H3K4me3</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Other</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Download<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="download_chipseq.html">ChIP-Seq</a></li>
+                        <li><a href="#">DNA Methylation</a></li>
+                        <li><a href="#">RNA-Seq</a></li>
+                        <li><a href="#">Metabolomics</a></li>
+                        <li><a href="#">Proteomics</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/">Other</a></li>
+                    </ul>
+                </li>
+                <li><a href="paper.html">Paper</a></li>
+                <li><a href="software.html">Software</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+    <div id="includedContent">
+        Waiting for content...
+    </div>
+</div>
+
+<footer id="footer">
+    <ul>
+        <li><a href="https://artyomovlab.wustl.edu/site/"
+               title="Washington University in Saint Louis Maxim Artyomov Lab"
+               target="_blank">WashU Artyomov Lab</a></li>
+        <li><a href="https://research.jetbrains.org/groups/biolabs" title="JetBrains Research BioLabs"
+               target="_blank">JetBrains Research BioLabs</a></li>
+    </ul>
+</footer>
+</body>
+</html>
+
