@@ -44,6 +44,7 @@ TOOL_COLOR_MAP = {
     "zinbra": (152, 78, 163)
 }
 HREF_MASK = '<a href="([^"]*.{})">'
+
 HEADER = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Session genome="hg19" hasGeneTrack="true" hasSequenceTrack="true" locus="All" \
 path="/home/user/aging/${HIST}_igv_session.xml" version="8">
@@ -198,7 +199,7 @@ def get_color(hist, filename):
 
 
 def search_in_url(url, regexp):
-    """ Collects child urls by regexp """
+    print('Crawling urls at {} by regexp {}'.format(url, regexp))
     html = str(urlopen(url).read())
     file_names = re.findall(regexp, html)
     file_urls = [url + "/" + file_name for file_name in file_names]
