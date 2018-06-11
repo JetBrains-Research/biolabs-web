@@ -4,7 +4,7 @@
 }
 
 .icon-url {
-    width: 15%;
+    height: 60%;
 }
 
 #footer {
@@ -29,4 +29,38 @@
 
 .dalliance-root {
     max-height: 800px !important;
+}
+
+#scheme1 {
+    height: 250px;
+    background: url('scheme1.svg') top;
+    background-size: 100%;
+}
+
+#tools {
+    margin-top: 20px;
+    background-position: top;
+    position: relative;
+}
+
+#scheme2 {
+    margin-top: 10px;
+    height: 250px;
+    background: url('scheme2.svg') top;
+    background-size: 100%;
+}
+
+#scheme3 {
+    margin-top: 10px;
+    height: 250px;
+    background: url('scheme3.svg') top;
+    background-size: 100%;
+}
+
+.span_peak_caller {
+    background: rgba(1, 1, 1, .1);
+}
+
+.jbr_genome_browser {
+    background: rgba(255, 222, 17, .1);
 }

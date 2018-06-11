@@ -159,7 +159,7 @@ def _cli():
 
     print('Copying resources')
     for file in os.listdir(FOLDER):
-        if re.match('.*\.(html|css|png)', file) and not re.match('template\\.html', file):
+        if re.match('.*\.(html|css|png|svg)', file) and not re.match('template\\.html', file):
             shutil.copy(file, OUT_FOLDER)
 
     print('Generate static pages')

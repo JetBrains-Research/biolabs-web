@@ -8,38 +8,58 @@ while ULI-ChipSeq protocol generally allows for robust peak calling, it is consi
 ChipSeq approach. Accurately dissecting the situation when both background and the signal can vary is generally
 prohibitively complex task for the unbiased peak calling approaches.
 <br/>
-To circumvent this, we propose the novel semi-supervised approach to peak calling.
+<br/>
+
+We propose the novel semi-supervised approach to peak calling.
 Fast and effective semi-supervised peaks analyzer <b>SPAN peak caller</b> is a multipurpose peak calling capable
 processing both conventional and ULI-ChipSeq tracks.
 In the semi-supervised approach, user annotates a handful of locations as peaks, valleys or peak shores,
 and then uses these annotations to train the model that is optimal for a
-given sample. One of the major challenges of the semi-supervised learning is the
-procedural complexity of the manual curation/annotation of the data, which often leads to the inaccuracies and
-mix-ups.
-Therefore, we set out to create a brand new visualization tool that would support classical genome browser
-capabilities and provide readily accessible integrated peak annotation and peak calling capabilities.
-The tool, named <b>JBR genome
-    browser</b>, allows one to upload tracks of the ChipSeq data and perform on-the-fly annotation
+given sample.
+<br>
+<br>
+One of the major challenges of the semi-supervised learning is the procedural complexity of the manual
+annotation of the data, which often leads to the inaccuracies and mix-ups. We created a brand new visualization tool
+that would support classical genome browser capabilities and provide readily accessible integrated peak annotation
+and peak calling capabilities.
+<b>JBR genome browser</b>, allows one to upload tracks of the Chip-Seq data and perform on-the-fly annotation
 and peak calling for a given annotation, where results of the peak calling are immediately visualized as bed files
 in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next
-generation genome browser.
-It provides enhanced capabilities of viewing large files, observing multiple locations simultaneously and gathering
-track statistics.
+generation genome browser. It provides enhanced capabilities of viewing large files, observing multiple locations
+simultaneously and gathering track statistics.
+<br>
+<br>
+Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
+<a href="https://kotlinlang.org/?">Kotlin</a> programming language, these tools incorporate best practices of effective software.
+<br>
 <br/>
-
-<div class="row">
+<h3 style="align-items: center;justify-content: space-around;display: flex;">Visual peak calling pipeline</h3>
+<div id="scheme1">
+</div>
+<div class="row" id="tools">
     <div class="col">
-        <div class="card card-body">
-            <b>JBR Genome browser</b>
-            <p>Fast and reliable genome browser</p>
-            Some features highlights:
+        <div class="card card-body span_peak_caller">
+            <b>SPAN Peak Caller</b>
+            <p>Semi-supervised peak analyzer</p>
             <ul>
-                <li>Supports semi-supervised peak calling using <a
-                        href="https://github.com/JetBrains-Research/zinbra">Peak
-                    caller?</a>
-                </li>
-                <li>Frontend-agnostic. The browser can be used on the desktop or as a web service
-                </li>
+                <li>Supports semi-supervised peak calling with JBR genome browser</li>
+                <li>Works with both conventional and ULI ChIP-Seq data</li>
+                <li>Input formats: BAM, BED.GZ</li>
+                <li>Capable to process tracks of different signal-to-noise ratio</li>
+                <li>Works with both narrow and wide modifications</li>
+                <li>Supports control track</li>
+                <li>Supports replicates on underlying model level</li>
+                <li>Experimental: differential peak calling mode</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body jbr_genome_browser">
+            <b>JBR Genome Browser</b>
+            <p>Fast and reliable genome browser</p>
+            <ul>
+                <li>Supports semi-supervised peak calling with SPAN peak caller</li>
+                <li>Frontend-agnostic. The browser can be used on the desktop or as a web service</li>
                 <li>Support for common track formats, e.g. WIG, BED, etc.</li>
                 <li>Support for combining tracks, i.e. arithmetic operations</li>
                 <li>Easy visualisation of multiple genomic loci</li>
@@ -47,20 +67,34 @@ track statistics.
             </ul>
         </div>
     </div>
-    <div class="col">
-        <div class="card card-body">
-            <b>Peak Caller</b>
-            <div>
-                <p><code>Peak caller</code> is a tool for analyzing and comparing ChIP-Seq data.<br/>
-                    Both procedures rely on the Zero Inflated Negative Binomial Restricted Algorithm, see <a
-                            href="https://github.com/JetBrains-Research/zinbra/blob/master/zinbra_scheme.pdf">zinbra_scheme.pdf</a>
-                    for details.</p>
-                <b>TODO</b>
-            </div>
-        </div>
-    </div>
+</div>
+<div id="scheme2"></div>
+<h3 style="align-items: center;justify-content: space-around;display: flex">
+    Call peaks in single click in JBR
+</h3>
+<div id="scheme3"></div>
+<h3 style="align-items: center;justify-content: space-around;display: flex">
+    Results
+</h3>
+<div style="align-items: center;justify-content: space-around;display: flex">
+    <ul>
+        <li>Best peak caller parameters for each sample</li>
+        <li>Consistent peak calling among samples</li>
+    </ul>
 </div>
 
-Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
-<a href="https://kotlinlang.org/?">Kotlin</a> program language, these tools incorporate best practices of building
-fast and effective software.
+Step-by-step description of this pipeline is available in <a href="howto.html">How To</a> section.
+
+<hr/>
+
+
+<script>
+    // TODO[shpynov] do we need this?
+    const range = 200;
+    $(window).on('scroll', function () {
+        const scheme1 = $('#scheme1');
+        let scrollTop = $(this).scrollTop();
+        const calc1 = 1 - (scrollTop - scheme1.position().top - scheme1.outerHeight() / 2 + range) / range;
+        scheme1.css({'opacity': Math.max(0, Math.min(1, calc1))});
+    });
+</script>
