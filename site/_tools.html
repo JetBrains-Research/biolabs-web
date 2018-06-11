@@ -1,0 +1,63 @@
+<!-- To be included inside template.html -->
+
+<div class="page-header">
+    <h1>Tools</h1>
+</div>
+
+The peak calling routine presents significant challenge in working with large scale human epigenetic data:
+while ULI-ChipSeq protocol generally allows for robust peak calling, it is considerably more variable than classical
+ChipSeq approach. Accurately dissecting the situation when both background and the signal can vary is generally
+prohibitively complex task for the unbiased peak calling approaches.
+<br/>
+To circumvent this, we propose the novel semi-supervised approach to peak calling.
+Fast and effective semi-supervised peaks analyzer <b>SPAN peak caller</b> is a multipurpose peak calling capable
+processing both conventional and ULI-ChipSeq tracks.
+In the semi-supervised approach, user annotates a handful of locations as peaks, valleys or peak shores,
+and then uses these annotations to train the model that is optimal for a
+given sample. One of the major challenges of the semi-supervised learning is the
+procedural complexity of the manual curation/annotation of the data, which often leads to the inaccuracies and mix-ups.
+Therefore, we set out to create a brand new visualization tool that would support classical genome browser
+capabilities and provide readily accessible integrated peak annotation and peak calling capabilities.
+The tool, named <b>JBR genome
+    browser</b>, allows one to upload tracks of the ChipSeq data and perform on-the-fly annotation
+and peak calling for a given annotation, where results of the peak calling are immediately visualized as bed files
+in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next generation genome browser.
+It provides enhanced capabilities of viewing large files, observing multiple locations simultaneously and gathering track statistics.
+<br/>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <b>JBR Genome browser</b>
+            <p>Fast and reliable genome browser</p>
+            Some features highlights:
+            <ul>
+                <li>Supports semi-supervised peak calling using <a
+                        href="https://github.com/JetBrains-Research/zinbra">Peak
+                    caller?</a>
+                </li>
+                <li>Frontend-agnostic. The browser can be used on the desktop or as a web service
+                </li>
+                <li>Support for common track formats, e.g. WIG, BED, etc.</li>
+                <li>Support for combining tracks, i.e. arithmetic operations</li>
+                <li>Easy visualisation of multiple genomic loci</li>
+                <li>Custom statistics tracks for multiple regions available</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body">
+            <b>Peak Caller</b>
+            <div>
+                <p><code>Peak caller</code> is a tool for analyzing and comparing ChIP-Seq data.<br/>
+                    Both procedures rely on the Zero Inflated Negative Binomial Restricted Algorithm, see <a
+                            href="https://github.com/JetBrains-Research/zinbra/blob/master/zinbra_scheme.pdf">zinbra_scheme.pdf</a>
+                    for details.</p>
+                <b>TODO</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+Being developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
+<a href="https://kotlinlang.org/?">Kotlin</a> program language, these tools incorporate best practices of building fast and effective software.

@@ -5,8 +5,51 @@
 </div>
 
 
-<table class="table">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Modification</th>
+        <th>Reads</th>
+        <th>QC</th>
+        <th>Bigwigs</th>
+        <th>Peaks</th>
+        <th>Visual Labels</th>
+        <th>Peak Caller Models</th>
+    </tr>
+    </thead>
     <tbody>
     @TABLE@
     </tbody>
 </table>
+
+This page contains download materials for all histone modifications processed in "Multiomics dissection of healthy human aging" experiment.
+<br/>
+Files included in this table:
+<ul>
+    <li>
+        Reads - Raw reads in FASTQ format will be available upon request at <a href="https://www.ncbi.nlm.nih.gov/gap">dbGAP</a>.
+        Each FASTQ track was aligned without multimappers on <a
+            href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
+        Reference 37).
+        Alignment is available in BED.GZ format.
+    </li>
+    <li>
+        QC - Libraries QC information by <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a>.
+    </li>
+    <li>
+        BigWigs - visualization of reads for each donor in BigWig format.
+    </li>
+    <li>
+        Peaks - Peaks were obtained using novel semi-supervised peak calling <a href="tools.html">approach</a>.
+    </li>
+    <li>
+        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is optimal
+        for a given sample.
+    </li>
+    <li>
+        Peak Caller Models - Trained models for each sample, that <a href="howto.html">can</a> be used for visual peak calling with
+        corresponding labels.
+    </li>
+</ul>
+<hr/>
+See <a href="public_data.html">Download Public Data </a>menu item to download public available data used.
