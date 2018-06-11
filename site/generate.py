@@ -102,14 +102,13 @@ def generate_download_chipseq_page(page):
                '<th><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
                '<th><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
                ('<th><a href="{}">BigWigs</a>&nbsp;' +
-                '<a href="{}.html" title="Explore data"><span class="glyphicon glyphicon-eye-open" '
-                'aria-hidden="true"></span></a></th>').format(Y20O20_BW_PATH.format(hist), hist) + \
+                '<a href="{}.html" title="Explore data">'
+                '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></th>').format(Y20O20_BW_PATH.format(hist), hist) + \
                '<th><a href="{}">Peaks</a></th>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
                '<th><a href="{}">Labels</a></th>'.format(LABELS_URL.format(hist)) + \
                ('<th><a href="{}">Models</a>&nbsp;' +
                 '<a href="howto.html" title="Visual peak calling how to">' +
-                '<span class="glyphicon glyphicon-question-sign" ' +
-                'aria-hidden="true"></span></a></th>').format(ZINBRA_MODELS_PATH) + \
+                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></th>').format(ZINBRA_MODELS_PATH) + \
                '</tr>'
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:

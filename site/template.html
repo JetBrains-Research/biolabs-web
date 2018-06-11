@@ -8,12 +8,17 @@
 <head>
     <title>@TITLE@</title>
     <meta http-equiv="content-type" content="application/xhtml; charset=UTF-8"/>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     @SCRIPTS@
     <script type="text/javascript">
@@ -23,45 +28,44 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="index.html">About</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Explore Data<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="h3k27ac.html">H3K27ac</a></li>
-                        <li><a href="h3k27me3.html">H3K27me3</a></li>
-                        <li><a href="h3k36me3.html">H3K36me3</a></li>
-                        <li><a href="h3k4me1.html">H3K4me1</a></li>
-                        <li><a href="h3k4me3.html">H3K4me3</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Download<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="download_chipseq.html">ChIP-Seq</a></li>
-                        <li><a href="#">DNA Methylation</a></li>
-                        <li><a href="#">RNA-Seq</a></li>
-                        <li><a href="#">Metabolomics</a></li>
-                        <li><a href="#">Proteomics</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="public_data.html">Public data</a></li>
-                        <li><a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/">Other</a></li>
-                    </ul>
-                </li>
-                <li><a href="methods.html">Methods</a></li>
-                <li><a href="tools.html">Tools</a></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="collapse navbar-collapse d-flex">
+        <ul class="navbar-nav p-0 flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">About</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav p-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Explore Data</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="h3k27ac.html">H3K27ac</a>
+                    <a class="dropdown-item" href="h3k27me3.html">H3K27me3</a>
+                    <a class="dropdown-item" href="h3k36me3.html">H3K36me3</a>
+                    <a class="dropdown-item" href="h3k4me1.html">H3K4me1</a>
+                    <a class="dropdown-item" href="h3k4me3.html">H3K4me3</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Download Data</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="download_chipseq.html">ChIP-Seq</a>
+                    <a class="dropdown-item" href="#">DNA Methylation</a>
+                    <a class="dropdown-item" href="#">RNA-Seq</a>
+                    <a class="dropdown-item" href="#">Metabolomics</a>
+                    <a class="dropdown-item" href="#">Proteomics</a>
+                    <a class="dropdown-item" href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/">Other</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="methods.html">Methods</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tools.html">Tools</a>
+            </li>
+        </ul>
     </div>
 </nav>
 

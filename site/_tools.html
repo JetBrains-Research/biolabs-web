@@ -3,7 +3,6 @@
 <div class="page-header">
     <h1>Tools</h1>
 </div>
-
 The peak calling routine presents significant challenge in working with large scale human epigenetic data:
 while ULI-ChipSeq protocol generally allows for robust peak calling, it is considerably more variable than classical
 ChipSeq approach. Accurately dissecting the situation when both background and the signal can vary is generally
@@ -15,14 +14,17 @@ processing both conventional and ULI-ChipSeq tracks.
 In the semi-supervised approach, user annotates a handful of locations as peaks, valleys or peak shores,
 and then uses these annotations to train the model that is optimal for a
 given sample. One of the major challenges of the semi-supervised learning is the
-procedural complexity of the manual curation/annotation of the data, which often leads to the inaccuracies and mix-ups.
+procedural complexity of the manual curation/annotation of the data, which often leads to the inaccuracies and
+mix-ups.
 Therefore, we set out to create a brand new visualization tool that would support classical genome browser
 capabilities and provide readily accessible integrated peak annotation and peak calling capabilities.
 The tool, named <b>JBR genome
     browser</b>, allows one to upload tracks of the ChipSeq data and perform on-the-fly annotation
 and peak calling for a given annotation, where results of the peak calling are immediately visualized as bed files
-in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next generation genome browser.
-It provides enhanced capabilities of viewing large files, observing multiple locations simultaneously and gathering track statistics.
+in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next
+generation genome browser.
+It provides enhanced capabilities of viewing large files, observing multiple locations simultaneously and gathering
+track statistics.
 <br/>
 
 <div class="row">
@@ -59,5 +61,6 @@ It provides enhanced capabilities of viewing large files, observing multiple loc
     </div>
 </div>
 
-Being developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
-<a href="https://kotlinlang.org/?">Kotlin</a> program language, these tools incorporate best practices of building fast and effective software.
+Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
+<a href="https://kotlinlang.org/?">Kotlin</a> program language, these tools incorporate best practices of building
+fast and effective software.

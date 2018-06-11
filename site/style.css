@@ -3,6 +3,10 @@
     margin: 60px auto;
 }
 
+.icon-url {
+    width: 15%;
+}
+
 #footer {
     text-align: center;
     color: #777;
