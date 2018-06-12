@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 #navbar {
@@ -83,10 +84,15 @@ html {
     background: url('scheme4.png') top;
     background-size: 100%;
 }
+
 .span-area {
     background: rgba(1, 1, 1, .1);
 }
 
 .jbr-area {
     background: rgba(255, 222, 17, .1);
+}
+
+.table-nonfluid {
+   width: auto !important;
 }

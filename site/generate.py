@@ -44,37 +44,23 @@ def generate_explore_chipseq_page(page):
     def create_tr_online(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th>Basic</th>'.format(hist) + \
-               '<th><a href="#TODO" title="UCSC Genome Browser">UCSC</a></th>' + \
-               '<th><a href="#TODO" title="WashU Epigenome Browser">WashU</a></th>' + \
-               '</tr>' + \
-               '<tr>' + \
-               '<th>{}</th>'.format(hist) + \
-               '<th>Extended</th>'.format(hist) + \
-               '<th><a href="#TODO" title="UCSC Genome Browser">UCSC</a></th>' + \
-               '<th><a href="#TODO" title="WashU Epigenome Browser">WashU</a></th>' + \
+               '<th class="text-center">' \
+               '<a href="#TODO" title="Basic UCSC Genome Browser Session">Basic</a>&nbsp;&sol;&nbsp;' \
+               '<a href="#TODO" title="Extended UCSC Genome Browser Session">Extended</a></th>' + \
+               '<th class="text-center">' \
+               '<a href="#TODO" title="Basic WashU Epigenome Browser Session">Basic</a>&nbsp;&sol;&nbsp;' \
+               '<a href="#TODO" title="Extended WashU Epigenome Browser Session">Extended</a></th>' + \
                '</tr>'
 
     def create_tr_session(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th>Basic</th>'.format(hist) + \
-               ('<th><a href="{}" title="IGV/JBR session file">Session</a></th>'.format(
-                   BASIC_IGV_SESSION_PATH.format(hist)
-               )) + \
-               ('<th><a href="{}" title="IGV/JBR session file">Custom</a></th>'.format(
-                   BASIC_UCSC_SESSION_PATH.format(hist)
-               )) + \
-               '</tr>' + \
-               '<tr>' + \
-               '<th>{}</th>'.format(hist) + \
-               '<th>Extended</th>'.format(hist) + \
-               ('<th><a href="{}" title="IGV/JBR session file">Session</a></th>'.format(
-                   EXTENDED_IGV_SESSION_PATH.format(hist)
-               )) + \
-               ('<th><a href="{}" title="IGV/JBR session file">Custom</a></th>'.format(
-                   EXTENDED_UCSC_SESSION_PATH.format(hist)
-               )) + \
+               ('<th class="text-center"><a href="{}" title="Basic IGV/JBR session file">Basic</a>&nbsp;&sol;&nbsp;' 
+                '<a href="{}" title="Extended IGV/JBR session file">Extended</a></th>').format(
+                   BASIC_IGV_SESSION_PATH.format(hist), EXTENDED_IGV_SESSION_PATH.format(hist)) + \
+               ('<th class="text-center"><a href="{}" title="Basic UCSC custom tracks file">Basic</a>&nbsp;&sol;&nbsp;'
+                '<a href="{}" title="Extended UCSC custom track file">Extended</a></th>').format(
+                   BASIC_UCSC_SESSION_PATH.format(hist), EXTENDED_UCSC_SESSION_PATH.format(hist)) + \
                '</tr>'
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
@@ -94,15 +80,15 @@ def generate_download_chipseq_page(page):
     def create_tr(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
-               '<th><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
-               ('<th><a href="{}">BigWigs</a>&nbsp;' +
+               '<th class="text-center"><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
+               '<th class="text-center"><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
+               ('<th class="text-center"><a href="{}">BigWigs</a>&nbsp;' +
                 '<a href="explore_chipseq.html" title="Explore data">'
                 '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></th>').format(
                    Y20O20_BW_PATH.format(hist)) + \
-               '<th><a href="{}">Peaks</a></th>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
-               '<th><a href="{}">Labels</a></th>'.format(LABELS_URL.format(hist)) + \
-               ('<th><a href="{}">Models</a>&nbsp;' +
+               '<th class="text-center"><a href="{}">Peaks</a></th>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
+               '<th class="text-center"><a href="{}">Labels</a></th>'.format(LABELS_URL.format(hist)) + \
+               ('<th class="text-center"><a href="{}">Models</a>&nbsp;' +
                 '<a href="howto.html" title="Visual peak calling how to">' +
                 '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></th>').format(ZINBRA_MODELS_PATH) + \
                '</tr>'
