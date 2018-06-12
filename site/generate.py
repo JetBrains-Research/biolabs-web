@@ -153,6 +153,8 @@ def _cli():
                   title='Tools', scripts='', content='_tools.html')
     generate_page('howto.html',
                   title='Visual peak calling how to', scripts='', content='_howto.html')
+    generate_page('team.html',
+                  title='People', scripts='', content='_team.html')
 
     print('Creating explore data pages')
     content_page = '_explore_chipseq.html'
