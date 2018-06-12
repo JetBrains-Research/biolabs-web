@@ -1,11 +1,9 @@
 import os
 import re
 import shutil
-from pathlib import Path
 
 # Hardcoded URLs with data
-from sessions.aging_session import search_in_url, get_color, HREF_MASK, HIST_TOOL_PATH_MAP, GSM_HIST_MAP, \
-    Y20O20_CONSENSUS_PATH, LABELS_URL, Y20O20_BW_PATH, Y20O20_BB_PATH, ENCODE_BW_PATH, ENCODE_BB_PATH
+from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
@@ -21,73 +19,70 @@ PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/ch
 ZINBRA_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                      "/Y20O20/zinbra"
 
+BASIC_UCSC_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+                          "/sessions/Y20O20/{}_aging_session.txt"
+BASIC_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+                         "/sessions/Y20O20/{}_aging_session.xml"
+EXTENDED_UCSC_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+                             "/sessions/Y20O20/{}_aging_session_extended.txt"
+EXTENDED_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+                            "/sessions/Y20O20/{}_aging_session_extended.xml"
+
 GSM_URL = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={}"
 
 FOLDER = os.path.dirname(__file__)
 OUT_FOLDER = FOLDER + '/out'
 
 
-def generate_explore_data_page(hist, page):
-    explore_data_template = FOLDER + '/_explore_data.html'
+def generate_explore_chipseq_page(page):
+    explore_chipseq_template = FOLDER + '/_explore_chipseq.html'
     print('Creating explore data page {} by template {}'.format(page,
-                                                                explore_data_template))
-    with open(explore_data_template, 'r') as file:
+                                                                explore_chipseq_template))
+    with open(explore_chipseq_template, 'r') as file:
         template_html = file.read()
 
-    tracks = []
+    def create_tr_online(hist):
+        return '<tr>' + \
+               '<th>{}</th>'.format(hist) + \
+               '<th>Basic</th>'.format(hist) + \
+               '<th><a href="#TODO" title="UCSC Genome Browser">UCSC</a></th>' + \
+               '<th><a href="#TODO" title="WashU Epigenome Browser">WashU</a></th>' + \
+               '</tr>' + \
+               '<tr>' + \
+               '<th>{}</th>'.format(hist) + \
+               '<th>Extended</th>'.format(hist) + \
+               '<th><a href="#TODO" title="UCSC Genome Browser">UCSC</a></th>' + \
+               '<th><a href="#TODO" title="WashU Epigenome Browser">WashU</a></th>' + \
+               '</tr>'
 
-    y20o20_consensuses = search_in_url(Y20O20_CONSENSUS_PATH.format(hist),
-                                       '<a href="([^"]*consensus[^"]*)">')
-    y20o20_total_consensuses = [y20o20_cons for y20o20_cons in y20o20_consensuses
-                                if "OD" not in y20o20_cons and "YD" not in y20o20_cons]
-    y20o20_bws = search_in_url(Y20O20_BW_PATH.format(hist), HREF_MASK.format("bw"))
-    y20o20_zinbra_peaks = search_in_url(Y20O20_BB_PATH.format(hist, 'zinbra'),
-                                        HREF_MASK.format("bb"))
-    encode_bws = search_in_url(ENCODE_BW_PATH,
-                               '<a href="([^"]*{}[^"]*.bw)">'.format(GSM_HIST_MAP[hist]))
-    encode_peaks = []
-    for tool_path in HIST_TOOL_PATH_MAP[hist]:
-        encode_peaks += search_in_url(ENCODE_BB_PATH.format(hist, tool_path),
-                                      '<a href="([^"]*{}[^"]*.bb)">'.format(
-                                          GSM_HIST_MAP[hist]))
-
-        insensitive_hist = re.compile(re.escape(hist), re.IGNORECASE)
-
-        tracks.extend(format_tracks(hist, y20o20_total_consensuses))
-        for i in range(0, len(y20o20_bws)):
-            tracks.extend(format_tracks(hist, [y20o20_bws[i]],
-                                        name_processor=lambda x:
-                                        insensitive_hist.sub(hist, x.upper())))
-            tracks.extend(format_tracks(hist, [y20o20_zinbra_peaks[i]],
-                                        name_processor=lambda x: "ZINBRA " + x))
-
-        tracks.extend(format_tracks(hist, encode_bws))
-        tracks.extend(format_tracks(hist, encode_peaks,
-                                    name_processor=lambda x:
-                                    ("MACS " if "broad" in x else "SICER ") + x))
-        tracks.append(format_track(hist, LABELS_URL.format(hist)))
+    def create_tr_session(hist):
+        return '<tr>' + \
+               '<th>{}</th>'.format(hist) + \
+               '<th>Basic</th>'.format(hist) + \
+               ('<th><a href="{}" title="IGV/JBR session file">Session</a></th>'.format(
+                   BASIC_IGV_SESSION_PATH.format(hist)
+               )) + \
+               ('<th><a href="{}" title="IGV/JBR session file">Custom</a></th>'.format(
+                   BASIC_UCSC_SESSION_PATH.format(hist)
+               )) + \
+               '</tr>' + \
+               '<tr>' + \
+               '<th>{}</th>'.format(hist) + \
+               '<th>Extended</th>'.format(hist) + \
+               ('<th><a href="{}" title="IGV/JBR session file">Session</a></th>'.format(
+                   EXTENDED_IGV_SESSION_PATH.format(hist)
+               )) + \
+               ('<th><a href="{}" title="IGV/JBR session file">Custom</a></th>'.format(
+                   EXTENDED_UCSC_SESSION_PATH.format(hist)
+               )) + \
+               '</tr>'
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
         file.write(template_html
-                   .replace('@MODIFICATION@', hist)
-                   .replace('//@TRACKS@', ',\n'.join(tracks)))
-
-
-def format_tracks(hist, paths, name_processor=lambda x: x):
-    return [format_track(hist, path, name_processor) for path in paths]
-
-
-def format_track(hist, uri, name_processor=lambda x: x):
-    return """{
-    name: '@NAME@',
-    bwgURI: '@URI@',
-    style: [{
-        type: 'default', 
-        style: {glyph: 'HISTOGRAM', BGCOLOR: 'rgb(@RGB@)', HEIGHT: 30, id: 'style1'}
-    }],
-    noDownsample: false
-}""".replace('@NAME@', name_processor(Path(uri).stem)) \
-        .replace('@URI@', uri).replace('@RGB@', get_color(hist, uri))
+                   .replace('@TABLE@',
+                            '\n'.join([create_tr_online(hist) for hist in sorted(GSM_HIST_MAP.keys())]))
+                   .replace('@TABLE2@',
+                            '\n'.join([create_tr_session(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
 
 def generate_download_chipseq_page(page):
@@ -102,8 +97,9 @@ def generate_download_chipseq_page(page):
                '<th><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
                '<th><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
                ('<th><a href="{}">BigWigs</a>&nbsp;' +
-                '<a href="{}.html" title="Explore data">'
-                '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></th>').format(Y20O20_BW_PATH.format(hist), hist) + \
+                '<a href="explore_chipseq.html" title="Explore data">'
+                '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></th>').format(
+                   Y20O20_BW_PATH.format(hist)) + \
                '<th><a href="{}">Peaks</a></th>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
                '<th><a href="{}">Labels</a></th>'.format(LABELS_URL.format(hist)) + \
                ('<th><a href="{}">Models</a>&nbsp;' +
@@ -113,7 +109,7 @@ def generate_download_chipseq_page(page):
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
         file.write(template_html.replace('@TABLE@',
-                                         '\n'.join([create_tr(hist) for hist in GSM_HIST_MAP.keys()])))
+                                         '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
 
 def generate_download_public_data(page):
@@ -134,7 +130,7 @@ def generate_download_public_data(page):
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
         file.write(template_html.replace('@TABLE@',
-                                         '\n'.join([create_tr(hist) for hist in GSM_HIST_MAP.keys()])))
+                                         '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
 
 def generate_page(page, title, scripts, content):
@@ -173,16 +169,10 @@ def _cli():
                   title='Visual peak calling how to', scripts='', content='_howto.html')
 
     print('Creating explore data pages')
-    for hist in GSM_HIST_MAP.keys():
-        content_page = '_explore_data_{}.html'.format(hist).lower()
-        generate_explore_data_page(hist, content_page)
-        # biodallance should be included within main html page
-        generate_page('{}.html'.format(hist).lower(),
-                      title=hist,
-                      scripts="""
-<script type="text/javascript" 
-    src="//www.biodalliance.org/release-0.13/dalliance-compiled.js"></script>""",
-                      content=content_page)
+    content_page = '_explore_chipseq.html'
+    generate_explore_chipseq_page(content_page)
+    generate_page('explore_chipseq.html',
+                  title='Explore ChIP-Seq', scripts='', content=content_page)
 
     print('Creating download chipseq page')
     content_page = '_download_chipseq.html'
