@@ -1,100 +1,149 @@
 <!-- To be included inside template.html -->
 
 <div class="page-header">
-    <h1>Tools</h1>
+    <h1>Peak Calling Solution</h1>
 </div>
-The peak calling routine presents significant challenge in working with large scale human epigenetic data:
-while ULI-ChipSeq protocol generally allows for robust peak calling, it is considerably more variable than classical
-ChipSeq approach. Accurately dissecting the situation when both background and the signal can vary is generally
-prohibitively complex task for the unbiased peak calling approaches.
-<br/>
-<br/>
+<div id="description-block">
+    The peak calling routine presents significant challenge in working with large scale human epigenetic data:
+    while ULI-ChipSeq protocol generally allows for robust peak calling, it is considerably more variable than classical
+    ChipSeq approach. Accurately dissecting the situation when both background and the signal can vary is generally
+    prohibitively complex task for the unbiased peak calling approaches.
+    <br/>
+    <br/>
 
-We propose the novel semi-supervised approach to peak calling.
-Fast and effective semi-supervised peaks analyzer <b>SPAN peak caller</b> is a multipurpose peak calling capable
-processing both conventional and ULI-ChipSeq tracks.
-In the semi-supervised approach, user annotates a handful of locations as peaks, valleys or peak shores,
-and then uses these annotations to train the model that is optimal for a
-given sample.
-<br>
-<br>
-One of the major challenges of the semi-supervised learning is the procedural complexity of the manual
-annotation of the data, which often leads to the inaccuracies and mix-ups. We created a brand new visualization tool
-that would support classical genome browser capabilities and provide readily accessible integrated peak annotation
-and peak calling capabilities.
-<b>JBR genome browser</b>, allows one to upload tracks of the Chip-Seq data and perform on-the-fly annotation
-and peak calling for a given annotation, where results of the peak calling are immediately visualized as bed files
-in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next
-generation genome browser. It provides enhanced capabilities of viewing large files, observing multiple locations
-simultaneously and gathering track statistics.
-<br>
-<br>
-Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
-<a href="https://kotlinlang.org/?">Kotlin</a> programming language, these tools incorporate best practices of effective software.
-<br>
-<br/>
-<h3 style="align-items: center;justify-content: space-around;display: flex;">Visual peak calling pipeline</h3>
-<div id="scheme1">
+    We propose the novel semi-supervised approach to peak calling.
+    Fast and effective semi-supervised peaks analyzer <b>SPAN peak caller</b> is a multipurpose peak calling capable
+    processing both conventional and ULI-ChipSeq tracks.
+    In the semi-supervised approach, user annotates a handful of locations as peaks, valleys or peak shores,
+    and then uses these annotations to train the model that is optimal for a
+    given sample.
+    <br>
+    <br>
+    One of the major challenges of the semi-supervised learning is the procedural complexity of the manual
+    annotation of the data, which often leads to the inaccuracies and mix-ups. We created a brand new visualization tool
+    that would support classical genome browser capabilities and provide readily accessible integrated peak annotation
+    and peak calling capabilities.
+    <b>JBR genome browser</b>, allows one to upload tracks of the Chip-Seq data and perform on-the-fly annotation
+    and peak calling for a given annotation, where results of the peak calling are immediately visualized as bed files
+    in the same session. It can serve not only as efficient semi-supervised peak calling engine but also as next
+    generation genome browser. It provides enhanced capabilities of viewing large files, observing multiple locations
+    simultaneously and gathering track statistics.
+
 </div>
 <div class="row" id="tools">
     <div class="col">
-        <div class="card card-body span_peak_caller">
+        <div class="card card-body span-area">
             <b>SPAN Peak Caller</b>
             <p>Semi-supervised peak analyzer</p>
-            <ul>
+            <ul id="span-features">
                 <li>Supports semi-supervised peak calling with JBR genome browser</li>
                 <li>Works with both conventional and ULI ChIP-Seq data</li>
-                <li>Input formats: BAM, BED.GZ</li>
-                <li>Capable to process tracks of different signal-to-noise ratio</li>
                 <li>Works with both narrow and wide modifications</li>
-                <li>Supports control track</li>
-                <li>Supports replicates on underlying model level</li>
-                <li>Experimental: differential peak calling mode</li>
+                <li>Input formats: BAM, BED.GZ</li>
+                <li>Supports optional control track</li>
+                <li>Capable to process tracks with different signal-to-noise ratio</li>
+                <li>Supports replicates on model level</li>
+                <li>Experimental: differential peak calling</li>
             </ul>
         </div>
     </div>
     <div class="col">
-        <div class="card card-body jbr_genome_browser">
+        <div class="card card-body jbr-area">
             <b>JBR Genome Browser</b>
             <p>Fast and reliable genome browser</p>
-            <ul>
+            <ul id="jbr-features">
                 <li>Supports semi-supervised peak calling with SPAN peak caller</li>
-                <li>Frontend-agnostic. The browser can be used on the desktop or as a web service</li>
                 <li>Support for common track formats, e.g. WIG, BED, etc.</li>
+                <li>Capable to open existing IGV sessions</li>
                 <li>Support for combining tracks, i.e. arithmetic operations</li>
                 <li>Easy visualisation of multiple genomic loci</li>
-                <li>Custom statistics tracks for multiple regions available</li>
+                <li>Custom statistics tracks for multiple regions</li>
+                <li>Frontend-agnostic, can be used as desktop application and web-service</li>
+
             </ul>
         </div>
     </div>
 </div>
-<div id="scheme2"></div>
-<h3 style="align-items: center;justify-content: space-around;display: flex">
-    Call peaks in single click in JBR
-</h3>
-<div id="scheme3"></div>
-<h3 style="align-items: center;justify-content: space-around;display: flex">
-    Results
-</h3>
-<div style="align-items: center;justify-content: space-around;display: flex">
-    <ul>
-        <li>Best peak caller parameters for each sample</li>
-        <li>Consistent peak calling among samples</li>
-    </ul>
+<div id="tools-placeholder" style="visibility: hidden"></div>
+<br>
+<br/>
+<h3 style="align-items: center;justify-content: space-around;display: flex">Semi-supervised peak calling pipeline</h3>
+<hr/>
+<div class="d-flex">
+    <div class="p-0 flex-grow-1" style="align-items: center;justify-content: space-around;display: flex;">
+        <b>Launch peak analyzer</b>
+    </div>
+    <div class="p-0 flex-grow-1" style="align-items: center;justify-content: space-around;display: flex;">
+        <b>Upload BigWigs</b>
+    </div>
 </div>
 
-Step-by-step description of this pipeline is available in <a href="howto.html">How To</a> section.
+<div id="scheme1"></div>
 
+<div class="d-flex">
+    <div class="p-0 flex-grow-1" style="align-items: center;justify-content: space-around;display: flex;">
+        <b>Train underlying model</b>
+    </div>
+    <div class="p-0 flex-grow-1" style="align-items: center;justify-content: space-around;display: flex;">
+        <b>Create labels</b>
+    </div>
+</div>
+<div id="scheme2"></div>
+<b style="align-items: center;justify-content: space-around;display: flex">Peak calling in single click</b>
+<div id="scheme3"></div>
+<b style="align-items: center;justify-content: space-around;display: flex">
+    Consistent peak calling results
+</b>
+<div id="scheme4"></div>
+<br>
+<h2>Summary</h2>
+Both tools, <b>SPAN peak analyzer</b> and <b>JBR genome
+    browser</b> can be used separately as general purpose peak caller and genome browsers, however together they can serve as a
+complete solution for peak calling.
+Semi-supervised peak calling approach is capable improving peaks consistency in datasets with different signal-to-noise ratio,
+as well as obtaining best peak calling results for individual samples.
+<br>
+<br>
+Advantages of semi-supervised peak calling pipeline:
+<ul>
+    <li>Ability to process both narrow and wide histone modifications</li>
+    <li>Support for both conventional and ULI Chip-Seq experiments</li>
+    <li>Process experiments with different signal-to-noise ratio</li>
+    <li>Call peaks and explore results in a single application</li>
+    <li>Integrated labelling functionality</li>
+    <li>Parameters optimization is super fast after SPAN model is trained</li>
+    <li>Consistent peak calling among samples</li>
+    <li>Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
+        <a href="https://kotlinlang.org/?">Kotlin</a> programming language, these tools incorporate best practices of
+        effective software.
+    </li>
+</ul>
+Comprehensive step-by-step tutorial on using integrated peak calling solution is available in <a href="howto.html">How To</a> section.
 <hr/>
 
 
 <script>
-    // TODO[shpynov] do we need this?
-    const range = 200;
     $(window).on('scroll', function () {
-        const scheme1 = $('#scheme1');
         let scrollTop = $(this).scrollTop();
-        const calc1 = 1 - (scrollTop - scheme1.position().top - scheme1.outerHeight() / 2 + range) / range;
-        scheme1.css({'opacity': Math.max(0, Math.min(1, calc1))});
+        // Fade out description
+        const descriptionBlock = $('#description-block');
+        const calc1 = 1 - (scrollTop - descriptionBlock.position().top - descriptionBlock.outerHeight() / 2) / 200;
+        descriptionBlock.css({'opacity': Math.max(0, Math.min(1, calc1))});
+
+        // Make tools sticky
+        let tools = $('#tools');
+        let navbarHeigth = $('#navbar').outerHeight();
+        if (scrollTop >= descriptionBlock.outerHeight() + descriptionBlock.position().top - navbarHeigth) {
+            tools.addClass('fixed');
+            tools.css({top: navbarHeigth + 'px'});
+            $('#jbr-features').fadeOut(200);
+            $('#span-features').fadeOut(200);
+            $('#tools-placeholder').css({'visibility': 'visible', 'height': tools.outerHeight()})
+        } else {
+            tools.removeClass('fixed');
+            $('#jbr-features').fadeIn(200);
+            $('#span-features').fadeIn(200);
+            $('#tools-placeholder').css({'visibility': 'hidden', 'height': 0})
+        }
     });
 </script>

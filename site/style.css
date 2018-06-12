@@ -1,6 +1,23 @@
+#navbar {
+    height: 40px;
+}
+
 .content {
     width: 900px;
-    margin: 60px auto;
+    margin: 50px auto;
+}
+
+#tools.fixed {
+    /* content width + 2*margin of .col */
+    width: 930px;
+    position: fixed;
+    top: 40px;
+}
+
+#tools {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(255, 255, 255, 1.0);
 }
 
 .icon-url {
@@ -32,35 +49,40 @@
 }
 
 #scheme1 {
-    height: 250px;
-    background: url('scheme1.svg') top;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 195px;
+    background: url('scheme1.png') top;
     background-size: 100%;
 }
 
-#tools {
-    margin-top: 20px;
-    background-position: top;
-    position: relative;
-}
-
 #scheme2 {
-    margin-top: 10px;
-    height: 250px;
-    background: url('scheme2.svg') top;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 197px;
+    background: url('scheme2.png') top;
     background-size: 100%;
 }
 
 #scheme3 {
-    margin-top: 10px;
-    height: 250px;
-    background: url('scheme3.svg') top;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 175px;
+    background: url('scheme3.png') top;
     background-size: 100%;
 }
 
-.span_peak_caller {
+#scheme4 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 190px;
+    background: url('scheme4.png') top;
+    background-size: 100%;
+}
+.span-area {
     background: rgba(1, 1, 1, .1);
 }
 
-.jbr_genome_browser {
+.jbr-area {
     background: rgba(255, 222, 17, .1);
 }
