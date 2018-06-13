@@ -44,23 +44,18 @@ def generate_explore_chipseq_page(page):
     def create_tr_online(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th class="text-center">' \
-               '<a href="#TODO" title="Basic UCSC Genome Browser Session">Basic</a>&nbsp;&sol;&nbsp;' \
-               '<a href="#TODO" title="Extended UCSC Genome Browser Session">Extended</a></th>' + \
-               '<th class="text-center">' \
-               '<a href="#TODO" title="Basic WashU Epigenome Browser Session">Basic</a>&nbsp;&sol;&nbsp;' \
-               '<a href="#TODO" title="Extended WashU Epigenome Browser Session">Extended</a></th>' + \
+               ('<th class="text-center"><a href="{}" title="Basic UCSC custom tracks session">'
+                'Basic</a>&nbsp;&sol;&nbsp;'
+                '<a href="{}" title="Extended UCSC custom tracks session">Extended</a></th>').format(
+                   BASIC_UCSC_SESSION_PATH.format(hist), EXTENDED_UCSC_SESSION_PATH.format(hist)) + \
                '</tr>'
 
     def create_tr_session(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               ('<th class="text-center"><a href="{}" title="Basic IGV/JBR session file">Basic</a>&nbsp;&sol;&nbsp;' 
+               ('<th class="text-center"><a href="{}" title="Basic IGV/JBR session file">Basic</a>&nbsp;&sol;&nbsp;'
                 '<a href="{}" title="Extended IGV/JBR session file">Extended</a></th>').format(
                    BASIC_IGV_SESSION_PATH.format(hist), EXTENDED_IGV_SESSION_PATH.format(hist)) + \
-               ('<th class="text-center"><a href="{}" title="Basic UCSC custom tracks file">Basic</a>&nbsp;&sol;&nbsp;'
-                '<a href="{}" title="Extended UCSC custom track file">Extended</a></th>').format(
-                   BASIC_UCSC_SESSION_PATH.format(hist), EXTENDED_UCSC_SESSION_PATH.format(hist)) + \
                '</tr>'
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
