@@ -114,6 +114,55 @@ def generate_download_public_data(page):
                                          '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
 
+def generate_jbr_data(page):
+    template = FOLDER + '/_jbr.html'
+
+    print('Creating download data page {} by template {}'.format(page, template))
+    with open(template, 'r') as f:
+        template_html = f.read()
+
+    def create_tr(os, build):
+        return """
+        <tr>
+            <th> <a href="url">todo {} {}</a></th>
+            <th> desc </th>
+        </tr>
+        """.format(os, build)
+
+    build = '1.0.beta.nnnn'
+    with open(OUT_FOLDER + '/' + page, 'w') as f:
+        oss = ["mac", "win", "linux"]
+        f.write(template_html.
+                replace('@TABLE@', '\n'.join([create_tr(os, build) for os in oss])).
+                replace('@BUILD@', '1.0.beta.nnnn').
+                replace('@DATE@', 'Jun 13, 2018')
+        )
+
+
+def generate_span_data(page):
+    template = FOLDER + '/_jbr.html'
+
+    print('Creating download data page {} by template {}'.format(page, template))
+    with open(template, 'r') as f:
+        template_html = f.read()
+
+    def create_tr(build):
+        return """
+        <tr>
+            <th> <a href="url">todo {}</a></th>
+            <th> desc </th>
+        </tr>
+        """.format(build)
+
+    build = '1.0.beta.nnnn'
+    with open(OUT_FOLDER + '/' + page, 'w') as f:
+        f.write(template_html.
+                replace('@TABLE@', create_tr(build)).
+                replace('@BUILD@', build).
+                replace('@DATE@', 'Jun 13, 2018')
+                )
+
+
 def generate_page(page, title, scripts, content):
     template_path = FOLDER + '/template.html'
     print('Creating page {} by template {}\ntitle={}\nscripts={}\ncontent={}'.format(
@@ -170,6 +219,18 @@ def _cli():
     generate_download_public_data(content_page)
     generate_page('public_data.html',
                   title='Download Public Data', scripts='', content=content_page)
+
+    print('Creating download tools page')
+    content_page = '_jbr.html'
+    generate_jbr_data(content_page)
+    generate_page('jbr.html',
+                  title='Downloads', scripts='', content=content_page)
+
+    print('Creating download tools page')
+    content_page = '_span.html'
+    generate_span_data(content_page)
+    generate_page('span.html',
+                  title='SPAN Peak Analyzer', scripts='', content=content_page)
 
     print('Done')
 
