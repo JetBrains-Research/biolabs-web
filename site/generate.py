@@ -150,6 +150,8 @@ def _cli():
                   title='Visual peak calling how to', scripts='', content='_howto.html')
     generate_page('team.html',
                   title='People', scripts='', content='_team.html')
+    generate_page('download_methylation.html',
+                  title='Download DNA Methylation', scripts='', content='_download_methylation.html')
 
     print('Creating explore data pages')
     content_page = '_explore_chipseq.html'
