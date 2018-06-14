@@ -163,9 +163,8 @@ When <code class="code-grey">LABELS</code> parameter is given, it is used to opt
 <ol>
     <li>Convert input reads to tags using <code class="code-grey">FRAGMENT</code> parameter.</li>
     <li>Compute coverage for all genome tiled into bins of <code class="code-grey">BIN</code> base pairs.</li>
-    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as <code>ZERO</code>
-        states, <code>LOW</code>
-        states of non-specific binding, and <code>HIGH</code> states of the specific binding.
+    <li>Fit model. 3-state Hidden Markov model that classifies bins as <code>ZERO</code>
+        states, <code>LOW</code> states of non-specific binding, and <code>HIGH</code> states of the specific binding.
     </li>
     <li>Compute posterior <code>HIGH</code> state probability of each bin.</li>
     <li>Trained model is saved into <code class="code-grey">.tar</code> format.</li>
@@ -213,27 +212,33 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
 </ul>
 
 <h2 id="span-study-cases">Study Cases</h2>
-<p>As a benchmark we applied SPAN peak calling approach to public conventional ChIP-Seq datasets as well as to ULI ChIP-Seq dataset.</p>
+<p>As a benchmark we applied SPAN peak calling approach to public conventional ChIP-Seq datasets as well as to ULI
+    ChIP-Seq dataset.</p>
 
 <p>
-CD14+ classical monocytes tracks available in ENCODE database were a natural choice of conventional ChIP-Seq dataset.<br/>
-<a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">Hocking et al.</a> proposed a method to estimate best parameters using supervised labels.
-Original approach was designed for conventional ChIP-Seq experiment, and it results in a single set of parameters for the group of samples.
-This didn't work in case of ULI ChIP-Seq, because of different signal-to-noise ratio.
-We also used generated data to evaluate <code>SPAN</code> on conventional ChIP-Seq experiments.
+    CD14+ classical monocytes tracks available in ENCODE database were a natural choice of conventional ChIP-Seq
+    dataset.<br/>
+    <a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">Hocking et al.</a> proposed a method to
+    estimate best parameters using supervised labels.
+    Original approach was designed for conventional ChIP-Seq experiment, and it results in a single set of parameters
+    for the group of samples.
+    This didn't work in case of ULI ChIP-Seq, because of different signal-to-noise ratio.
+    We also used generated data to evaluate <code>SPAN</code> on conventional ChIP-Seq experiments.
 </p>
 <p>
-In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
-micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark profiles
-with high resolution and reproducibility from as few as one thousand cells.
-We used these tracks to estimate semi-supervised approach in extreme conditions.
+    In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
+    micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark
+    profiles
+    with high resolution and reproducibility from as few as one thousand cells.
+    We used these tracks to estimate semi-supervised approach in extreme conditions.
 </p>
 <p>
-<code>SPAN</code> produced high quality peak calling in all of these cases, confirming the universality of the approach.
-<br>
-It can be used as a general purpose peak calling solution.
-<br>
-Results of <code>SPAN</code> application in these conditions is described in study cases <a href="span_cases.html">report</a>.
+    <code>SPAN</code> produced high quality peak calling in all of these cases, confirming the universality of the
+    approach.
+    <br>
+    It can be used as a general purpose peak calling solution.
+    <br>
+    Results of <code>SPAN</code> application in these conditions is described in study cases <a href="span_cases.html">report</a>.
 </p>
 <br>
 <h2 id="span-faq">FAQ</h2>
