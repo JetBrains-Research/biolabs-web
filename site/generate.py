@@ -221,11 +221,11 @@ def _cli():
     generate_page('methods.html',
                   title='Methods', scripts='', content='_methods.html')
     generate_page('tools.html',
-                  title='Tools', scripts='', content='_tools.html')
+                  title='Peak Calling Solution', scripts='', content='_tools.html')
     generate_page('howto.html',
                   title='Visual peak calling how to', scripts='', content='_howto.html')
     generate_page('team.html',
-                  title='People', scripts='', content='_team.html')
+                  title='Team', scripts='', content='_team.html')
     generate_page('download_methylation.html',
                   title='Download DNA Methylation', scripts='', content='_download_methylation.html')
 
