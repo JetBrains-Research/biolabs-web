@@ -1,6 +1,25 @@
 <!-- To be included inside template.html -->
 
 <div class="page-header">
-    <h1>Semi-supervised peak calling how to</h1>
+    <h1>Visual peak calling How-To</h1>
 </div>
-<b>TODO</b>
+<p>Visual peak calling is a semi-supervised algorithm. At first we need to train SPAN models
+    for each tracks locally or using computational cluster. Then visualize Chip-Seq signal
+    tracks in JBR Genome Browser, load trained SPAN models and run peak calling tuning procedure.
+</p>
+
+<h2>Train Models</h2>
+<p>TODO: show cmdline args and results output sample, SPAN model files locations</p>
+
+<h2>Load Data Into JBR Genome Browser</h2>
+<p>TODO: Create session using 2 *bw tracks from  http://artyomovlab.wustl.edu/, add links to
+related SPAN models. User is supposed to download models, open them in JBR browser.</p>
+
+<h2>Peak Calling</h2>
+<p>TODO: Suggest to run tune action in JBR. Also describe how to change FDR, GAP and do
+    peak calling manually.
+</br>
+    TODO: Labelling recommendations...
+</br>
+    TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued tracks
+</p>.
