@@ -150,11 +150,20 @@ def generate_jbr_data(page):
             DistrDescriptor("Linux archive (includes bundled 64-bit Java Runtime)",
                             ".tar.gz", "linux"),
         ]
-        f.write(template_html.
-                replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs])).
-                replace('@BUILD@', '1.0.beta.nnnn').
-                replace('@DATE@', date)
-        )
+
+        content = template_html.\
+            replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs]))\
+            .replace('@BUILD@', '1.0.beta.nnnn')\
+            .replace('@DATE@', date)
+
+        seen_file_names = set()
+        for dd in descrs:
+            fname = '@FILENAME-{}@'.format(dd.folder)
+            if fname not in seen_file_names:
+                seen_file_names.add(fname)
+                content = content.replace(fname, "{}{}".format(build, dd.suffix))
+
+        f.write(content)
 
 
 def generate_span_data(page):
