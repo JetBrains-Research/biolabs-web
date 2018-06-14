@@ -148,7 +148,8 @@ When <code class="code-grey">LABELS</code> parameter is given, it is used to opt
 <ol>
     <li>Convert input reads to tags using <code class="code-grey">FRAGMENT</code> parameter.</li>
     <li>Compute coverage for all genome tiled into bins of <code class="code-grey">BIN</code> base pairs.</li>
-    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as <code>ZERO</code> states, <code>LOW</code>
+    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as <code>ZERO</code>
+        states, <code>LOW</code>
         states of non-specific binding, and <code>HIGH</code> states of the specific binding.
     </li>
     <li>Compute posterior <code>HIGH</code> state probability of each bin.</li>
@@ -178,11 +179,16 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
                 <li>start position of peak</li>
                 <li>end position of peak</li>
                 <li>peak name</li>
-                <li>score of the peak, computed as log10(qvalue) * log(peak length). Useful for peak ranking with wide histone modifications.</li>
+                <li>score of the peak, computed as log10(qvalue) * log(peak length). Useful for peak ranking with wide
+                    histone modifications.
+                </li>
                 <li>.</li>
                 <li>summary reads coverage in peak averaged over replicates. fold-change in differential mode.</li>
-                <li>-log10(pvalue) of null hypothesis that given peak is in <code>ZERO</code> or <code>LOW</code> state.</li>
-                <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure. Median value for merged peak.</li>
+                <li>-log10(pvalue) of null hypothesis that given peak is in <code>ZERO</code> or <code>LOW</code> state.
+                </li>
+                <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure. Median value for merged
+                    peak.
+                </li>
             </ul>
         </blockquote>
     </li>
@@ -197,12 +203,21 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     Q: How do I configure memory settings?
     <br>
     A: Please use <code>java</code> memory settings option: <code class="code-grey">-XmxNG</code> to limit memory usage
-    to N Gigabytes.
+    to N Gigabytes. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example, which limits memory usage to 2G:
+<pre><code>java -jar -Xmx2G span.jar ... </code></pre>
+
 </p>
 <p>
     Q: What is average running time?
     <br>
-    A: <code>SPAN</code> is capable of processing single ChIP-Seq track in less than 1 hour on moderate laptop (MacBook Pro 2015).
+    A: <code>SPAN</code> is capable of processing single ChIP-Seq track in less than 1 hour on moderate laptop (MacBook
+    Pro 2015).
+</p>
+<p>Q: Which operation systems are supported?
+    <br>
+    A: <code>SPAN</code> is developed in modern <a href="https://kotlinlang.org/?">Kotlin</a> programming language, and
+    can be executed on any platform supported by <code>java</code>.
 </p>
 <p>Q: Where is <code>SPAN</code> source code?
     <br>
@@ -215,7 +230,4 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     by the name <code>jgs</code>.
 </p>
 
-<p>Q: Was it developed in Java?
-    <br>
-    A: <code>SPAN</code> is developed in modern <a href="https://kotlinlang.org/?">Kotlin</a> programming language.
-</p>
+
