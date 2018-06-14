@@ -17,11 +17,9 @@ Features:
     <li>Part of integrated peak calling <a href="tools.html">solution</a></li>
     <li>Works with both conventional and ULI ChIP-Seq data</li>
     <li>Works with both narrow and wide modifications</li>
-    <li>Input formats: BAM, BED.GZ</li>
-    <li>Supports optional control track</li>
     <li>Capable to process tracks with different signal-to-noise ratio</li>
+    <li>Supports optional control track</li>
     <li>Supports replicates on model level</li>
-    <li>Supports parallel computations</li>
     <li>False Discovery Rate correction</li>
     <li>Experimental: differential peak calling</li>
 </ul>
@@ -79,15 +77,15 @@ approximately the size of nucleosome.
 <br>
 <br>
 <h6>-t, --treatment TREATMENT</h6>
-<strong>Required</strong>. ChIP-seq treatment file. bam, bed, or .bed.gz file. If multiple files are given, treated as replicates.
+<strong>Required</strong>. ChIP-seq treatment file. Supported formats: BAM, BED, or BED.gz file. If multiple files are given, treated as replicates.
 Multiple files should be separated by commas: <code class="code-grey">-t
-    A,B,C</code>. Multiple files are processed as replicates on underlying model level.
+    A,B,C</code>. Multiple files are processed as replicates on model level.
 <br>
 <br>
 <h6>-c, --control CONTROL</h6>
-Control file. bam, bed or bed.gz file. Single control file or separate file per each treatment file required.
-Multiple files should be separated by commas. Follow instructions for <code class="code-grey">-t, --treatment
-    TREATMENT</code>.
+Control file. Multiple files should be separated by commas. Single control file or separate file per each treatment file required.
+<br>
+Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
 <br>
 <br>
 <h6>-cs, --chrom.sizes CHROMOSOMES_SIZES</h6>

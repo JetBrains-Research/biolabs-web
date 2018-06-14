@@ -39,11 +39,9 @@
                 <li>Supports semi-supervised peak calling with JBR Genome Browser</li>
                 <li>Works with both conventional and ULI ChIP-Seq data</li>
                 <li>Works with both narrow and wide modifications</li>
-                <li>Input formats: BAM, BED.GZ</li>
                 <li>Supports optional control track</li>
                 <li>Capable to process tracks with different signal-to-noise ratio</li>
                 <li>Supports replicates on model level</li>
-                <li>Supports parallel computations</li>
                 <li>Experimental: differential peak calling</li>
             </ul>
         </div>
@@ -97,30 +95,38 @@
 </b>
 <div id="scheme4"></div>
 <br>
-<h2>Summary</h2>
-<a href="span.html">SPAN Peak Analyzer</a> and <a href="jbr.html">JBR Genome Browser</a> can be used separately as general purpose peak caller and genome browsers, however together they can serve as a
-complete solution for peak calling.
-Semi-supervised peak calling approach is capable improving peaks consistency in datasets with different signal-to-noise ratio,
-as well as obtaining best peak calling results for individual samples.
-<br>
-<br>
-Advantages of integrative semi-supervised peak calling solution:
-<ul>
-    <li>Ability to process both narrow and wide histone modifications</li>
-    <li>Support for both conventional and ULI Chip-Seq experiments</li>
-    <li>Process experiments with different signal-to-noise ratio</li>
-    <li>Call peaks and explore results in a single application</li>
-    <li>Integrated labelling functionality</li>
-    <li>Parameters optimization is super fast after SPAN model is trained</li>
-    <li>Consistent peak calling among samples</li>
-    <li>Developed by <a href="https://www.jetbrains.com/">JetBrains</a> and written in modern
-        <a href="https://kotlinlang.org/?">Kotlin</a> programming language, these tools incorporate best practices of
-        effective software.
-    </li>
-</ul>
-Comprehensive step-by-step tutorial on using integrated peak calling solution is available in <a href="howto.html">How To</a> section.
-
+<div id="summary">
+    <h2>Summary</h2>
+    <a href="span.html">SPAN Peak Analyzer</a> and <a href="jbr.html">JBR Genome Browser</a> can be used separately as
+    general purpose peak caller and genome browsers, however together they can serve as a
+    complete solution for peak calling.
+    Semi-supervised peak calling approach is capable improving peaks consistency in datasets with different
+    signal-to-noise ratio,
+    as well as obtaining best peak calling results for individual samples.
+    <br>
+    <br>
+    Advantages of integrative semi-supervised peak calling solution:
+    <ul>
+        <li>Ability to process both narrow and wide histone modifications</li>
+        <li>Support for both conventional and Ultra Low Input Chip-Seq experiments</li>
+        <li>Capable processing tracks with different signal-to-noise ratio</li>
+        <li>Call peaks and explore results in a single application</li>
+        <li>Integrated labelling functionality</li>
+        <li>Parameters optimization is super fast after <code>SPAN</code> model is trained</li>
+        <li>Consistent peak calling among samples</li>
+    </ul>
+    Comprehensive step-by-step tutorial on using integrated peak calling solution is available in <a href="howto.html">How
+    To</a> section.
+</div>
+<div id="bottom-placeholder"></div>
 <script>
+    $(document).ready(function () {
+        $('#bottom-placeholder').css({
+            'height': $(window).height() -
+            ($('#navbar').outerHeight() * 2 + $('#tools').outerHeight() - $('#jbr-features').outerHeight() +
+                $('#scheme4').outerHeight() + $('#summary').outerHeight())
+        });
+    });
     $(window).on('scroll', function () {
         let scrollTop = $(this).scrollTop();
         // Fade out description
@@ -136,12 +142,13 @@ Comprehensive step-by-step tutorial on using integrated peak calling solution is
             tools.css({top: navbarHeigth + 'px'});
             $('#jbr-features').fadeOut(200);
             $('#span-features').fadeOut(200);
-            $('#tools-placeholder').css({'visibility': 'visible', 'height': tools.outerHeight()})
+            $('#tools-placeholder').css({'visibility': 'visible', 'height': tools.outerHeight()});
         } else {
             tools.removeClass('fixed');
             $('#jbr-features').fadeIn(0);
             $('#span-features').fadeIn(0);
             $('#tools-placeholder').css({'visibility': 'hidden', 'height': 0})
         }
+
     });
 </script>
