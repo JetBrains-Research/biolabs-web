@@ -109,9 +109,10 @@ Minimum FDR cutoff to call significant regions, default: 1.0E-6.
 <br>
 <code>SPAN</code> reports p- and <a
         href="http://en.wikipedia.org/wiki/False_discovery_rate#q-value" rel="nofollow">q</a> -values for the
-    null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Peaks are formed from a list of truly (in the FDR sense)
-    <strong>enriched</strong> bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using <code>GAP</code> option to broad
-    ones. This is equivalent to controlling FDR.
+null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Peaks are formed from a list of truly (in the FDR sense)
+<strong>enriched</strong> bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using
+<code>GAP</code> option to broad
+ones. This is equivalent to controlling FDR.
 <br>Q-values are are calculated from p-values using Benjamini-Hochberg procedure.
 <br>
 <br>
@@ -149,27 +150,43 @@ When <code class="code-grey">LABELS</code> parameter is given, it is used to opt
 <ol>
     <li>Convert input reads to tags using <code class="code-grey">FRAGMENT</code> parameter.</li>
     <li>Compute coverage for all genome tiled into bins of <code class="code-grey">BIN</code> base pairs.</li>
-    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as NULL states, LOW
-        states of non-specific binding, and HIGH states of the specific binding.
+    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as <code>ZERO</code> states, <code>LOW</code>
+        states of non-specific binding, and <code>HIGH</code> states of the specific binding.
     </li>
-    <li>Compute posterior HIGH state probability of each bin.</li>
-    <li>Trained model is saved into <code class="code-grey">.tar</code> format, which can be visualized in <a
-            href="jbr.html">JBR Genome Browser</a>.
-    </li>
+    <li>Compute posterior <code>HIGH</code> state probability of each bin.</li>
+    <li>Trained model is saved into <code class="code-grey">.tar</code> format.</li>
     <li>Peaks are computed using trained model and <code class="code-grey">FDR</code> and <code
             class="code-grey">GAP</code> parameters.
     </li>
     <li>If <code class="code-grey">LABELS</code> optimal parameters are computed to conform labelling.</li>
 </ol>
-Model fitting mode produces trained model file in binary format as output.
+Model fitting mode produces trained <strong>model file</strong> in binary format as output, which can be:
+<ol>
+    <li>visualized directly in <a href="jbr.html">JBR Genome Browser</a>
+    <li>used in integrated peak calling <a href="tools.html">pipeline</a></li>
+</ol>
 <br>
-<br>
+
 <h2>Output files</h2>
 <ul>
-    <li> If <code class="code-grey">OUTPUT</code> file is given, it  will contain predicted and FDR-controlled peaks in the <a
-        href="https://github.com/taoliu/MACS">MACS2</a> format:</p>
-<pre><code>&lt;chromosome&gt; &lt;peak start offset&gt; &lt;peak end offset&gt; &lt;peak_name&gt; &lt;score&gt; . &lt;coverage or fold/change&gt; &lt;-log p-value&gt; &lt;-log Q-value&gt;
+    <li> If <code class="code-grey">OUTPUT</code> file is given, it will contain predicted and FDR-controlled peaks in
+        the <a
+                href="https://github.com/taoliu/MACS">MACS2</a> format:</p>
+        <pre><code>&lt;chromosome&gt; &lt;peak start&gt; &lt;peak end&gt; &lt;peak name&gt; &lt;score&gt; . &lt;coverage / foldchange&gt; &lt;-log p-value&gt; &lt;-log Q-value&gt;
 </code></pre>
+        <blockquote>
+            <ul>
+                <li>chromosome name</li>
+                <li>start position of peak</li>
+                <li>end position of peak</li>
+                <li>peak name</li>
+                <li>score of the peak, computed as log10(qvalue) * log(peak length). Useful for peak ranking with wide histone modifications.</li>
+                <li>.</li>
+                <li>summary reads coverage in peak averaged over replicates. fold-change in differential mode.</li>
+                <li>-log10(pvalue) of null hypothesis that given peak is in <code>ZERO</code> or <code>LOW</code> state.</li>
+                <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure. Median value for merged peak.</li>
+            </ul>
+        </blockquote>
     </li>
     <li>In case of <code>SPAN</code> model fitting, it produces model file in binary format.
         <br> NOTE: when model is trained it will be reused automatically in other modes.
@@ -185,10 +202,9 @@ Model fitting mode produces trained model file in binary format as output.
     to N Gigabytes.
 </p>
 <p>
-    Q: How to analyze a subset of chromosomes?
+    Q: What is average running time?
     <br>
-    A: Use the <code>--only</code> option, which accepts a comma-separated list of chromosomes,
-    for example <code>--only chr1,chr2,chrX</code>.
+    A: <code>SPAN</code> is capable of processing single ChIP-Seq track in less than 1 hour on moderate laptop (MacBook Pro 2015).
 </p>
 <p>Q: Where is <code>SPAN</code> source code?
     <br>
