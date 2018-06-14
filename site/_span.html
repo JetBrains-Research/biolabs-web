@@ -88,40 +88,39 @@ Requirements:
 </table>
 <h3 id="span-peak-calling">Peak calling</h3>
 <p>To analyze a single (possibly replicated) biological condition use <code>analyze</code> command.</p>
-<br>
-
+<p>
 <h6>-b, --bin BIN_SIZE</h6>
 Peaks analysis is performed on reads coverage tiled into consequent bins, with size configured. Default is 200bp
 approximately the size of nucleosome.
-<br>
-<br>
+</p>
+<p>
 <h6>-t, --treatment TREATMENT</h6>
 <strong>Required</strong>. ChIP-seq treatment file. Supported formats: BAM, BED, or BED.gz file. If multiple files are given, treated as replicates.
 Multiple files should be separated by commas: <code class="code-grey">-t
     A,B,C</code>. Multiple files are processed as replicates on model level.
-<br>
-<br>
+</p>
+<p>
 <h6>-c, --control CONTROL</h6>
 Control file. Multiple files should be separated by commas. Single control file or separate file per each treatment file required.
 <br>
 Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
-<br>
-<br>
+</p>
+<p>
 <h6>-cs, --chrom.sizes CHROMOSOMES_SIZES</h6>
 <strong>Required</strong>. Chromosome sizes path, for genome build, used in <code class="code-grey">TREATMENT</code> and
 <code class="code-grey">CONTROL</code> files.
 <br>
 Can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
-<br>
-<br>
+</p>
+<p>
 <h6>--fragment FRAGMENT</h6>
 Fragment size, used to convert reads into tags. If not given, half of read length is used.
-<br>
-<br>
+</p>
+<p>
 <h6>-o, --output OUTPUT</h6>
 Path to result bed. If not given only model is fit.
-<br>
-<br>
+</p>
+<p>
 <h6>-f, --fdr FDR</h6>
 Minimum FDR cutoff to call significant regions, default: 1.0E-6.
 <br>
@@ -131,33 +130,30 @@ null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Pea
 <code>GAP</code> option to broad
 ones. This is equivalent to controlling FDR.
 <br>Q-values are are calculated from p-values using Benjamini-Hochberg procedure.
-<br>
-<br>
+</p>
+<p>
 <h6>-g, --gap GAP</h6>
 Gap size to merge peaks, located nearby. Useful for wide histone modifications. Default is 5, i.e. peaks closer than 5*
 <code class="code-grey">BIN</code> distance are merged.
-<br>
-<br>
+</p>
+<p>
 <h6>--labels LABELS</h6>
 Labels BED file. Used in <a href="tools.html">semi-supervised peak calling</a>.
-<br>
-<br>
+</p>
 <h6>-d, --debug</h6>
 Print all the debug information, used for troubleshooting.
-<br>
-<br>
+<p>
 <h6>-q, --quiet</h6>
 Turn off output.
-<br>
-<br>
+</p>
+<p>
 <h6>-w, --workdir PATH</h6>
 Path to the working dir.
-<br>
-<br>
+</p>
+<p>
 <h6>--threads THREADS</h6>
 Configures parallelism level.
-<br>
-<br>
+</p>
 <h3 id="span-supervised-peak-calling">Supervised peak calling</h3>
 When <code class="code-grey">LABELS</code> parameter is given, it is used to optimize peak caller parameters for markup.
 <br>
@@ -217,25 +213,28 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
 </ul>
 
 <h2 id="span-study-cases">Study Cases</h2>
-As a benchmark we applied SPAN peak calling approach to public conventional ChIP-Seq datasets as well as to ULI ChIP-Seq dataset.
-<br>
+<p>As a benchmark we applied SPAN peak calling approach to public conventional ChIP-Seq datasets as well as to ULI ChIP-Seq dataset.</p>
+
+<p>
 CD14+ classical monocytes tracks available in ENCODE database were a natural choice of conventional ChIP-Seq dataset.<br/>
 <a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">Hocking et al.</a> proposed a method to estimate best parameters using supervised labels.
 Original approach was designed for conventional ChIP-Seq experiment, and it results in a single set of parameters for the group of samples.
 This didn't work in case of ULI ChIP-Seq, because of different signal-to-noise ratio.
 We also used generated data to evaluate <code>SPAN</code> on conventional ChIP-Seq experiments.
-<br>
+</p>
+<p>
 In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
 micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark profiles
 with high resolution and reproducibility from as few as one thousand cells.
 We used these tracks to estimate semi-supervised approach in extreme conditions.
-<br><br>
+</p>
+<p>
 <code>SPAN</code> produced high quality peak calling in all of these cases, confirming the universality of the approach.
 <br>
 It can be used as a general purpose peak calling solution.
 <br>
 Results of <code>SPAN</code> application in these conditions is described in study cases <a href="span_cases.html">report</a>.
-<br>
+</p>
 <br>
 <h2 id="span-faq">FAQ</h2>
 <p>
