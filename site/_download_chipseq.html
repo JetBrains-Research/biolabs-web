@@ -3,7 +3,10 @@
 <div class="page-header">
     <h1>Download ChIP-Seq</h1>
 </div>
-
+<p>
+    This page contains data for all histone modifications processed in "Multiomics dissection of healthy human aging"
+    experiment.
+</p>
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
     <tr>
@@ -20,14 +23,12 @@
     @TABLE@
     </tbody>
 </table>
-
-This page contains download materials for all histone modifications processed in "Multiomics dissection of healthy human aging" experiment.
-<br/>
 Files included in this table:
 <ul>
     <li>
         Reads - Raw reads in FASTQ format will be available upon request at <a href="https://www.ncbi.nlm.nih.gov/gap">dbGAP</a>.
-        Each FASTQ track was aligned without multimappers on <a
+        <br>
+        Each FASTQ file was aligned without multimappers on <a
             href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
         Reference 37).<br>
         Alignment is available in BED.GZ format.
@@ -39,16 +40,20 @@ Files included in this table:
         BigWigs - visualization of reads for each donor in BigWig format.
     </li>
     <li>
-        Peaks - Peaks were obtained using novel semi-supervised peak calling <a href="tools.html">approach</a>.
+        Peaks - Peaks were obtained using novel semi-supervised peak calling approach.
     </li>
     <li>
-        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is optimal
+        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is
+        optimal
         for a given sample.
     </li>
     <li>
-        Peak Caller Models - Trained models for each sample, that <a href="howto.html">can</a> be used for visual peak calling with
-        corresponding labels.
+        Peak Caller Models - Trained <a href="span.html">SPAN</a> Peak Analyzer models for each sample.
     </li>
 </ul>
+<p>
+    Learn more about <a href="tools.html">visual peak calling</a> and find out how to apply this approach to your data in How-To <a href="howto.html">tutorial</a>.
+</p>
+
 <hr/>
 See <a href="public_data.html">Download Public Data </a>menu item to download public available data used.

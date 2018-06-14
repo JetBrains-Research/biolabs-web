@@ -3,10 +3,20 @@
 <div class="page-header">
     <h1>Explore ChIP-Seq Data</h1>
 </div>
+<p>
+    This page contains materials for all histone modifications processed in "Multiomics dissection of healthy human
+    aging" experiment.
+</p>
 
-This page contains materials for all histone modifications processed in "Multiomics dissection of healthy human aging" experiment.
-
-<h2>Explore</h2>
+<ul>
+    <li><a href="#view">View</a> data in UCSC genome browser.</li>
+    <li><a href="#download">Download</a> preconfigured session files.</li>
+    <li><a href="#data">Data</a> used in sessions.</li>
+</ul>
+<h2 id="view">View</h2>
+<p>
+    Explore preconfigured online sessions in UCSC genome browser in one click.
+</p>
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
     <tr>
@@ -25,24 +35,35 @@ Materials included in this table:
     </li>
     <li>
         Session Type - Basic or Extended.<br>
-        Basic session contains reads visualization in BigWig format, individual peaks
-        for each sample, and labels used in <a href="tools.html">semi-supervised peaks analysis</a>.
-        Also it contains ENCODE tracks for CD14+ monocytes.
-        <br>
-        Extended session contains additional peaks produced by golden standard peak callers, i.e. <a
-            href="https://github.com/taoliu/MACS">MACS2</a>
-        and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4152844/">SICER</a>.
+        <p>
+            Basic session contains reads visualization in BigWig format, individual peaks for each sample,
+            <br>
+            and labels used in <a href="tools.html">semi-supervised peaks analysis</a>.
+            <br>
+            ENCODE tracks for classical CD14+ monocytes are included for control.
+            <br>
+            Extended session contains additional peaks produced by golden standard peak callers, i.e. <a
+                href="https://github.com/taoliu/MACS">MACS2</a>
+            and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4152844/">SICER</a>.
+        </p>
     </li>
 </ul>
 
 
-<h2>Sessions</h2>
-Along with preconfigured online genome browser sessions, we prepared sessions for desktop genome browsers:
-<a href="https://software.broadinstitute.org/software/igv/">IGV Genome Browser</a> and
-<a href="tools.html">JBR Genome Browser</a>. Click on the corresponding link to download application.
-<br/>
-NOTE: <b>JBR Genome Browser</b> can be used as integrated solution for <a href="tools.html">peak calling</a>.
-
+<h2 id="download">Download</h2>
+<p>
+    For those who prefer desktop genome browser applications, we prepared dedicated sessions file for the following
+    genome browsers:
+    <br>
+    <a href="https://software.broadinstitute.org/software/igv/">IGV Genome Browser</a> and
+    <a href="jbr.html">JBR Genome Browser</a>.
+    <br>
+    Click on the corresponding link to download application.
+</p>
+<p>
+    Follow the section <a href="tools.html">tools</a> to learn how <code>JBR</code> Genome Browser can be used for
+    visual peak calling.
+</p>
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
     <tr>
@@ -57,11 +78,14 @@ NOTE: <b>JBR Genome Browser</b> can be used as integrated solution for <a href="
 Materials included in this table:
 <ul>
     <li>
-        Downloadable custom tracks file to create custom session for <a href="https://genome.ucsc.edu">UCSC Genome Browser</a>.
+        Preconfigured session file for <code>IGV</code> or <code>JBR</code> genome browsers.
+    </li>
+    <li>
+        Session types and content is described in the <a href="#explore">Explore</a> section.
     </li>
 </ul>
 
-<h2>Download</h2>
+<h2 id="data">Data</h2>
 All the data used in sessions is available in <a href="download_chipseq.html">Download ChIP-Seq</a> and <a
         href="public_data.html">Download Public Data </a> sections.
 
