@@ -33,7 +33,7 @@
 <div class="row" id="tools">
     <div class="col">
         <div class="card card-body span-area">
-            <b>SPAN Peak Analyzer</b>
+            <a href="span.html">SPAN Peak Analyzer</a>
             <p>Semi-supervised peak analyzer</p>
             <ul id="span-features">
                 <li>Supports semi-supervised peak calling with JBR Genome Browser</li>
@@ -50,7 +50,7 @@
     </div>
     <div class="col">
         <div class="card card-body jbr-area">
-            <b>JBR Genome Browser</b>
+            <a href="jbr.html">JBR Genome Browser</a>
             <p>Fast and reliable genome browser</p>
             <ul id="jbr-features">
                 <li>Supports semi-supervised peak calling with SPAN peak caller</li>
@@ -98,7 +98,7 @@
 <div id="scheme4"></div>
 <br>
 <h2>Summary</h2>
-<b>SPAN peak analyzer</b> and <b>JBR Genome Browser</b> can be used separately as general purpose peak caller and genome browsers, however together they can serve as a
+<a href="span.html">SPAN Peak Analyzer</a> and <a href="jbr.html">JBR Genome Browser</a> can be used separately as general purpose peak caller and genome browsers, however together they can serve as a
 complete solution for peak calling.
 Semi-supervised peak calling approach is capable improving peaks consistency in datasets with different signal-to-noise ratio,
 as well as obtaining best peak calling results for individual samples.
@@ -139,8 +139,8 @@ Comprehensive step-by-step tutorial on using integrated peak calling solution is
             $('#tools-placeholder').css({'visibility': 'visible', 'height': tools.outerHeight()})
         } else {
             tools.removeClass('fixed');
-            $('#jbr-features').fadeIn(200);
-            $('#span-features').fadeIn(200);
+            $('#jbr-features').fadeIn(0);
+            $('#span-features').fadeIn(0);
             $('#tools-placeholder').css({'visibility': 'hidden', 'height': 0})
         }
     });

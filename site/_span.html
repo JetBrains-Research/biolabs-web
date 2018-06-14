@@ -3,12 +3,32 @@
 <div class="page-header">
     <h1>SPAN Peak Analyzer</h1>
 </div>
+<pre id="span-ascii"><code>+----------------------------------+
+|SPAN Semi-supervised Peak Analyzer|
++--------\|------------------------+
+                ,        ,
+           __.-'|'-.__.-'|'-.__
+         ='=====|========|====='=
+        ~_^~-^~~_~^-^~-~~^_~^~^~^
+</code></pre>
+<p><code>SPAN</code> is a tool for analyzing ChIP-Seq data.</p>
+Features:
+<ul id="span-features">
+    <li>Part of integrated peak calling <a href="tools.html">solution</a></li>
+    <li>Works with both conventional and ULI ChIP-Seq data</li>
+    <li>Works with both narrow and wide modifications</li>
+    <li>Input formats: BAM, BED.GZ</li>
+    <li>Supports optional control track</li>
+    <li>Capable to process tracks with different signal-to-noise ratio</li>
+    <li>Supports replicates on model level</li>
+    <li>Supports parallel computations</li>
+    <li>False Discovery Rate correction</li>
+    <li>Experimental: differential peak calling</li>
+</ul>
 
-<h2>Section</h2>
-Some text
 
-<h2>Downloads</h2>
-SPAN Peak Analyze (build @BUILD@), released on @DATE@
+<h2>Installation</h2>
+SPAN Peak Analyzer (build @BUILD@), released on @DATE@
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
     <tr>
@@ -17,7 +37,171 @@ SPAN Peak Analyze (build @BUILD@), released on @DATE@
     </tr>
     </thead>
     <tbody>
-
     @TABLE@
     </tbody>
 </table>
+Requirements:
+<ol>
+    <li>Download and install <a href="http://www.java.com/en/download/" rel="nofollow">Java 8</a>.</li>
+    <li>Download the <code>&lt;build&gt;.chrom.sizes</code> chromosome sizes of the organism you want to analyze
+        from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>.
+    </li>
+</ol>
+<h2>Usage of SPAN</h2>
+<pre><code>java -jar span.jar [-h] [--version] {analyze,compare}</code></pre>
+<table class="table table-bordered table-nonfluid">
+    <tbody>
+    <tr>
+        <th>Example of regular peak calling</th>
+        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+            Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-o Peaks.bed</code></td>
+    </tr>
+    <tr>
+        <th>Example of supervised peak calling</th>
+        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+            Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
+    </tr>
+    <tr>
+        <th>Example of model fitting</th>
+        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+            Chrom.sizes</code></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Peak calling
+</h3>
+<p>To analyze a single (possibly replicated) biological condition use <code>analyze</code> command.</p>
+<br>
+
+<h6>-b, --bin BIN_SIZE</h6>
+Peaks analysis is performed on reads coverage tiled into consequent bins, with size configured. Default is 200bp
+approximately the size of nucleosome.
+<br>
+<br>
+<h6>-t, --treatment TREATMENT</h6>
+<strong>Required</strong>. ChIP-seq treatment file. bam, bed, or .bed.gz file. If multiple files are given, treated as replicates.
+Multiple files should be separated by commas: <code class="code-grey">-t
+    A,B,C</code>. Multiple files are processed as replicates on underlying model level.
+<br>
+<br>
+<h6>-c, --control CONTROL</h6>
+Control file. bam, bed or bed.gz file. Single control file or separate file per each treatment file required.
+Multiple files should be separated by commas. Follow instructions for <code class="code-grey">-t, --treatment
+    TREATMENT</code>.
+<br>
+<br>
+<h6>-cs, --chrom.sizes CHROMOSOMES_SIZES</h6>
+<strong>Required</strong>. Chromosome sizes path, can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
+<br>
+Genome build, used in <code class="code-grey">TREATMENT</code> and <code class="code-grey">CONTROL</code> files.
+<br>
+<br>
+<h6>--fragment FRAGMENT</h6>
+Fragment size, used to convert reads into tags. If not given, half of read length is used.
+<br>
+<br>
+<h6>-o, --output OUTPUT</h6>
+Path to result bed. If not given only model is fit.
+<br>
+<br>
+<h6>-f, --fdr FDR</h6>
+Minimum FDR cutoff to call significant regions, default: 1.0E-6.
+<br>
+<code>SPAN</code> reports p- and <a
+        href="http://en.wikipedia.org/wiki/False_discovery_rate#q-value" rel="nofollow">q</a> -values for the
+    null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Peaks are formed from a list of truly (in the FDR sense)
+    <strong>enriched</strong> bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using <code>GAP</code> option to broad
+    ones. This is equivalent to controlling FDR.
+<br>Q-values are are calculated from p-values using Benjamini-Hochberg procedure.
+<br>
+<br>
+<h6>-g, --gap GAP</h6>
+Gap size to merge peaks, located nearby. Useful for wide histone modifications. Default is 5, i.e. peaks closer than 5*
+<code class="code-grey">BIN</code> distance are merged.
+<br>
+<br>
+<h6>--labels LABELS</h6>
+Labels BED file. Used in <a href="tools.html">semi-supervised peak calling</a>.
+<br>
+<br>
+<h6>-d, --debug</h6>
+Print all the debug information, used for troubleshooting.
+<br>
+<br>
+<h6>-q, --quiet</h6>
+Turn off output.
+<br>
+<br>
+<h6>-w, --workdir PATH</h6>
+Path to the working dir.
+<br>
+<br>
+<h6>--threads THREADS</h6>
+Configures parallelism level.
+<br>
+<br>
+<h3>Supervised peak calling</h3>
+When <code class="code-grey">LABELS</code> parameter is given, it is used to optimize peak caller parameters for markup.
+<br>
+<br>
+<h3>Model fitting</h3>
+<code>SPAN</code> workflow consists of several steps:
+<ol>
+    <li>Convert input reads to tags using <code class="code-grey">FRAGMENT</code> parameter.</li>
+    <li>Compute coverage for all genome tiled into bins of <code class="code-grey">BIN</code> base pairs.</li>
+    <li>Fit underlying model. 3-state Hidden Markov model that classifies the genomic locations as NULL states, LOW
+        states of non-specific binding, and HIGH states of the specific binding.
+    </li>
+    <li>Compute posterior HIGH state probability of each bin.</li>
+    <li>Trained model is saved into <code class="code-grey">.tar</code> format, which can be visualized in <a
+            href="jbr.html">JBR Genome Browser</a>.
+    </li>
+    <li>Peaks are computed using trained model and <code class="code-grey">FDR</code> and <code
+            class="code-grey">GAP</code> parameters.
+    </li>
+    <li>If <code class="code-grey">LABELS</code> optimal parameters are computed to conform labelling.</li>
+</ol>
+Model fitting mode produces trained model file in binary format as output.
+<br>
+<br>
+<h2>Output files</h2>
+<ul>
+    <li> If <code class="code-grey">OUTPUT</code> file is given, it  will contain predicted and FDR-controlled peaks in the <a
+        href="https://github.com/taoliu/MACS">MACS2</a> format:</p>
+<pre><code>&lt;chromosome&gt; &lt;peak start offset&gt; &lt;peak end offset&gt; &lt;peak_name&gt; &lt;score&gt; . &lt;coverage or fold/change&gt; &lt;-log p-value&gt; &lt;-log Q-value&gt;
+</code></pre>
+    </li>
+    <li>In case of <code>SPAN</code> model fitting, it produces model file in binary format.
+        <br> NOTE: when model is trained it will be reused automatically in other modes.
+    </li>
+</ul>
+
+<h2>FAQ
+</h2>
+<p>
+    Q: How do I configure memory settings?
+    <br>
+    A: Please use <code>java</code> memory settings option: <code class="code-grey">-XmxNG</code> to limit memory usage
+    to N Gigabytes.
+</p>
+<p>
+    Q: How to analyze a subset of chromosomes?
+    <br>
+    A: Use the <code>--only</code> option, which accepts a comma-separated list of chromosomes,
+    for example <code>--only chr1,chr2,chrX</code>.
+</p>
+<p>Q: Where is <code>SPAN</code> source code?
+    <br>
+    A: We are working on open sourcing source code. At the moment only the JAR is available.
+</p>
+
+<p>Q: Where did you get this lovely span?
+    <br>
+    A: From <a href="http://ascii.co.uk/art/bridges" rel="nofollow">ascii.co.uk</a>, it seems the original author goes
+    by the name <code>jgs</code>.
+</p>
+
+<p>Q: Was it developed in Java?
+    <br>
+    A: <code>SPAN</code> is developed in modern <a href="https://kotlinlang.org/?">Kotlin</a> programming language.
+</p>

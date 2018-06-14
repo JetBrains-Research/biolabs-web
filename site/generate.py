@@ -140,7 +140,7 @@ def generate_jbr_data(page):
 
 
 def generate_span_data(page):
-    template = FOLDER + '/_jbr.html'
+    template = FOLDER + '/_span.html'
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
