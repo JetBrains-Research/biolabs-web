@@ -5,15 +5,35 @@
 </div>
 <pre id="span-ascii"><code>+----------------------------------+
 |SPAN Semi-supervised Peak Analyzer|
-+--------\|------------------------+
-                ,        ,
-           __.-'|'-.__.-'|'-.__
-         ='=====|========|====='=
-        ~_^~-^~~_~^-^~-~~^_~^~^~^
++----------------------------|/----+
+           ,        ,
+      __.-'|'-.__.-'|'-.__
+    ='=====|========|====='=
+    ~_^~-^~~_~^-^~-~~^_~^~^~^
 </code></pre>
 <p><code>SPAN</code> is a tool for analyzing ChIP-Seq data.</p>
-Features:
-<ul id="span-features">
+
+<div>
+    <h2>Content</h2>
+    <ul>
+        <li><a href="#span-features">Features</a></li>
+        <li><a href="#span-installation">Installation</a></li>
+        <li><a href="#span-usage">Usage of SPAN</a></li>
+        <blockquote>
+            <ul>
+                <li><a href="#span-peak-calling">Peak calling</a></li>
+                <li><a href="#span-supervised-peak-calling">Supervised peak calling</a></li>
+                <li><a href="#span-model-fitting">Model fitting</a></li>
+            </ul>
+        </blockquote>
+        <li><a href="#span-output-files">Output files</a></li>
+        <li><a href="#span-study-cases">Study Cases</a></li>
+        <li><a href="#span-faq">FAQ</a></li>
+    </ul>
+</div>
+
+<h2 id="span-features">Features</h2>
+<ul>
     <li>Part of integrated peak calling <a href="tools.html">solution</a></li>
     <li>Works with both conventional and ULI ChIP-Seq data</li>
     <li>Works with both narrow and wide modifications</li>
@@ -25,7 +45,7 @@ Features:
 </ul>
 
 
-<h2>Installation</h2>
+<h2 id="span-installation">Installation</h2>
 SPAN Peak Analyzer (build @BUILD@), released on @DATE@
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
@@ -45,7 +65,7 @@ Requirements:
         from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>.
     </li>
 </ol>
-<h2>Usage of SPAN</h2>
+<h2 id="span-usage">Usage of SPAN</h2>
 <pre><code>java -jar span.jar [-h] [--version] {analyze,compare}</code></pre>
 <table class="table table-bordered table-nonfluid">
     <tbody>
@@ -66,8 +86,7 @@ Requirements:
     </tr>
     </tbody>
 </table>
-<h3>Peak calling
-</h3>
+<h3 id="span-peak-calling">Peak calling</h3>
 <p>To analyze a single (possibly replicated) biological condition use <code>analyze</code> command.</p>
 <br>
 
@@ -89,7 +108,8 @@ Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>
 <br>
 <br>
 <h6>-cs, --chrom.sizes CHROMOSOMES_SIZES</h6>
-<strong>Required</strong>. Chromosome sizes path, for genome build, used in <code class="code-grey">TREATMENT</code> and <code class="code-grey">CONTROL</code> files.
+<strong>Required</strong>. Chromosome sizes path, for genome build, used in <code class="code-grey">TREATMENT</code> and
+<code class="code-grey">CONTROL</code> files.
 <br>
 Can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
 <br>
@@ -105,8 +125,7 @@ Path to result bed. If not given only model is fit.
 <h6>-f, --fdr FDR</h6>
 Minimum FDR cutoff to call significant regions, default: 1.0E-6.
 <br>
-<code>SPAN</code> reports p- and <a
-        href="http://en.wikipedia.org/wiki/False_discovery_rate#q-value" rel="nofollow">q</a> -values for the
+<code>SPAN</code> reports p- and q -values for the
 null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Peaks are formed from a list of truly (in the FDR sense)
 <strong>enriched</strong> bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using
 <code>GAP</code> option to broad
@@ -139,11 +158,11 @@ Path to the working dir.
 Configures parallelism level.
 <br>
 <br>
-<h3>Supervised peak calling</h3>
+<h3 id="span-supervised-peak-calling">Supervised peak calling</h3>
 When <code class="code-grey">LABELS</code> parameter is given, it is used to optimize peak caller parameters for markup.
 <br>
 <br>
-<h3>Model fitting</h3>
+<h3 id="span-model-fitting">Model fitting</h3>
 <code>SPAN</code> workflow consists of several steps:
 <ol>
     <li>Convert input reads to tags using <code class="code-grey">FRAGMENT</code> parameter.</li>
@@ -166,7 +185,7 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
 </ol>
 <br>
 
-<h2>Output files</h2>
+<h2 id="span-output-files">Output files</h2>
 <ul>
     <li> If <code class="code-grey">OUTPUT</code> file is given, it will contain predicted and FDR-controlled peaks in
         the <a
@@ -184,7 +203,7 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
                 </li>
                 <li>.</li>
                 <li>summary reads coverage in peak averaged over replicates. fold-change in differential mode.</li>
-                <li>-log10(pvalue) of null hypothesis that given peak is in <code>ZERO</code> or <code>LOW</code> state.
+                <li>-log10(pvalue) of null-hypothesis that given peak is in <code>ZERO</code> or <code>LOW</code> state.
                 </li>
                 <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure. Median value for merged
                     peak.
@@ -197,8 +216,28 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     </li>
 </ul>
 
-<h2>FAQ
-</h2>
+<h2 id="span-study-cases">Study Cases</h2>
+As a benchmark we applied SPAN peak calling approach to public conventional ChIP-Seq datasets as well as to ULI ChIP-Seq dataset.
+<br>
+CD14+ classical monocytes tracks available in ENCODE database were a natural choice of conventional ChIP-Seq dataset.<br/>
+<a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">Hocking et al.</a> proposed a method to estimate best parameters using supervised labels.
+Original approach was designed for conventional ChIP-Seq experiment, and it results in a single set of parameters for the group of samples.
+This didn't work in case of ULI ChIP-Seq, because of different signal-to-noise ratio.
+We also used generated data to evaluate <code>SPAN</code> on conventional ChIP-Seq experiments.
+<br>
+In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
+micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark profiles
+with high resolution and reproducibility from as few as one thousand cells.
+We used these tracks to estimate semi-supervised approach in extreme conditions.
+<br><br>
+<code>SPAN</code> produced high quality peak calling in all of these cases, confirming the universality of the approach.
+<br>
+It can be used as a general purpose peak calling solution.
+<br>
+Results of <code>SPAN</code> application in these conditions is described in study cases <a href="span_cases.html">report</a>.
+<br>
+<br>
+<h2 id="span-faq">FAQ</h2>
 <p>
     Q: How do I configure memory settings?
     <br>
@@ -206,7 +245,6 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     to N Gigabytes. <br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example, which limits memory usage to 2G:
 <pre><code>java -jar -Xmx2G span.jar ... </code></pre>
-
 </p>
 <p>
     Q: What is average running time?
@@ -229,5 +267,4 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     A: From <a href="http://ascii.co.uk/art/bridges" rel="nofollow">ascii.co.uk</a>, it seems the original author goes
     by the name <code>jgs</code>.
 </p>
-
 

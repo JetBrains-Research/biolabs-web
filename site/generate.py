@@ -177,7 +177,7 @@ def generate_span_data(page):
         return """
         <tr>
             <th> <a href="url">todo {}</a></th>
-            <th> desc </th>
+            <th> Multi-platform JAR package </th>
         </tr>
         """.format(build)
 
