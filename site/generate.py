@@ -2,8 +2,12 @@ import os
 import re
 import shutil
 
+from collections import namedtuple
+
 # Hardcoded URLs with data
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
+
+DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
 
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
@@ -113,29 +117,43 @@ def generate_download_public_data(page):
         file.write(template_html.replace('@TABLE@',
                                          '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
-
 def generate_jbr_data(page):
+    build = '1.0.beta.nnnn'
+    date = 'Jun 13, 2018'
+
+    # ---------------
     template = FOLDER + '/_jbr.html'
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
         template_html = f.read()
 
-    def create_tr(os, build):
+    def create_tr(dd, build):
+        code_base = "https://download.jetbrains.com/biolabs/jbr_browser/"
+        fname = "{}{}".format(build, dd.suffix)
+        url = "{}/{}/{}".format(code_base, dd.folder, fname)
         return """
         <tr>
-            <th> <a href="url">todo {} {}</a></th>
-            <th> desc </th>
+            <td> <a href="{}">{}</a></td>
+            <td>{}</td>
         </tr>
-        """.format(os, build)
+        """.format(url, fname, dd.title)
 
-    build = '1.0.beta.nnnn'
     with open(OUT_FOLDER + '/' + page, 'w') as f:
-        oss = ["mac", "win", "linux"]
+        descrs = [
+            DistrDescriptor("Windows 64-bit ZIP archive (includes bundled 64-bit Java Runtime)",
+                            "_x64.zip", "win"),
+            DistrDescriptor("Windows 32-bit ZIP archive (includes bundled 32-bit Java Runtime)",
+                            "_x86.zip", "win"),
+            DistrDescriptor("Mac installer (includes bundled 64-bit Java Runtime)",
+                            ".dmg", "mac"),
+            DistrDescriptor("Linux archive (includes bundled 64-bit Java Runtime)",
+                            ".tar.gz", "linux"),
+        ]
         f.write(template_html.
-                replace('@TABLE@', '\n'.join([create_tr(os, build) for os in oss])).
+                replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs])).
                 replace('@BUILD@', '1.0.beta.nnnn').
-                replace('@DATE@', 'Jun 13, 2018')
+                replace('@DATE@', date)
         )
 
 
@@ -224,7 +242,7 @@ def _cli():
     content_page = '_jbr.html'
     generate_jbr_data(content_page)
     generate_page('jbr.html',
-                  title='Downloads', scripts='', content=content_page)
+                  title='JBR Genome Browser', scripts='', content=content_page)
 
     print('Creating download tools page')
     content_page = '_span.html'

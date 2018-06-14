@@ -1,16 +1,56 @@
 <!-- To be included inside template.html -->
 
-<div class="page-header">
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
     <h1>JBR Genome Browser</h1>
 </div>
 
-<h2>Section</h2>
-Some text
+<p>JBR Genome Browser is a general purpose genome browser with integrated visual <a href="tools.html">
+    peak calling solution</a> support.</p>
 
-<h2>Peaks Annotation Tutorial</h2>
-Comprehensive step-by-step tutorial on using integrated peak calling solution is available in <a href="howto.html">How To</a> section.
+<h2>Features Highlights:</h2>
+<ul id="jbr-features">
+    <li>Peaks Annotating</li>
+    <li>On-the-fly peak calling using <a href="span.html">SPAN</a> models</li>
+    <li>Support for observing multiple genome locations simultaneously</li>
+    <li>Classical genome browser features to view various genome data formats</li>
+    <li>Supported data file formats: BED, WIG, TDF, BigBed, BigWig</li>
+    <li>Supported sessions formats: JBR *.yaml, IGV *.xml session files</li>
+    <li>BED track peaks statistics</li>
+    <li>BigWig signal statistics track for multiple locations</li>
+    <li>Optimized for working with large sessions</li>
+    <!--Integrated support for combining tracks, i.e. arithmetic operations.-->
+    <!--Browser can be used as web service in view only mode -->
+</ul>
 
-<h2>Downloads</h2>
+<h2>System Requirements</h2>
+<p> TODO: Mac >= .. version, Windows XP or above, Linux 64-bit version. Preinstalled Java
+Runtime isn't required</p>
+
+<h2>Installation</h2>
+<p>Download suitable build for your OS from the table below. Prefer 64-bit version if your OS is
+64-bit.</p>
+
+<!--</br>-->
+<!--<p><b>Windows:</b>-->
+<!--</br>-->
+<!--TODO Text-->
+<!--</p>-->
+<!--</br>-->
+
+<!--<p><b>MacOS:</b>-->
+<!--</br>-->
+<!--TODO Text-->
+<!--</p>-->
+<!--</br>-->
+
+<!--<p><b>Linux:</b>-->
+<!--</br>-->
+<!--TODO Text-->
+<!--</p>-->
+<!--</br>-->
+
+<!--<h2>Downloads</h2>-->
+
 JBR Genome Browser (build @BUILD@), released on @DATE@
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
@@ -23,3 +63,9 @@ JBR Genome Browser (build @BUILD@), released on @DATE@
     @TABLE@
     </tbody>
 </table>
+
+<h2>Documentation</h2>
+<p>TODO: url to PDF file or smth</p>
+<p><b>Visual Peak Calling Tutorial: </b> Comprehensive step-by-step tutorial on using integrated peak calling solution is available in
+    <a href="howto.html">How To</a> section.
+</p>
