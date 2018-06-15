@@ -66,22 +66,25 @@ Requirements:
     </li>
 </ol>
 <h2 id="span-usage">Usage of SPAN</h2>
-<pre><code>java -jar span.jar [-h] [--version] {analyze,compare}</code></pre>
+<pre><code>java -Xmx1G -jar span.jar [-h] [--version] {analyze,compare}</code></pre>
+<p>
+    Use <code>java</code> memory settings option: <code class="code-grey">-Xmx</code> to limit memory usage. 1 gigabyte is used in examples.
+</p>
 <table class="table table-bordered table-nonfluid">
     <tbody>
     <tr>
         <th>Example of regular peak calling</th>
-        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of supervised peak calling</th>
-        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of model fitting</th>
-        <td class="code-grey"><code style="color:black">java -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
             Chrom.sizes</code></td>
     </tr>
     </tbody>
@@ -89,69 +92,69 @@ Requirements:
 <h3 id="span-peak-calling">Peak calling</h3>
 <p>To analyze a single (possibly replicated) biological condition use <code>analyze</code> command.</p>
 <p>
-<h6>-b, --bin BIN_SIZE</h6>
+<strong>-b, --bin BIN_SIZE</strong><br>
 Peaks analysis is performed on reads coverage tiled into consequent bins, with size configured. Default is 200bp
 approximately the size of nucleosome.
 </p>
 <p>
-<h6>-t, --treatment TREATMENT</h6>
+<strong>-t, --treatment TREATMENT</strong><br>
 <strong>Required</strong>. ChIP-seq treatment file. Supported formats: BAM, BED, or BED.gz file. If multiple files are given, treated as replicates.
 Multiple files should be separated by commas: <code class="code-grey">-t
     A,B,C</code>. Multiple files are processed as replicates on model level.
 </p>
 <p>
-<h6>-c, --control CONTROL</h6>
+<strong>-c, --control CONTROL</strong><br>
 Control file. Multiple files should be separated by commas. Single control file or separate file per each treatment file required.
 <br>
 Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
 </p>
 <p>
-<h6>-cs, --chrom.sizes CHROMOSOMES_SIZES</h6>
+<strong>-cs, --chrom.sizes CHROMOSOMES_SIZES</strong><br>
 <strong>Required</strong>. Chromosome sizes path, for genome build, used in <code class="code-grey">TREATMENT</code> and
 <code class="code-grey">CONTROL</code> files.
 <br>
 Can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
 </p>
 <p>
-<h6>--fragment FRAGMENT</h6>
+<strong>--fragment FRAGMENT</strong><br>
 Fragment size, used to convert reads into tags. If not given, half of read length is used.
 </p>
 <p>
-<h6>-o, --output OUTPUT</h6>
+<strong>-o, --output OUTPUT</strong><br>
 Path to result bed. If not given only model is fit.
 </p>
 <p>
-<h6>-f, --fdr FDR</h6>
+<strong>-f, --fdr FDR</strong><br>
 Minimum FDR cutoff to call significant regions, default: 1.0E-6.
 <br>
 <code>SPAN</code> reports p- and q -values for the
 null-hypothesis that a given bin is not enriched with ChIP-Seq modification. Peaks are formed from a list of truly (in the FDR sense)
-<strong>enriched</strong> bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using
+enriched bins for the analyzed biological condition by thresholding the Q-value with a threshold <code>FDR</code> and merging close peaks using
 <code>GAP</code> option to broad
 ones. This is equivalent to controlling FDR.
 <br>Q-values are are calculated from p-values using Benjamini-Hochberg procedure.
 </p>
 <p>
-<h6>-g, --gap GAP</h6>
+<strong>-g, --gap GAP</strong><br>
 Gap size to merge peaks, located nearby. Useful for wide histone modifications. Default is 5, i.e. peaks closer than 5*
 <code class="code-grey">BIN</code> distance are merged.
 </p>
 <p>
-<h6>--labels LABELS</h6>
+<strong>--labels LABELS</strong><br>
 Labels BED file. Used in <a href="tools.html">semi-supervised peak calling</a>.
 </p>
-<h6>-d, --debug</h6>
+<strong>-d, --debug</strong><br>
 Print all the debug information, used for troubleshooting.
 <p>
-<h6>-q, --quiet</h6>
+<strong>-q, --quiet</strong><br>
 Turn off output.
 </p>
 <p>
-<h6>-w, --workdir PATH</h6>
+<strong>-w, --workdir PATH</strong><br>
 Path to the working dir.
 </p>
 <p>
-<h6>--threads THREADS</h6>
+<strong>--threads THREADS</strong><br>
 Configures parallelism level.
 </p>
 <h3 id="span-supervised-peak-calling">Supervised peak calling</h3>
@@ -218,7 +221,7 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
 <p>
     CD14+ classical monocytes tracks available in ENCODE database were a natural choice of conventional ChIP-Seq
     dataset.<br/>
-    Hocking et al. <a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">proposed</a> a method to
+    <a href="https://academic.oup.com/bioinformatics/article/33/4/491/2608653">Hocking et al.</a> proposed a method to
     estimate best parameters using supervised labels.
     Original approach was designed for conventional ChIP-Seq experiment, and it results in a single set of parameters
     for the group of samples.
@@ -226,27 +229,20 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     We also used generated data to evaluate <code>SPAN</code> on conventional ChIP-Seq experiments.
 </p>
 <p>
-    In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
+    In paper <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">Chen C et al.</a> presented an ultra-low-input
     micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark
     profiles
     with high resolution and reproducibility from as few as one thousand cells.
     We used these tracks to estimate semi-supervised approach in extreme conditions.
 </p>
 <p>
-    <code>SPAN</code> produced high quality peak calling in all of these cases, see <a href="study_cases.html">report</a>.
+    <code>SPAN</code> produced high quality peak calling in all of these cases, see <a
+        href="study_cases.html">report</a>.
     <br>
     It suggests, that SPAN Peak Analyzer can be used as a general purpose peak calling solution.
 </p>
 <br>
 <h2 id="span-faq">FAQ</h2>
-<p>
-    Q: How do I configure memory settings?
-    <br>
-    A: Please use <code>java</code> memory settings option: <code class="code-grey">-XmxNG</code> to limit memory usage
-    to N Gigabytes. <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example, which limits memory usage to 2G:
-<pre><code>java -jar -Xmx2G span.jar ... </code></pre>
-</p>
 <p>
     Q: What is average running time?
     <br>

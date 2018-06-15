@@ -15,13 +15,15 @@
 
 <h2 id="span-usage-encode">CD14+ ENCODE Data</h2>
 <p>
-    Application of our novel semi-supervised peak calling approach to the dataset of this scale (ca 400 Ultra Low Input ChIP-Seq tacks),
+    Application of our novel semi-supervised peak calling approach to the dataset of this scale (ca 400 Ultra Low Input
+    ChIP-Seq tacks),
     demonstrated significant improvement of peak calling consistency between samples in all means: total peaks number,
     peaks length and peaks overlapping between different samples. To ensure that the quality of <code>SPAN</code>
     peak calling does not stem from introducing the computational artifacts,
     we compared the peak calling from our samples to the peaks identified in the ENCODE project for the CD14+ monocytes.
     To do that end we compared the fraction of peaks for each of our samples that overlapped with the corresponding
-    ENCODE sample, and vice versa, the fraction of peaks from the ENCODE sample that overlapped the peaks each of the samples
+    ENCODE sample, and vice versa, the fraction of peaks from the ENCODE sample that overlapped the peaks each of the
+    samples
     (since these are not symmetric characteristics).
     <br>
     <code>SPAN</code>-based peak calling was consistently overlapping with ~80% of ENCODE peaks in both directions,
@@ -66,7 +68,7 @@
     As a benchmark we decided to apply SPAN peak calling approach to other ULI ChIP-Seq dataset.
 </p>
 <p>
-    In <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">paper</a> Chen C et al. presented an ultra-low-input
+    In a paper <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">Chen C et al.</a> presented an ultra-low-input
     micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method, to generate genome-wide histone mark
     profiles with high resolution and reproducibility from as few as one thousand cells. They generated data for both
     broad and narrow histone marks from 10^3-10^6 cells. Among others in <a
@@ -99,13 +101,13 @@
 
 <h2 id="span-usage-mcgill">McGill Data</h2>
 <p>
-    SPAN tuning mode was inspired by the article by T. D. Hocking et al. <a
-        href="https://www.ncbi.nlm.nih.gov/pubmed/27797775">proposed</a>.
+    SPAN tuning mode was inspired by the article by <a href="https://www.ncbi.nlm.nih.gov/pubmed/27797775">T. D. Hocking
+    et al.</a>
     Authors investigated benefits of tuning approach for golden standard peak callers.
     Since the authors were affiliated with McGill University (Montréal, Canada) and used the
     McGill Epigenomics Mapping Centre <a
-        href="http://epigenomesportal.ca/edcc/about.html">data</a>, we will further refer to this research as “the
-    McGill experiment.”
+        href="http://epigenomesportal.ca/edcc/about.html">data</a>, we will further refer to this research as "the
+    McGill experiment."
     <br>
     The Hocking et al. experimental dataset consisted of 37 human cell samples. T cells, B cells and monocytes were
     grouped
@@ -155,3 +157,7 @@
         href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/mcgill/mcgill_igv_session_input.xml">here</a>.
 </p>
 
+<h2>Summary</h2>
+<p>
+    <code>SPAN</code> Peak Analyzer can be used as a general purpose peak calling solution, applicable to any type of ChIP-Seq experiments.
+</p>
