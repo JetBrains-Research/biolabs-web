@@ -128,16 +128,13 @@
     $(document).ready(function () {
         $('#bottom-placeholder').css({
             'height': $(window).height() -
-            ($('#navbar').outerHeight() * 2 + $('#tools').outerHeight() - $('#jbr-features').outerHeight() +
+            ($('#navbar').outerHeight() * 3 - 5 + $('#tools').outerHeight() - $('#jbr-features').outerHeight() +
                 $('#scheme4').outerHeight() + $('#summary').outerHeight())
         });
     });
     $(window).on('scroll', function () {
         let scrollTop = $(this).scrollTop();
-        // Fade out description
-        const descriptionBlock = $('#description-block');
-        const calc1 = 1 - (scrollTop - descriptionBlock.position().top - descriptionBlock.outerHeight() / 2) / 200;
-        descriptionBlock.css({'opacity': Math.max(0, Math.min(1, calc1))});
+        let descriptionBlock = $('#description-block');
 
         // Make tools sticky
         let tools = $('#tools');
