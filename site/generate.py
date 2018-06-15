@@ -1,3 +1,4 @@
+import datetime
 import os
 import re
 import shutil
@@ -201,7 +202,8 @@ def generate_page(page, title, scripts, content):
         file.write(template_html.
                    replace('@TITLE@', title).
                    replace('@SCRIPTS@', scripts).
-                   replace('@CONTENT@', content))
+                   replace('@CONTENT@', content).
+                   replace('@DATE@', datetime.datetime.now().strftime('%c')))
 
 
 def _cli():
@@ -228,6 +230,8 @@ def _cli():
                   title='Team', scripts='', content='_team.html')
     generate_page('download_methylation.html',
                   title='Download DNA Methylation', scripts='', content='_download_methylation.html')
+    generate_page('study_cases.html',
+                  title='Study cases', scripts='', content='_study_cases.html')
 
     print('Creating explore data pages')
     content_page = '_explore_chipseq.html'

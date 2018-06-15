@@ -11,6 +11,7 @@ code {
     color: black;
     line-height: 1.2;
 }
+
 .code-grey {
     background-color: #f6f8fa;
     border-radius: 3px;
@@ -20,6 +21,10 @@ pre {
     padding: 16px;
     line-height: 1.45;
     background-color: #f6f8fa;
+}
+
+.container {
+    width: 950px;
 }
 
 .content {
@@ -47,21 +52,11 @@ pre {
 #footer {
     text-align: center;
     color: #777;
+    margin-bottom: 15px;
 }
 
 #footer a {
     color: #777;
-}
-
-#footer li {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-#footer ul {
-    margin-left: 20px;
-    margin-right: 20px;
-    position: center;
 }
 
 .dalliance-root {
@@ -109,10 +104,11 @@ pre {
 }
 
 .table-nonfluid {
-   width: auto !important;
+    width: auto !important;
 }
 
 #jbr-features {
 }
+
 #jbr-items-list {
 }
