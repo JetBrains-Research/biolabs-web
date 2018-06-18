@@ -112,3 +112,27 @@ pre {
 
 #jbr-items-list {
 }
+
+#partners {
+    text-align: center;
+}
+
+#partners img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 100px;
+}
+
+#partners ul {
+    position: center;
+}
+
+#partners li {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+#people li {
+    list-style-type: none;
+}
