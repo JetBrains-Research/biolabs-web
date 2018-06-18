@@ -136,3 +136,10 @@ pre {
 #people li {
     list-style-type: none;
 }
+
+#code-block {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 10px;
+}

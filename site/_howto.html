@@ -106,13 +106,41 @@
     <br/>
     <br/>
     The latest lines of SPAN output will contain path to trained model file which we will need later.
+    <mark>TODO: show SPAN output example</mark>
 </p>
 
 <h2 id="jbr-howto-load-data">Load Data Into JBR Genome Browser</h2>
+
 <p>
-    <mark>TODO: Create session using 2 *bw tracks from http://artyomovlab.wustl.edu/, add links to
-        related SPAN models. User is supposed to download models, open them in JBR browser.
-    </mark>
+    Launch JBR Genome Browser. By default it opens new session for latest used genome. If current
+    session ins't <b>hg19</b> then create new hg19 session using 'File | New Session..'.
+    <img src="jbr_window.png" style="height: 100%; width: 100%; object-fit: contain"/>
+</p>
+<p>
+    To import track open 'File | Load URL(s)...' action
+    <br/>
+    <img src="jbr_load_url_action.png" style="height: 50%; width: 50%; object-fit: contain" />
+
+</p>
+<p>
+    Copy the urls below:
+    <br/>
+    <code id="code-block">
+        http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bigwigs/H3K4me1/h3k4me1_od7.bw
+        <br/>
+        http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bigwigs/H3K4me1/h3k4me1_od8.bw
+        <br/>
+        http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bigwigs/H3K4me1/h3k4me1_od17.bw
+        <br/>
+    </code>
+    <br/>
+    And paste to the dialog:
+    <img src="jbr_load_urls_dialog.png" style="height: 100%; width: 100%; object-fit: contain"/>
+</p>
+
+<p>
+    Let's zoom track and open location <code>chr1:89,108,000-89,650,000</code>:
+    <img src="jbr_loc.png" style="height: 100%; width: 100%; object-fit: contain"/>
 </p>
 
 <h2 id="jbr-howto-peak-annotating">Annotating Peaks</h2>
@@ -142,4 +170,7 @@
     <mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued
         tracks
     </mark>
-</p>.
+</p>
+ <mark>TODO: Open related SPAN models. User is supposed to download models, open them in JBR browser.
+    </mark>
+
