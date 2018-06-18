@@ -80,7 +80,7 @@ def generate_download_data_page(page):
     def create_tr_chipseq(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th class="text-center"><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
+               '<th class="text-center"><a href="{}">Alignment</a></th>'.format(BEDGZ_PATH.format(hist)) + \
                '<th class="text-center"><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
                ('<th class="text-center"><a href="{}">BigWigs</a>&nbsp;' +
                 '<a href="explore_chipseq.html" title="Explore data">'

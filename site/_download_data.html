@@ -4,7 +4,7 @@
     <h1>Download</h1>
 </div>
 
-This page contains data downloadable data used in "Multiomics dissection of healthy human aging" experiment.
+This page contains data downloadable data for "Multiomics dissection of healthy human aging" experiment.
 <div>
     <ul>
         <li><a href="#download-chipseq">ChIP-Seq</a></li>
@@ -22,7 +22,7 @@ This page contains data downloadable data used in "Multiomics dissection of heal
     <thead class="thead-light">
     <tr>
         <th>Modification</th>
-        <th>Reads</th>
+        <th>Alignment</th>
         <th>QC</th>
         <th>Bigwigs</th>
         <th>Peaks</th>
@@ -37,9 +37,8 @@ This page contains data downloadable data used in "Multiomics dissection of heal
 Files included in this table:
 <ul>
     <li>
-        Reads - Aligned reads in BED.GZ format.
-        <br>
-        FASTQ file was aligned without multimappers on <a
+        Alignment - aligned reads in BED.GZ format,
+        <br>aligned without multimappers on <a
             href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
         Reference 37).
         <br>
@@ -56,9 +55,8 @@ Files included in this table:
         Peaks - Peaks were obtained using novel semi-supervised peak calling approach.
     </li>
     <li>
-        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is
-        optimal
-        for a given sample.
+        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks,
+        <br>that is optimal for a given sample.
     </li>
     <li>
         Peak Caller Models - Trained <a href="span.html">SPAN</a> Peak Analyzer models for each sample.
@@ -72,20 +70,18 @@ Files included in this table:
 <br>
 <h2 id="download-methylation">DNA Methylation</h2>
 <table class="table table-bordered table-nonfluid">
-    <thead class="thead-light">
-    <tr>
-        <th>Type</th>
-        <th>Data</th>
-        <th>QC</th>
-        <th>DMRs</th>
-    </tr>
-    </thead>
     <tbody>
     <tr>
-        <th>RRBS</th>
-        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/data">Data</a></th>
-        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/qc">QC</a></th>
-        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/dmrs">DMRs</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rrbs/per_donor">Alignment</a>
+        </th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rrbs/qc">QC</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rrbs/filtered_cytosines.bed">Filtered
+            Cytosines</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rrbs/dmrs">Methylation level</a>
+        </th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rrbs/dmrs">Coverage</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/methylation/TableSX_annotated_dmrs.xlsx">DMRs</a>
+        </th>
     </tr>
     </tbody>
 </table>
@@ -93,13 +89,22 @@ Files included in this table:
 Files included in this table:
 <ul>
     <li>
-        Data - Reduced Representation Bisulfite Sequencing data, <br>
+        Alignment - Reduced Representation Bisulfite Sequencing data, <br>
         aligned on <a
             href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
         Reference 37).<br>
     </li>
     <li>
         QC - Libraries QC information by <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a>.
+    </li>
+    <li>Filtered Cytosines - Filtered Cytosines in BED format, used in downstream analysis.
+        <br>Filtration criteria: coverage &geq; 3, absolute difference in methylation level &geq; 0.025.
+    </li>
+    <li>
+        Methylation level - Methylation level for each cytosine after filtration.
+    </li>
+    <li>
+        Coverage - Coverage for each cytosine after filtration.
     </li>
     <li>
         DMRs - Differentially Methylated Regions provided by <a
@@ -108,6 +113,50 @@ Files included in this table:
 </ul>
 <br>
 <h2 id="download-rnaseq">RNA-Seq</h2>
+<table class="table table-bordered table-nonfluid">
+    <tbody>
+    <tr>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rnaseq/bed">Alignment</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rnaseq/fastqc">QC</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rnaseq/bigwig">BigWigs</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rnaseq/counts">Counts</a></th>
+        <th>
+            <a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/rnaseq/aging_10vs10.rda.">Phantasus</a>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+Files included in this table:
+<ul>
+    <li>
+        Alignment - RNA-Seq data, <br>
+        aligned on <a
+            href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
+        Reference 37).<br>
+    </li>
+    <li>
+        QC - Libraries QC information by <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a>.
+    </li>
+    <li>
+        BigWigs - visualization tracks.
+    </li>
+    <li>
+        Counts - raw counts produced by <a
+            href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2</a> package, used in
+        downstream analysis.
+    </li>
+    <li>
+        <code>RDA</code> file, which can be uploaded to <a href="https://artyomovlab.wustl.edu/phantasus/">Phantasus</a>
+        RNA-Seq
+        online analysis tool.
+    </li>
+    <li>
+        DMRs - Differentially Methylated Regions provided by <a
+            href="http://smithlabresearch.org/manuals/methpipe-manual.pdf">MethPipe</a> methylation analysis pipeline.
+    </li>
+</ul>
+
 <br>
 <h2 id="download-metabolomics">Metabolomics</h2>
 <p>
@@ -123,9 +172,9 @@ Files included in this table:
     materials.
 </p>
 <br>
+<hr>
 <h2 id="download-public-data">Public Data</h2>
-<p>This page contains download materials for public data used in "Multiomics dissection of healthy human aging"
-    experiment.</p>
+<p>Public data used in "Multiomics dissection of healthy human aging" experiment.</p>
 
 <h4>ENCODE CD14+ ChIP-Seq</h4>
 CD14+ classical monocytes ChIP-Seq data available in ENCODE database.
@@ -147,6 +196,7 @@ CD14+ classical monocytes ChIP-Seq data available in ENCODE database.
 <p>Files included in this table:</p>
 
 <ul>
+    <li>GSM - GEO accession id for each sample.</li>
     <li>
         BigWigs - visualization of reads for each donor in BigWig format.
     </li>
