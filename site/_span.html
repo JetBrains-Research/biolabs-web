@@ -62,29 +62,36 @@ Requirements:
 <ol>
     <li>Download and install <a href="http://www.java.com/en/download/" rel="nofollow">Java 8</a>.</li>
     <li>Download the <code>&lt;build&gt;.chrom.sizes</code> chromosome sizes of the organism you want to analyze
-        from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>.
+        from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>. <br>
+        Here is <a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.chrom.sizes">the file</a> used in
+        our
+        study.
     </li>
 </ol>
 <h2 id="span-usage">Usage of SPAN</h2>
-<pre><code>java -Xmx1G -jar span.jar [-h] [--version] {analyze,compare}</code></pre>
+<pre><code>java -Xmx1G -jar span.jar [-h] [--version] analyze</code></pre>
 <p>
-    Use <code>java</code> memory settings option: <code class="code-grey">-Xmx</code> to limit memory usage. 1 gigabyte is used in examples.
+    Use <code>java</code> <code class="code-grey">-Xmx</code> memory settings to limit memory usage. 1 gigabyte
+    is used in examples.
 </p>
 <table class="table table-bordered table-nonfluid">
     <tbody>
     <tr>
         <th>Example of regular peak calling</th>
-        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam
+            --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of supervised peak calling</th>
-        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam
+            --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of model fitting</th>
-        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs
+        <td class="code-grey"><code style="color:black">java -Xmx1G -jar span.jar analyze -t ChIP.bam -c Control.bam
+            --cs
             Chrom.sizes</code></td>
     </tr>
     </tbody>
@@ -97,16 +104,18 @@ Peak analysis is performed on read coverage tiled into consequent bins, with siz
 is 200bp, approximately the length of one nucleosome.
 </p>
 <p>
-<strong>-t, --treatment TREATMENT</strong><br>
-<strong>Required</strong>. ChIP-seq treatment file. Supported formats: BAM, BED, or BED.gz file. If multiple files are given, treated as replicates.
-Multiple files should be separated by commas: <code class="code-grey">-t
+    <strong>-t, --treatment TREATMENT</strong><br>
+    <strong>Required</strong>. ChIP-seq treatment file. Supported formats: BAM, BED, or BED.gz file. If multiple files
+    are given, treated as replicates.
+    Multiple files should be separated by commas: <code class="code-grey">-t
     A,B,C</code>. Multiple files are processed as replicates on model level.
 </p>
 <p>
-<strong>-c, --control CONTROL</strong><br>
-Control file. Multiple files should be separated by commas. Single control file or separate file per each treatment file required.
-<br>
-Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
+    <strong>-c, --control CONTROL</strong><br>
+    Control file. Multiple files should be separated by commas. Single control file or separate file per each treatment
+    file required.
+    <br>
+    Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
 </p>
 <p>
 <strong>-cs, --chrom.sizes CHROMOSOMES_SIZES</strong><br>
@@ -252,6 +261,12 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     <br>
     A: <code>SPAN</code> is developed in modern <a href="https://kotlinlang.org/?">Kotlin</a> programming language and
     can be executed on any platform supported by <code>java</code>.
+</p>
+<p>
+    Q: Is differential peak calling supported?
+    <br>
+    A: This is experimental feature, see for details:
+    <code class="code-grey">java -Xmx1G -jar span.jar compare -h</code>
 </p>
 <p>Q: Where is <code>SPAN</code> source code?
     <br>
