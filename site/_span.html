@@ -64,8 +64,7 @@ Requirements:
     <li>Download the <code>&lt;build&gt;.chrom.sizes</code> chromosome sizes of the organism you want to analyze
         from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>. <br>
         Here is <a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.chrom.sizes">the file</a> used in
-        our
-        study.
+        our study.
     </li>
 </ol>
 <h2 id="span-usage">Usage of SPAN</h2>
@@ -99,9 +98,9 @@ Requirements:
 <h3 id="span-peak-calling">Peak calling</h3>
 <p>To analyze a single (possibly replicated) biological condition use <code>analyze</code> command.</p>
 <p>
-<strong>-b, --bin BIN_SIZE</strong><br>
-Peak analysis is performed on read coverage tiled into consequent bins, with size being configurable. Default value
-is 200bp, approximately the length of one nucleosome.
+    <strong>-b, --bin BIN_SIZE</strong><br>
+    Peak analysis is performed on read coverage tiled into consequent bins, with size being configurable. Default value
+    is 200bp, approximately the length of one nucleosome.
 </p>
 <p>
     <strong>-t, --treatment TREATMENT</strong><br>
@@ -118,54 +117,58 @@ is 200bp, approximately the length of one nucleosome.
     Follow instructions for <code class="code-grey">-t, --treatment TREATMENT</code>.
 </p>
 <p>
-<strong>-cs, --chrom.sizes CHROMOSOMES_SIZES</strong><br>
-<strong>Required</strong>. Chromosome sizes file for genome build used in <code class="code-grey">TREATMENT</code> and
-<code class="code-grey">CONTROL</code> files.
-<br>
-Can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
+    <strong>-cs, --chrom.sizes CHROMOSOMES_SIZES</strong><br>
+    <strong>Required</strong>. Chromosome sizes file for genome build used in <code class="code-grey">TREATMENT</code>
+    and
+    <code class="code-grey">CONTROL</code> files.
+    <br>
+    Can be downloaded at <code class="code-grey">http://hgdownload.cse.ucsc.edu/goldenPath/&lt;build&gt;/bigZips/&lt;build&gt;.chrom.sizes</code>
 </p>
 <p>
-<strong>--fragment FRAGMENT</strong><br>
-Fragment size used to convert reads into tags. Default value is half the read length.
+    <strong>--fragment FRAGMENT</strong><br>
+    Fragment size used to convert reads into tags. Default value is half the read length.
 </p>
 <p>
-<strong>-o, --output OUTPUT</strong><br>
-Resulting BED file. If omitted, only model fitting step is performed.
+    <strong>-o, --output OUTPUT</strong><br>
+    Resulting BED file. If omitted, only model fitting step is performed.
 </p>
 <p>
-<strong>-f, --fdr FDR</strong><br>
-Minimum FDR cutoff to call significant regions, default value is <code>1.0E-6</code>.
-<br>
-<code>SPAN</code> reports p- and q- values for the
-null hypothesis that a given bin is not enriched with a histone modification. Peaks are formed from a list of truly (in the FDR sense)
-enriched bins for the analyzed biological condition by thresholding the Q-value with a cutoff <code>FDR</code>
-and merging spatially close peaks using <code>GAP</code> option to broad ones. This is equivalent to controlling FDR.
-<br>q-values are are calculated from p-values using Benjamini-Hochberg procedure.
+    <strong>-f, --fdr FDR</strong><br>
+    Minimum FDR cutoff to call significant regions, default value is <code>1.0E-6</code>.
+    <br>
+    <code>SPAN</code> reports p- and q- values for the
+    null hypothesis that a given bin is not enriched with a histone modification. Peaks are formed from a list of truly
+    (in the FDR sense)
+    enriched bins for the analyzed biological condition by thresholding the Q-value with a cutoff <code>FDR</code>
+    and merging spatially close peaks using <code>GAP</code> option to broad ones. This is equivalent to controlling
+    FDR.
+    <br>q-values are are calculated from p-values using Benjamini-Hochberg procedure.
 </p>
 <p>
-<strong>-g, --gap GAP</strong><br>
-Gap size to merge spatially close peaks. Useful for wide histone modifications. Default value is 5, i.e. peaks separated
-by 5*<code class="code-grey">BIN</code> distance or less are merged.
+    <strong>-g, --gap GAP</strong><br>
+    Gap size to merge spatially close peaks. Useful for wide histone modifications. Default value is 5, i.e. peaks
+    separated
+    by 5*<code class="code-grey">BIN</code> distance or less are merged.
 </p>
 <p>
-<strong>--labels LABELS</strong><br>
-Labels BED file. Used in <a href="tools.html">semi-supervised peak calling</a>.
+    <strong>--labels LABELS</strong><br>
+    Labels BED file. Used in <a href="tools.html">semi-supervised peak calling</a>.
 </p>
 <p>
-<strong>-d, --debug</strong><br>
-Print all the debug information, used for troubleshooting.
+    <strong>-d, --debug</strong><br>
+    Print all the debug information, used for troubleshooting.
 </p>
 <p>
-<strong>-q, --quiet</strong><br>
-Turn off output.
+    <strong>-q, --quiet</strong><br>
+    Turn off output.
 </p>
 <p>
-<strong>-w, --workdir PATH</strong><br>
-Path to the working directory (stores coverage and model caches).
+    <strong>-w, --workdir PATH</strong><br>
+    Path to the working directory (stores coverage and model caches).
 </p>
 <p>
-<strong>--threads THREADS</strong><br>
-Configures parallelism level.
+    <strong>--threads THREADS</strong><br>
+    Configures parallelism level.
 </p>
 <h3 id="span-supervised-peak-calling">Supervised peak calling</h3>
 When <code class="code-grey">LABELS</code> parameter is given, it is used to optimize peak caller parameters for markup.
@@ -185,7 +188,8 @@ When <code class="code-grey">LABELS</code> parameter is given, it is used to opt
     <li>Peaks are computed using trained model and <code class="code-grey">FDR</code> and <code
             class="code-grey">GAP</code> parameters.
     </li>
-    <li>If <code class="code-grey">LABELS</code> are provided, optimal parameters are computed to conform with them.</li>
+    <li>If <code class="code-grey">LABELS</code> are provided, optimal parameters are computed to conform with them.
+    </li>
 </ol>
 Model fitting mode produces trained <strong>model file</strong> in binary format as output, which can be:
 <ol>
@@ -237,7 +241,7 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     to evaluate <code>SPAN</code>.
 </p>
 <p>
-    <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">Chen C  <i>et al.</i></a> presented an ultra-low-input
+    <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">Chen C <i>et al.</i></a> presented an ultra-low-input
     micrococcal nuclease-based native ChIP (ULI-NChIP) and sequencing method to generate genome-wide histone mark
     profiles
     with high resolution and reproducibility from as few as one thousand cells.
