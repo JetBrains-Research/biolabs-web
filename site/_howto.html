@@ -21,7 +21,18 @@
 
 <h2 id="jbr-howto-prerequisites">Prerequisites</h2>
 <p>
-    <mark>TODO: download SPAN, JBR </mark>
+    Install <a href="span.html#span-installation">SPAN</a> peak caller and
+    <a href="jbr.html#jbr-installation">JBR</a> Genome Browser.
+</p>
+<p>
+    This tutorial includes all necessary data files. But if you want to use it with your own
+    data, you need to prepare ChIP-Seq signal tracks as:
+    <ul>
+    <li>BAM (or BED / BED.gz) files for further processing with SPAN.</li>
+    <li>BIGWIG files for visualization in JBR browser.
+        <br/>
+        You can convert BAM / BED signal tracks to BIGWIG using bedtools, samtools and bedGraphToBigWig utilities.</li>
+    </ul>
 </p>
 
 <h2 id="jbr-howto-train">Train Models</h2>
@@ -45,10 +56,13 @@
 
 <h2 id="jbr-howto-peak-calling">Visual Peak Calling</h2>
 <p>
-    <mark>TODO: After you've get labels two scenarios are possible: 1) Call peaks in JBR browser 2) Call peaks in command line using SPAN.
-        Peak calling in JBR allows you to perform peak calling tuning iteratively. E.g. annotate peaks, tune peak calling,  validate results, if
+    <mark>TODO: After you've get labels two scenarios are possible: 1) Call peaks in JBR browser 2)
+        Call peaks in command line using SPAN.
+        Peak calling in JBR allows you to perform peak calling tuning iteratively. E.g. annotate
+        peaks, tune peak calling, validate results, if
         your are not satisfied with them remove/add additional annotations, rerun tuning. Tuning in
-        cmdline could be convenient if you are sure in your annotations, so you could do peak calling
+        cmdline could be convenient if you are sure in your annotations, so you could do peak
+        calling
         as part of your pipeline script. In this case rerun SPAN with --labels options.
         Also you can pass --labels while training model, SPAN will tune peak calling arguments and
         call peaks after model training
