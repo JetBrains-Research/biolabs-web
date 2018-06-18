@@ -1,13 +1,18 @@
 <!-- To be included inside template.html -->
 
 <div class="page-header">
-    <h1>Visual peak calling How-To</h1>
+    <h1>Visual Peak Calling How-To</h1>
 </div>
 <p>Visual peak calling is a semi-supervised algorithm. At first we need to train SPAN models
     for each track locally or using computational cluster. Then visualize Chip-seq signal
     tracks in JBR Genome Browser, load trained SPAN models,
     create annotations and run peak calling tuning procedure.
-
+</p>
+<p>
+    This tutorial demonstrates how to perform all steps of the visual peak calling algorithm. As
+    an example let's take 3 ULI Chip-Seq tracks from
+    <a href="index.html">Multiomics dissection of healthy human aging</a> experiment:  OD7, OD8, OD17.
+</p>
 <div>
     <h2>Content</h2>
     <ul>
@@ -18,7 +23,6 @@
         <li><a href="#jbr-howto-peak-calling">Visual Peak Calling</a></li>
     </ul>
 </div>
-</p>
 
 <h2 id="jbr-howto-prerequisites">Prerequisites</h2>
 <p>
@@ -38,7 +42,70 @@
 
 <h2 id="jbr-howto-train">Train Models</h2>
 <p>
-    <mark>TODO: show cmdline args and results output sample, SPAN model files locations</mark>
+    Model training is a time consuming operation but it is performed only once for each ChIP-Seq track.
+    Further peak calling will be very fast ~ about 1 sec for one parameters set.
+</p>
+<p>
+    You may skip model training step and download already trained models for this tutorial:
+    <ul>
+        <li>
+            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/zinbra/mlfnbhmm_zhl_hg19_OD7_k4me1_hg19_input_unique_200.tar">
+                <mark>SPAN model file for OD7 track</mark>
+            </a>
+        </li>
+        <li>
+            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/zinbra/mlfnbhmm_zhl_hg19_OD8_k4me1_hg19_input_unique_200.tar">
+                <mark>SPAN model file for OD8 track</mark>
+            </a>
+        </li>
+        <li>
+            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/zinbra/mlfnbhmm_zhl_hg19_OD17_k4me1_hg19_input_unique_200.tar">
+                <mark>SPAN model file for OD17 track</mark>
+            </a>
+        </li>
+    </ul>
+</p>
+<p>In order to train models, download data track for donors OD7, OD8, OD17; control track and hg19 chromosomes size annotation file:</p>
+<ul>
+    <li>
+        <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bedgz/H3K4me1/OD7_k4me1_hg19.bed.gz">
+            OD7_k4me1_hg19.bed.gz
+        </a>
+    </li>
+    <li>
+        <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bedgz/H3K4me1/OD8_k4me1_hg19.bed.gz">
+            OD8_k4me1_hg19.bed.gz
+        </a>
+    </li>
+    <li>
+        <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bedgz/H3K4me1/OD17_k4me1_hg19.bed.gz">
+            OD17_k4me1_hg19.bed.gz
+        </a>
+    </li>
+    <li>
+        <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bedgz/input/input.bed.gz">
+            input.bed.gz
+        </a>
+    </li>
+    <li>
+        <a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.chrom.sizes">
+            hg19.chrom.sizes
+        </a>
+    </li>
+</ul>
+<p>
+    Run SPAN locally or on your computational cluster. If your run SPAN on multiprocessor machine
+    configure parallelism level for better performance :
+    <br/>
+    <code>java -Xmx1G -jar span.jar analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes  --threads 4</code>
+    <br/>
+    <code>java -Xmx1G -jar span.jar analyze -c input.bed.gz -t OD8_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes  --threads 4</code>
+    <br/>
+    <code>java -Xmx1G -jar span.jar analyze -c input.bed.gz -t OD17_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes  --threads 4</code>
+
+    <br/>
+    <br/>
+    The latest lines of SPAN output will contain path to trained model file which we will need later.
 </p>
 
 <h2 id="jbr-howto-load-data">Load Data Into JBR Genome Browser</h2>
