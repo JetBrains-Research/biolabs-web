@@ -71,13 +71,13 @@ def generate_explore_chipseq_page(page):
                             '\n'.join([create_tr_session(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
 
 
-def generate_download_chipseq_page(page):
-    download_chipseq_template = FOLDER + '/_download_chipseq.html'
-    print('Creating download data page {} by template {}'.format(page, download_chipseq_template))
-    with open(download_chipseq_template, 'r') as file:
+def generate_download_data_page(page):
+    download_data_template = FOLDER + '/_download_data.html'
+    print('Creating download data page {} by template {}'.format(page, download_data_template))
+    with open(download_data_template, 'r') as file:
         template_html = file.read()
 
-    def create_tr(hist):
+    def create_tr_chipseq(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
                '<th class="text-center"><a href="{}">Reads</a></th>'.format(BEDGZ_PATH.format(hist)) + \
@@ -92,19 +92,9 @@ def generate_download_chipseq_page(page):
                 '<a href="howto.html" title="Visual peak calling how to">' +
                 '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></th>').format(ZINBRA_MODELS_PATH) + \
                '</tr>'
+    table_chipseq = '\n'.join([create_tr_chipseq(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
-    with open(OUT_FOLDER + '/' + page, 'w') as file:
-        file.write(template_html.replace('@TABLE@',
-                                         '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
-
-
-def generate_download_public_data(page):
-    download_chipseq_template = FOLDER + '/_public_data.html'
-    print('Creating download data page {} by template {}'.format(page, download_chipseq_template))
-    with open(download_chipseq_template, 'r') as file:
-        template_html = file.read()
-
-    def create_tr(hist):
+    def create_tr_encode(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
                ('<th><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
@@ -114,9 +104,13 @@ def generate_download_public_data(page):
                '<th><a href="{}">Labels</a></th>'.format(ENCODE_LABELS_URL.format(hist)) + \
                '</tr>'
 
+    table_encode = '\n'.join([create_tr_encode(hist) for hist in sorted(GSM_HIST_MAP.keys())])
+
     with open(OUT_FOLDER + '/' + page, 'w') as file:
-        file.write(template_html.replace('@TABLE@',
-                                         '\n'.join([create_tr(hist) for hist in sorted(GSM_HIST_MAP.keys())])))
+        file.write(template_html.
+                   replace('@TABLE_CHIPSEQ@', table_chipseq).
+                   replace('@TABLE_ENCODE@', table_encode))
+
 
 def generate_jbr_data(page):
     build = '1.0.beta.nnnn'
@@ -152,9 +146,9 @@ def generate_jbr_data(page):
                             ".tar.gz", "linux"),
         ]
 
-        content = template_html.\
-            replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs]))\
-            .replace('@BUILD@', '1.0.beta.nnnn')\
+        content = template_html. \
+            replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs])) \
+            .replace('@BUILD@', '1.0.beta.nnnn') \
             .replace('@DATE@', date)
 
         seen_file_names = set()
@@ -228,8 +222,6 @@ def _cli():
                   title='Visual peak calling how to', scripts='', content='_howto.html')
     generate_page('team.html',
                   title='Team', scripts='', content='_team.html')
-    generate_page('download_methylation.html',
-                  title='Download DNA Methylation', scripts='', content='_download_methylation.html')
     generate_page('study_cases.html',
                   title='Study cases', scripts='', content='_study_cases.html')
 
@@ -239,17 +231,11 @@ def _cli():
     generate_page('explore_chipseq.html',
                   title='Explore ChIP-Seq', scripts='', content=content_page)
 
-    print('Creating download chipseq page')
-    content_page = '_download_chipseq.html'
-    generate_download_chipseq_page(content_page)
-    generate_page('download_chipseq.html',
-                  title='Download ChIP-Seq', scripts='', content=content_page)
-
-    print('Creating download public data page')
-    content_page = '_public_data.html'
-    generate_download_public_data(content_page)
-    generate_page('public_data.html',
-                  title='Download Public Data', scripts='', content=content_page)
+    print('Creating download page')
+    content_page = '_download_data.html'
+    generate_download_data_page(content_page)
+    generate_page('download_data.html',
+                  title='Download Data', scripts='', content=content_page)
 
     print('Creating download tools page')
     content_page = '_jbr.html'

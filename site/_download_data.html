@@ -1,0 +1,162 @@
+<!-- To be included inside template.html -->
+
+<div class="page-header">
+    <h1>Download</h1>
+</div>
+
+This page contains data downloadable data used in "Multiomics dissection of healthy human aging" experiment.
+<div>
+    <ul>
+        <li><a href="#download-chipseq">ChIP-Seq</a></li>
+        <li><a href="#download-methylation">DNA Methylation</a></li>
+        <li><a href="#download-rnaseq">RNA-Seq</a></li>
+        <li><a href="#download-metabolomics">Metabolomics</a></li>
+        <li><a href="#download-proteomics">Proteomics</a></li>
+        <li><a href="#download-public-data">Public Data</a></li>
+    </ul>
+</div>
+
+<br>
+<h2 id="download-chipseq">ChIP-Seq</h2>
+<table class="table table-bordered table-nonfluid">
+    <thead class="thead-light">
+    <tr>
+        <th>Modification</th>
+        <th>Reads</th>
+        <th>QC</th>
+        <th>Bigwigs</th>
+        <th>Peaks</th>
+        <th>Visual Labels</th>
+        <th>Peak Caller Models</th>
+    </tr>
+    </thead>
+    <tbody>
+    @TABLE_CHIPSEQ@
+    </tbody>
+</table>
+Files included in this table:
+<ul>
+    <li>
+        Reads - Aligned reads in BED.GZ format.
+        <br>
+        FASTQ file was aligned without multimappers on <a
+            href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
+        Reference 37).
+        <br>
+        Raw reads in FASTQ format will be available upon request at <a href="https://www.ncbi.nlm.nih.gov/gap">dbGAP</a>.
+
+    </li>
+    <li>
+        QC - Libraries QC information by <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a>.
+    </li>
+    <li>
+        BigWigs - visualization of reads for each donor in BigWig format.
+    </li>
+    <li>
+        Peaks - Peaks were obtained using novel semi-supervised peak calling approach.
+    </li>
+    <li>
+        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is
+        optimal
+        for a given sample.
+    </li>
+    <li>
+        Peak Caller Models - Trained <a href="span.html">SPAN</a> Peak Analyzer models for each sample.
+    </li>
+</ul>
+<p>
+    Learn more about <a href="tools.html">visual peak calling</a> and find out how to apply this approach to your data
+    in How-To <a href="howto.html">tutorial</a>.
+</p>
+
+<br>
+<h2 id="download-methylation">DNA Methylation</h2>
+<table class="table table-bordered table-nonfluid">
+    <thead class="thead-light">
+    <tr>
+        <th>Type</th>
+        <th>Data</th>
+        <th>QC</th>
+        <th>DMRs</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>RRBS</th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/data">Data</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/qc">QC</a></th>
+        <th><a href="https://artyomovlab.wustl.edu/publications/supp_materials/aging/methylation/dmrs">DMRs</a></th>
+    </tr>
+    </tbody>
+</table>
+
+Files included in this table:
+<ul>
+    <li>
+        Data - Reduced Representation Bisulfite Sequencing data, <br>
+        aligned on <a
+            href="https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19">hg19</a> (GRCh37 Genome Reference Consortium Human
+        Reference 37).<br>
+    </li>
+    <li>
+        QC - Libraries QC information by <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a>.
+    </li>
+    <li>
+        DMRs - Differentially Methylated Regions provided by <a
+            href="http://smithlabresearch.org/manuals/methpipe-manual.pdf">MethPipe</a> methylation analysis pipeline.
+    </li>
+</ul>
+<br>
+<h2 id="download-rnaseq">RNA-Seq</h2>
+<br>
+<h2 id="download-metabolomics">Metabolomics</h2>
+<br>
+<h2 id="download-proteomics">Proteomics</h2>
+<br>
+<h2 id="download-public-data">Public Data</h2>
+<p>This page contains download materials for public data used in "Multiomics dissection of healthy human aging"
+    experiment.</p>
+
+<h4>ENCODE CD14+ ChIP-Seq</h4>
+CD14+ classical monocytes ChIP-Seq data available in ENCODE database.
+<table class="table table-bordered table-nonfluid">
+    <thead class="thead-light">
+    <tr>
+        <th>Modification</th>
+        <th>GSM</th>
+        <th>Bigwigs</th>
+        <th>Peaks</th>
+        <th>Visual Labels</th>
+    </tr>
+    </thead>
+    <tbody>
+    @TABLE_ENCODE@
+    </tbody>
+</table>
+
+<p>Files included in this table:</p>
+
+<ul>
+    <li>
+        BigWigs - visualization of reads for each donor in BigWig format.
+    </li>
+    <li>
+        Peaks - Peaks were obtained using novel semi-supervised peak calling <a href="tools.html">approach</a>.
+    </li>
+    <li>
+        Visual Labels - Handful annotation of locations as peaks, valleys or peak shores, used to obtain peaks, that is
+        optimal for a given sample.
+    </li>
+</ul>
+
+<h4>ChromHMM</h4>
+<p>
+    18-states <a href="http://compbio.mit.edu/ChromHMM/">ChromHMM</a> model markup for CD14 monocytes can be downloaded
+    <a href="https://www.encodeproject.org/annotations/ENCSR907LCD">here</a>.
+</p>
+
+<h4>Blueprint DNA-Methylation</h4>
+<p>
+    BLUEPRINT Epigenome consortium data for monocytes DNA methylation <a
+        href="http://dcc.blueprint-epigenome.eu/#/home">data</a>.
+</p>
