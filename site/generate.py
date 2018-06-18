@@ -49,17 +49,17 @@ def generate_explore_chipseq_page(page):
     def create_tr_online(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               ('<th class="text-center"><a href="{}" title="Basic UCSC custom tracks session">'
+               ('<td class="text-center"><a href="{}" title="Basic UCSC custom tracks session">'
                 'Basic</a>&nbsp;&sol;&nbsp;'
-                '<a href="{}" title="Extended UCSC custom tracks session">Extended</a></th>').format(
+                '<a href="{}" title="Extended UCSC custom tracks session">Extended</a></td>').format(
                    BASIC_UCSC_SESSION_PATH.format(hist), EXTENDED_UCSC_SESSION_PATH.format(hist)) + \
                '</tr>'
 
     def create_tr_session(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               ('<th class="text-center"><a href="{}" title="Basic IGV/JBR session file">Basic</a>&nbsp;&sol;&nbsp;'
-                '<a href="{}" title="Extended IGV/JBR session file">Extended</a></th>').format(
+               ('<td class="text-center"><a href="{}" title="Basic IGV/JBR session file">Basic</a>&nbsp;&sol;&nbsp;'
+                '<a href="{}" title="Extended IGV/JBR session file">Extended</a></td>').format(
                    BASIC_IGV_SESSION_PATH.format(hist), EXTENDED_IGV_SESSION_PATH.format(hist)) + \
                '</tr>'
 
@@ -80,28 +80,28 @@ def generate_download_data_page(page):
     def create_tr_chipseq(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               '<th class="text-center"><a href="{}">Alignment</a></th>'.format(BEDGZ_PATH.format(hist)) + \
-               '<th class="text-center"><a href="{}">QC</a></th>'.format(FASTQC_PATH.format(hist)) + \
-               ('<th class="text-center"><a href="{}">BigWigs</a>&nbsp;' +
+               '<td class="text-center"><a href="{}">Alignment</a></td>'.format(BEDGZ_PATH.format(hist)) + \
+               '<td class="text-center"><a href="{}">QC</a></td>'.format(FASTQC_PATH.format(hist)) + \
+               ('<td class="text-center"><a href="{}">BigWigs</a>&nbsp;' +
                 '<a href="explore_chipseq.html" title="Explore data">'
-                '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></th>').format(
+                '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></td>').format(
                    Y20O20_BW_PATH.format(hist)) + \
-               '<th class="text-center"><a href="{}">Peaks</a></th>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
-               '<th class="text-center"><a href="{}">Labels</a></th>'.format(LABELS_URL.format(hist)) + \
-               ('<th class="text-center"><a href="{}">Models</a>&nbsp;' +
+               '<td class="text-center"><a href="{}">Peaks</a></td>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
+               '<td class="text-center"><a href="{}">Labels</a></td>'.format(LABELS_URL.format(hist)) + \
+               ('<td class="text-center"><a href="{}">Models</a>&nbsp;' +
                 '<a href="howto.html" title="Visual peak calling how to">' +
-                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></th>').format(ZINBRA_MODELS_PATH) + \
+                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(ZINBRA_MODELS_PATH) + \
                '</tr>'
     table_chipseq = '\n'.join([create_tr_chipseq(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
     def create_tr_encode(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               ('<th><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
-                '{0}</a></th>').format(GSM_HIST_MAP[hist]) + \
-               '<th><a href="{}/{}_hg19.bw">BigWigs</a></th>'.format(ENCODE_BW_PATH, GSM_HIST_MAP[hist]) + \
-               '<th><a href="{}">Peaks</a></th>'.format(ENCODE_PEAKS_PATH.format(hist)) + \
-               '<th><a href="{}">Labels</a></th>'.format(ENCODE_LABELS_URL.format(hist)) + \
+               ('<td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
+                '{0}</a></td>').format(GSM_HIST_MAP[hist]) + \
+               '<td><a href="{}/{}_hg19.bw">BigWigs</a></td>'.format(ENCODE_BW_PATH, GSM_HIST_MAP[hist]) + \
+               '<td><a href="{}">Peaks</a></td>'.format(ENCODE_PEAKS_PATH.format(hist)) + \
+               '<td><a href="{}">Labels</a></td>'.format(ENCODE_LABELS_URL.format(hist)) + \
                '</tr>'
 
     table_encode = '\n'.join([create_tr_encode(hist) for hist in sorted(GSM_HIST_MAP.keys())])
@@ -171,8 +171,8 @@ def generate_span_data(page):
     def create_tr(build):
         return """
         <tr>
-            <th> <a href="url">todo {}</a></th>
-            <th> Multi-platform JAR package </th>
+            <td> <a href="url">todo {}</a></td>
+            <td> Multi-platform JAR package </td>
         </tr>
         """.format(build)
 
