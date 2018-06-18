@@ -6,29 +6,58 @@
 <p>Visual peak calling is a semi-supervised algorithm. At first we need to train SPAN models
     for each tracks locally or using computational cluster. Then visualize Chip-Seq signal
     tracks in JBR Genome Browser, load trained SPAN models and run peak calling tuning procedure.
+
+<div>
+    <h2>Content</h2>
+    <ul>
+        <li><a href="#jbr-howto-prerequisites">Prerequisites</a></li>
+        <li><a href="#jbr-howto-load-data">Load Data Into JBR</a></li>
+        <li><a href="#jbr-howto-peak-annotating">Peak Annotating</a></li>
+        <li><a href="#jbr-howto-train">Train SPAN Models</a></li>
+        <li><a href="#jbr-howto-peak-calling">Visual Peak Calling</a></li>
+    </ul>
+</div>
 </p>
 
-<b><mark>TODO: some side bar list of contents</mark></b>
-<br/>
-<br/>
-
-<h2>Train Models</h2>
-<p><mark>TODO: show cmdline args and results output sample, SPAN model files locations</mark></p>
-
-<h2>Load Data Into JBR Genome Browser</h2>
-<p><mark>TODO: Create session using 2 *bw tracks from  http://artyomovlab.wustl.edu/, add links to
-related SPAN models. User is supposed to download models, open them in JBR browser.</mark></p>
-
-<h2>Peak Annotating</h2>
+<h2 id="jbr-howto-prerequisites">Prerequisites</h2>
 <p>
-        <mark>TODO: How to add/remove label, export labels</mark>
-    <br/>
-        <mark>TODO: Labelling recommendations...</mark>
+    <mark>TODO: download SPAN, JBR </mark>
 </p>
 
-<h2>Peak Calling</h2>
-<p><mark>TODO: Suggest to run tune action in JBR. Also describe how to change FDR, GAP and do
-    peak calling manually.</mark>
-<br/>
-    <mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued tracks</mark>
+<h2 id="jbr-howto-train">Train Models</h2>
+<p>
+    <mark>TODO: show cmdline args and results output sample, SPAN model files locations</mark>
+</p>
+
+<h2 id="jbr-howto-load-data">Load Data Into JBR Genome Browser</h2>
+<p>
+    <mark>TODO: Create session using 2 *bw tracks from http://artyomovlab.wustl.edu/, add links to
+        related SPAN models. User is supposed to download models, open them in JBR browser.
+    </mark>
+</p>
+
+<h2 id="jbr-howto-peak-annotating">Peak Annotating</h2>
+<p>
+    <mark>TODO: How to add/remove label, export labels</mark>
+    <br/>
+    <mark>TODO: Labelling recommendations...</mark>
+</p>
+
+<h2 id="jbr-howto-peak-calling">Visual Peak Calling</h2>
+<p>
+    <mark>TODO: After you've get labels two scenarios are possible: 1) Call peaks in JBR browser 2) Call peaks in command line using SPAN.
+        Peak calling in JBR allows you to perform peak calling tuning iteratively. E.g. annotate peaks, tune peak calling,  validate results, if
+        your are not satisfied with them remove/add additional annotations, rerun tuning. Tuning in
+        cmdline could be convenient if you are sure in your annotations, so you could do peak calling
+        as part of your pipeline script. In this case rerun SPAN with --labels options.
+        Also you can pass --labels while training model, SPAN will tune peak calling arguments and
+        call peaks after model training
+    </mark>
+    <mark>TODO: Suggest to run tune action in JBR. Also describe how to change FDR, GAP and do
+        peak calling manually.
+    </mark>
+    <br/>
+    <mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued
+        tracks
+    </mark>
 </p>.
