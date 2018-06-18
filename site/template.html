@@ -26,6 +26,11 @@
         $(document).ready(function () {
             $('#includedContent').load("@CONTENT@");
         });
+        let shiftWindow = function () {
+            scrollBy(0, -50)
+        };
+        if (location.hash) shiftWindow();
+        window.addEventListener("hashchange", shiftWindow);
     </script>
 </head>
 <body>
