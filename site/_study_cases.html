@@ -31,31 +31,13 @@
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
     <tr>
-        <th>H3K27ac</th>
-        <th>H3K27me3</th>
-        <th>H3K36me3</th>
-        <th>H3K4me1</th>
-        <th>H3K4me3</th>
+        <th>Modification</th>
+        <th class="text-center">IGV/JBR Session</th>
+        <th class="text-center">UCSC Session</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>
-            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/cd14encode/H3K27ac_encode_session.xml">Session</a>
-        </td>
-        <td>
-            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/cd14encode/H3K27me3_encode_session.xml">Session</a>
-        </td>
-        <td>
-            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/cd14encode/H3K36me3_encode_session.xml">Session</a>
-        </td>
-        <td>
-            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/cd14encode/H3K4me1_encode_session.xml">Session</a>
-        </td>
-        <td>
-            <a href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/cd14encode/H3K4me3_encode_session.xml">Session</a>
-        </td>
-    </tr>
+    @ENCODE_TABLE@
     </tbody>
 </table>
 <h2 id="span-usage-uli">ULI ChIP-seq Data</h2>
@@ -93,6 +75,21 @@
     All the peak callers failed given fewer than 100 thousand cells for H3K4me3, which suggests that this is a minimum
     required for high-quality peak calling.
 </p>
+<p>
+    The table below contains preconfigured IGV and UCSC sessions with ULI ChIP-seq data including raw signal and peaks:
+</p>
+<table class="table table-bordered table-nonfluid">
+    <thead class="thead-light">
+    <tr>
+        <th>Modification</th>
+        <th class="text-center">IGV/JBR Session</th>
+        <th class="text-center">UCSC Session</th>
+    </tr>
+    </thead>
+    <tbody>
+    @ULI_TABLE@
+    </tbody>
+</table>
 
 <h2 id="span-usage-mcgill">McGill Data</h2>
 <p>
@@ -148,10 +145,20 @@
     label set is the same for all tracks.
 </p>
 <p>
-    Labels, reads and peaks visualization for this study is available
-    for IGV and JBR genome browsers <a
-        href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/mcgill/mcgill_igv_session_input.xml">here</a>.
+    The table below contains preconfigured IGV and UCSC sessions with McGill data including raw signal and peaks:
 </p>
+<table class="table table-bordered table-nonfluid">
+    <thead class="thead-light">
+    <tr>
+        <th>Type</th>
+        <th class="text-center">IGV/JBR Session</th>
+        <th class="text-center">UCSC Session</th>
+    </tr>
+    </thead>
+    <tbody>
+    @MCGILL_TABLE@
+    </tbody>
+</table>
 
 <h2>Summary</h2>
 <p>
