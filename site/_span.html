@@ -60,7 +60,7 @@ SPAN Peak Analyzer (build @BUILD@), released on @DATE@
 </table>
 Requirements:
 <ol>
-    <li>2 GB RAM minimum</li>
+    <li>4 GB RAM minimum</li>
     <li>Download and install <a href="http://www.java.com/en/download/" rel="nofollow">Java 8</a>.</li>
     <li>Download the <code>&lt;build&gt;.chrom.sizes</code> chromosome sizes of the organism you want to analyze
         from the UCSC <a href="http://hgdownload.cse.ucsc.edu/downloads.html" rel="nofollow">website</a>. <br>
@@ -69,28 +69,28 @@ Requirements:
     </li>
 </ol>
 <h2 id="span-usage">Usage of SPAN</h2>
-<pre><code>java -Xmx2G -jar span.jar [-h] [--version] analyze</code></pre>
+<pre><code>java -Xmx4G -jar span.jar [-h] [--version] analyze</code></pre>
 <p>
-    Use <code>java</code> <code class="code-grey">-Xmx</code> memory settings to configure memory usage. 2 gigabytes
+    Use <code>java</code> <code class="code-grey">-Xmx</code> memory settings to configure memory usage. 4 gigabytes
     are used in examples.
 </p>
 <table class="table table-bordered table-nonfluid">
     <tbody>
     <tr>
         <th>Example of regular peak calling</th>
-        <td class="code-grey"><code style="color:black">java -Xmx2G -jar span.jar analyze -t ChIP.bam -c Control.bam
+        <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam
             --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of supervised peak calling</th>
-        <td class="code-grey"><code style="color:black">java -Xmx2G -jar span.jar analyze -t ChIP.bam -c Control.bam
+        <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam
             --cs
             Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
     </tr>
     <tr>
         <th>Example of model fitting</th>
-        <td class="code-grey"><code style="color:black">java -Xmx2G -jar span.jar analyze -t ChIP.bam -c Control.bam
+        <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam
             --cs
             Chrom.sizes</code></td>
     </tr>
@@ -276,7 +276,7 @@ Model fitting mode produces trained <strong>model file</strong> in binary format
     Q: Is differential peak calling supported?
     <br>
     A: This is experimental feature, see for details:
-    <code class="code-grey">java -Xmx2G -jar span.jar compare -h</code>
+    <code class="code-grey">java -Xmx4G -jar span.jar compare -h</code>
 </p>
 <p>Q: Where is <code>SPAN</code> source code?
     <br>
