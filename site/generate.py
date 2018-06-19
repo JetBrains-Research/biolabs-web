@@ -224,6 +224,8 @@ def _cli():
                   title='Team', scripts='', content='_team.html')
     generate_page('study_cases.html',
                   title='Study cases', scripts='', content='_study_cases.html')
+    generate_page('explore_rnaseq.html',
+                  title='Explore RNA-Seq', scripts='', content='_explore_rnaseq.html')
 
     print('Creating explore data pages')
     content_page = '_explore_chipseq.html'
