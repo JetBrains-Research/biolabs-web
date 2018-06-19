@@ -40,6 +40,26 @@
     @ENCODE_TABLE@
     </tbody>
 </table>
+Materials included in this table:
+<ul>
+    <li>
+        Preconfigured session file for <code>IGV</code> or <code>JBR</code> genome browsers.
+    </li>
+    <li>
+        Preconfigured sessions for <a href="https://genome.ucsc.edu">UCSC Genome Browser</a>.
+    </li>
+    <li>
+        Session content - reads, peaks and labels.<br>
+        <p>
+            Reads are taken from projects published in the ENCODE project for the CD14+ monocytes,
+            <br>
+            peaks made by MACS2 broad, SICER and <code>SPAN</code>, peaks made by MACS2 narrow are taken from ENCODE project
+            <br>
+            and labels used in <a href="tools.html">semi-supervised peaks analysis</a>.
+        </p>
+    </li>
+</ul>
+
 <h2 id="span-usage-uli">ULI ChIP-seq Data</h2>
 <p>
     As a benchmark we decided to apply SPAN peak calling approach to another ULI ChIP-seq dataset.
@@ -55,12 +75,6 @@
     Raw reads were processed using technical pipeline described in the section <a href="methods.html">Processing</a>.
     The only difference was in paired end sequencing and alignment. Also, we used MACS2 with default settings
     <code>FDR=0.05</code> and <code>FDR=1e-6</code>.
-    <br/>
-    Labels, reads and peaks visualization are available in the sessions
-    for IGV and JBR genome browsers: <a
-        href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/GSE63523/GSE63523_k4me3.xml">GSE63523_k4me3.xml</a>
-    and <a
-        href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/sessions/GSE63523/GSE63523_k27me3.xml">GSE63523_k27me3.xml</a>.
 <p>
     <code>SPAN</code> pipeline yielded ~10 thousand H3K3me3 peaks and ~20 thousand H3K27me3 peaks for 100 thousand
     cells,
@@ -90,6 +104,23 @@
     @ULI_TABLE@
     </tbody>
 </table>
+Materials included in this table:
+<ul>
+    <li>
+        Preconfigured session file for <code>IGV</code> or <code>JBR</code> genome browsers.
+    </li>
+    <li>
+        Preconfigured sessions for <a href="https://genome.ucsc.edu">UCSC Genome Browser</a>.
+    </li>
+    <li>
+        Session content - labels, reads and peaks.<br>
+        <p>
+            Reads are taken from GSE63523 study, peaks made by MACS2 broad and <code>SPAN</code>
+            <br>
+            and labels used in <a href="tools.html">semi-supervised peaks analysis</a>.
+        </p>
+    </li>
+</ul>
 
 <h2 id="span-usage-mcgill">McGill Data</h2>
 <p>
@@ -159,6 +190,23 @@
     @MCGILL_TABLE@
     </tbody>
 </table>
+Materials included in this table:
+<ul>
+    <li>
+        Preconfigured session file for <code>IGV</code> or <code>JBR</code> genome browsers.
+    </li>
+    <li>
+        Preconfigured sessions for <a href="https://genome.ucsc.edu">UCSC Genome Browser</a>.
+    </li>
+    <li>
+        Session content - labels, reads and peaks.<br>
+        <p>
+            Reads are taken from McGill study, peaks made by MACS2 broad, SICER and <code>SPAN</code>
+            <br>
+            and labels used in <a href="tools.html">semi-supervised peaks analysis</a>.
+        </p>
+    </li>
+</ul>
 
 <h2>Summary</h2>
 <p>
