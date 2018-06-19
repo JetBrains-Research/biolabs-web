@@ -225,9 +225,12 @@ def generate_study_cases_page(page):
     with open(study_cases_template, 'r') as file:
         template_html = file.read()
 
-    def create_tr_session(name, igv_session_path, ucsc_session_path, ucsc_session_txt_path):
+    def create_tr_session(name, igv_session_path, ucsc_session_path, ucsc_session_txt_path,
+                          gsm=False):
         return '<tr>' + \
                '<th>{}</th>'.format(name[0]) + \
+               (('<td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
+                '{0}</a></td>').format(GSM_HIST_MAP[name[0]]) if gsm else '') + \
                ('<td class="text-center"><a href="{}" title="IGV/JBR session file">Xml</a>'
                 '</td>').format(igv_session_path.format(name[1])) + \
                ('<td class="text-center"><a href="{}" title="UCSC custom tracks session">'
@@ -239,7 +242,8 @@ def generate_study_cases_page(page):
         file.write(template_html
                    .replace('@ENCODE_TABLE@', '\n'.join([create_tr_session(
                             (hist, hist), ENCODE_IGV_SESSION_PATH, ENCODE_UCSC_SESSION_PATH,
-                            ENCODE_UCSC_SESSION_TXT_PATH) for hist in sorted(GSM_HIST_MAP.keys())]))
+                            ENCODE_UCSC_SESSION_TXT_PATH, True)
+                            for hist in sorted(GSM_HIST_MAP.keys())]))
                    .replace('@ULI_TABLE@', '\n'.join([create_tr_session(
                             hist, ULI_IGV_SESSION_PATH, ULI_UCSC_SESSION_PATH,
                             ULI_UCSC_SESSION_TXT_PATH) for hist in [("H3K27me3", "k27me3"),
