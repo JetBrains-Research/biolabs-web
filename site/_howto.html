@@ -200,7 +200,8 @@
     blue tracks are ULI ChIP-Seq reads coverage build from *.bam files; green tracks are
     deduplicated coverage tracks produced by SPAN at the previous step. Shown region is
     <code>chr1:90,230,549-90,366,053</code>.
-    <img src="jbr_signal_vs_span_coverage.png" style="height: 100%; width: 100%; object-fit: contain"/>
+    <img src="jbr_signal_vs_span_coverage.png"
+         style="height: 100%; width: 100%; object-fit: contain"/>
 </p>
 
 
@@ -328,28 +329,44 @@
 </p>
 
 <h2 id="jbr-howto-peak-calling">Visual Peak Calling</h2>
+
 <p>
-    <mark>TODO: After you've got labels two scenarios are possible: 1) Call peaks in JBR browser 2)
-        Call peaks in command line using SPAN.
-        Peak calling in JBR allows you to perform peak calling tuning iteratively. E.g. annotate
-        peaks, tune peak calling, validate results, if
-        you're not satisfied with them, you can remove/add additional annotations and rerun tuning.
-        Tuning in cmdline could be convenient if you are sure of your annotations, so you could do
-        peak
-        calling
-        as part of your pipeline script. In this case rerun SPAN with --labels options.
-        Also you can pass --labels while fitting model, SPAN will tune peak calling arguments and
-        call peaks after model fitting
-    </mark>
-    <mark>TODO: Suggest to run tune action in JBR. Also describe how to change FDR, GAP and do
-        peak calling manually.
+    After you've got labels two scenarios are possible:
+</p>
+<ul>
+    <li>Call peaks in JBR Genome Browser.</li>
+    <li>Call peaks in command line using SPAN.</li>
+</ul>
+<p>
+    Peak calling in JBR Genome Browser allows you to perform peak calling tuning iteratively:
+    annotate peaks, tune peak calling, validate peaks, change annotations, tune again,... So if
+    you're not satisfied with results you can remove/add additional annotations and rerun tuning.
+</p>
+<p>
+    Tuning in cmdline could be convenient if you are sure in your annotations and you'd you
+    need to rerun your processing pipeline. SPAN tunes peak if --labels option and labels
+    path are specified. Also you can pass --labels while fitting model, SPAN will tune peak
+    calling parameters after model fitting.
+</p>
+
+<h4>Call Peaks in JBR Genome Browser</h4>
+
+<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
+<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
+<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
+
+<mark>TODO: Open related SPAN models. User is supposed to download models, open them in JBR
+    browser. Show tuning erros.  Show tuning & export results
+</mark>
+<mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued
+    tracks
+</mark>
+
+<h4>Change Peak Calling Parameters Manually in JBR Genome Browser</h4>
+
+<p>
+    <mark>TODO: describe how to change FDR, GAP and do peak calling manually.
     </mark>
     <br/>
-    <mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued
-        tracks
-    </mark>
 </p>
-<mark>TODO: Open related SPAN models. User is supposed to download models, open them in JBR
-    browser.
-</mark>
 
