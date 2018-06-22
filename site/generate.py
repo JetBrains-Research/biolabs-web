@@ -21,8 +21,8 @@ FASTQC_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/c
               "/Y20O20/qc/fastq/{}/fastqc/"
 PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
              "/Y20O20/peaks/{}/{}"
-ZINBRA_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                     "/Y20O20/zinbra"
+SPAN_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+                     "/Y20O20/span"
 
 BASIC_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
@@ -119,11 +119,11 @@ def generate_download_data_page(page):
                 '<a href="explore_chipseq.html" title="Explore data">'
                 '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></td>').format(
                    Y20O20_BW_PATH.format(hist)) + \
-               '<td class="text-center"><a href="{}">Peaks</a></td>'.format(PEAKS_PATH.format(hist, 'zinbra')) + \
+               '<td class="text-center"><a href="{}">Peaks</a></td>'.format(PEAKS_PATH.format(hist, 'span')) + \
                '<td class="text-center"><a href="{}">Labels</a></td>'.format(LABELS_URL.format(hist)) + \
                ('<td class="text-center"><a href="{}">Models</a>&nbsp;' +
                 '<a href="howto.html" title="Visual peak calling how to">' +
-                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(ZINBRA_MODELS_PATH) + \
+                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(SPAN_MODELS_PATH) + \
                '</tr>'
     table_chipseq = '\n'.join([create_tr_chipseq(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
