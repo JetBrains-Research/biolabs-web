@@ -5,7 +5,7 @@ from urllib.request import urlopen, HTTPError
 
 # Hardcoded URLs with data
 Y20O20_CONSENSUS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                        "/Y20O20/peaks/{}/zinbra/consensus"
+                        "/Y20O20/peaks/{}/span/consensus"
 Y20O20_BW_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20" \
                  "/bigwigs/{}"
 Y20O20_BB_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
@@ -41,7 +41,7 @@ TOOL_COLOR_MAP = {
     "broad": (55, 126, 184),
     "island": (228, 26, 28),
     "peaks": (152, 78, 163),
-    "zinbra": (152, 78, 163)
+    "span": (152, 78, 163)
 }
 HREF_MASK = '<a href="([^"]*.{})">'
 
@@ -110,7 +110,7 @@ def _cli():
     y20o20_total_consensuses = [y20o20_cons for y20o20_cons in y20o20_consensuses
                                 if "OD" not in y20o20_cons and "YD" not in y20o20_cons]
     y20o20_bws = search_in_url(Y20O20_BW_PATH.format(hist), HREF_MASK.format("bw"))
-    y20o20_zinbra_peaks = search_in_url(Y20O20_BB_PATH.format(hist, 'zinbra'),
+    y20o20_span_peaks = search_in_url(Y20O20_BB_PATH.format(hist, 'span'),
                                         HREF_MASK.format("bb"))
     y20o20_macs_broad_peaks = []
     y20o20_sicer_peaks = []
@@ -134,7 +134,7 @@ def _cli():
         if browser == IGV_BROWSER:
             print(HEADER, file=f)
 
-            for path in y20o20_total_consensuses + y20o20_bws + y20o20_zinbra_peaks + \
+            for path in y20o20_total_consensuses + y20o20_bws + y20o20_span_peaks + \
                     y20o20_macs_broad_peaks + y20o20_sicer_peaks + encode_bws + \
                     encode_peaks + [LABELS_URL.format(hist)]:
                 print(RESOURCE_TEMPLATE.format(path), file=f)
@@ -146,8 +146,8 @@ def _cli():
         for i in range(0, len(y20o20_bws)):
             print_tracks(hist, browser, [y20o20_bws[i]], "type=bigWig", f, visibility="full",
                          name_processor=lambda x: insensitive_hist.sub(hist, x.upper()))
-            print_tracks(hist, browser, [y20o20_zinbra_peaks[i]], "type=bigBed", f,
-                         visibility="dense", name_processor=lambda x: "ZINBRA " + x)
+            print_tracks(hist, browser, [y20o20_span_peaks[i]], "type=bigBed", f,
+                         visibility="dense", name_processor=lambda x: "SPAN " + x)
             if extended:
                 if i < len(y20o20_macs_broad_peaks):
                     print_tracks(hist, browser, [y20o20_macs_broad_peaks[i]], "type=bigBed", f,

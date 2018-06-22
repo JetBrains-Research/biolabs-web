@@ -42,7 +42,7 @@ def _cli():
         encode_default_peaks += search_in_url(ENCODE_PEAK_PATH.format(hist, tool_path),
                                               '<a href="([^"]*{}[^"]*.bb)">'
                                               .format(ENCODE_HIST_MAP[hist]['GSM']))
-    encode_tuned_peaks = search_in_url(ENCODE_PEAK_PATH.format(hist, "zinbra"),
+    encode_tuned_peaks = search_in_url(ENCODE_PEAK_PATH.format(hist, "span"),
                                        '<a href="([^"]*{}[^"]*.bb)">'
                                        .format(ENCODE_HIST_MAP[hist]['GSM']))
 
@@ -65,7 +65,7 @@ def _cli():
                            name_processor=lambda _:
                            "Encode {} macs narrow".format(ENCODE_HIST_MAP[hist]['GSM'])), file=f)
         print_tracks(hist, browser, encode_tuned_peaks, "type=bigBed", f, visibility="dense",
-                     name_processor=lambda x: "ZINBRA " + x)
+                     name_processor=lambda x: "SPAN " + x)
         print(format_track(browser, "", LABELS_URL.format(hist), "", visibility="dense"), file=f)
 
         if browser == IGV_BROWSER:

@@ -14,7 +14,7 @@ OUTPUT="${DATASET}_session.xml"
 
 BW_DIR="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/mcgill/bigwigs"
 LABEL_DIR="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/mcgill/labels/${DATASET}"
-PEAK_PATH="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/mcgill/$DATASET/benchmark/$TARGET/zinbra"
+PEAK_PATH="https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/mcgill/$DATASET/benchmark/$TARGET/span"
 
 # Shameless exploit of server's redirect (trying to GET a directory returns an HTML file list) to get peak files.
 
@@ -58,7 +58,7 @@ echo '        <Track altColor="0,0,178" autoScale="true" clazz="org.broad.igv.tr
 PEAK_FILE=$(echo "$PEAK_LIST" | grep $ID | head -n 1)
 if [ -n $PEAK_FILE ];
 then
-echo '        <Track altColor="0,0,178" autoScale="false" clazz="org.broad.igv.track.FeatureTrack" color="0,0,178" colorScale="ContinuousColorScale;0.0;100.0;255,255,255;0,0,178" displayMode="COLLAPSED" featureVisibilityWindow="-1" fontSize="10"' "id=\"$PEAK_PATH/$PEAK_FILE\" name=\"ZINBRA $DATASET $ID peaks\"" 'renderer="BASIC_FEATURE" sortable="false" visible="true" windowFunction="count">
+echo '        <Track altColor="0,0,178" autoScale="false" clazz="org.broad.igv.track.FeatureTrack" color="0,0,178" colorScale="ContinuousColorScale;0.0;100.0;255,255,255;0,0,178" displayMode="COLLAPSED" featureVisibilityWindow="-1" fontSize="10"' "id=\"$PEAK_PATH/$PEAK_FILE\" name=\"SPAN $DATASET $ID peaks\"" 'renderer="BASIC_FEATURE" sortable="false" visible="true" windowFunction="count">
             <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="100.0" minimum="0.0" type="LINEAR"/>
         </Track>'
 fi;
