@@ -24,14 +24,14 @@ PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/ch
 ZINBRA_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                      "/Y20O20/zinbra"
 
-BASIC_UCSC_SESSION_PATH = "https://genome-euro.ucsc.edu/cgi-bin/hgTracks?" \
+BASIC_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
                           "hgS_otherUserSessionName={}%20Aging"
 BASIC_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                               "/chipseq/sessions/Y20O20/{}_aging_session.txt"
 BASIC_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                          "/sessions/Y20O20/{}_aging_session.xml"
-EXTENDED_UCSC_SESSION_PATH = "https://genome-euro.ucsc.edu/cgi-bin/hgTracks?" \
+EXTENDED_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                              "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
                              "hgS_otherUserSessionName={}%20Aging%20Extended"
 EXTENDED_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
@@ -40,20 +40,20 @@ EXTENDED_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_mat
                             "/chipseq/sessions/Y20O20/{}_aging_session_extended.xml"
 ENCODE_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                          "/sessions/cd14encode/{}_encode_session.xml"
-ENCODE_UCSC_SESSION_PATH = "https://genome-euro.ucsc.edu/cgi-bin/hgTracks?" \
+ENCODE_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
                           "hgS_otherUserSessionName={}%20Encode"
 ENCODE_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                               "/chipseq/sessions/cd14encode/{}_encode_session.txt"
 ULI_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                          "/sessions/GSE63523/GSE63523_{}.xml"
-ULI_UCSC_SESSION_PATH = "https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&" \
+ULI_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&" \
                         "hgS_otherUserName=Biolabs&hgS_otherUserSessionName=GSE63523%20{}"
 ULI_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                               "/chipseq/sessions/GSE63523/GSE63523_{}.txt"
 MCGILL_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                          "/sessions/mcgill/mcgill_igv_session{}.xml"
-MCGILL_UCSC_SESSION_PATH = "https://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit" \
+MCGILL_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit" \
                            "&hgS_otherUserName=Biolabs&hgS_otherUserSessionName={}"
 MCGILL_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                               "/chipseq/sessions/mcgill/mcgill_ucsc_session{}.txt"
