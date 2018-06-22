@@ -348,23 +348,132 @@
 </p>
 
 <h4>Call Peaks in JBR Genome Browser</h4>
-
-<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
-<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
-<!-- XXX: !!!!!!!!!!!!!!!!!!! HERE !!!!!!!!!!!!!!!!!!!-->
-
-<mark>TODO: Open related SPAN models. User is supposed to download models, open them in JBR
-    browser. Show tuning erros.  Show tuning & export results
-</mark>
-<mark>TODO: Optionally suggest to open our labels and try peak calling tuning to view rescued
-    tracks
-</mark>
-
-<h4>Change Peak Calling Parameters Manually in JBR Genome Browser</h4>
+<p>
+    Load SPAN models generated at <a href="#jbr-howto-fit">SPAN Models Fitting</a> step using
+    JBR main menu 'File | Load SPAN model...' action. Optionally reorder tracks (select track,
+    hold Alt (MacOS: Option) key and press up/down arrow key to move track).
+    <br/>
+    While importing SPAN models JBR does peak calling with default SPAN options (FDR 1.0E-6, GAP
+    5)
+</p>
+<img src="jbr_span_models_defaults.png"
+     style="height: 100%; width: 100%; object-fit: contain"/>
+<p>
+    Next step is peak calling parameters tuning using loaded peaks annotations. You may tune
+    selected SPAM models tracks from context menu or select in main menu 'Annotate | Tune SPAN
+    models...' to tune all SPAN tracks loaded into the browser.
+    <br/>
+    Tuning takes about 1 minute per each model.</p>
+<img src="jbr_span_models_tuning_result.png"
+     style="height: 100%; width: 100%; object-fit: contain"/>
 
 <p>
-    <mark>TODO: describe how to change FDR, GAP and do peak calling manually.
-    </mark>
+    Here you can notice that tuned OD7 track has become better compared to default parameters. It
+    is still not as good as OD8 which initially has better signal to noise ratio but we used too
+    few annotations (6 in total). Tuned peak calling parameters are shown in track legends.
+</p>
+
+<p>
+    Now open context menu for OD7 SPAN model track and choose 'About Track' action.
+</p>
+<img src="jbr_span_models_tunned_OD7_about.png"
+     style="height: 100%; width: 100%; object-fit: contain"/>
+<p>You will get basic information including peaks number, genome percentage covered by peaks,
+    total peaks summary length, peaks lengths distribution percentiles. Also this information
+    includes number of mismatched annotation for each label type.
+    <code class="code-block">
+        Peaks number: 33 650
+        <br/>
+        Peaks summary length : 189 234 200 bp
+        <br/>
+        Genome (hg19 [all chromosomes]) coverage: 0.06%
+        <br/>
+        <br/>
+        Lengths:
+        <br/>
+        Min: 200 bp
+        <br/>
+        Mean: 5 623 bp
+        <br/>
+        Max: 253 000 bp
+        <br/>
+        5%: 200 bp
+        <br/>
+        50%: 2 400 bp
+        <br/>
+        95%: 21 200 bp
+        <br/>
+        <br/>
+        Track error score:
+        <br/>
+        Total error: 17% (1/6)
+        <br/>
+        No peaks error: 50% (1/2)
+        <br/>
+        Peaks error: 0% (0/2)
+        <br/>
+        Peak start error: 0% (0/1)
+        <br/>
+        Peak end error: 0% (0/1)
+        <br/>
+    </code>
     <br/>
+
+    Let's compare this information with default peak calling parameters. At first revert OD7
+    SPAN model track tuned parameters to default: use "FDR..." and "GAP..." actions from track
+    context menu. Change parameters to defaults: FDR 1.0E-6, GAP 5. Track info will be:
+    <br>
+    <code class="code-block">
+        <br/>
+        Peaks number: 2 523
+        <br/>
+        Peaks summary length : 726 200 bp
+        <br/>
+        Genome (hg19 [all chromosomes]) coverage: 0.00%
+        <br/>
+        <br/>
+        Lengths:
+        <br/>
+        Min: 200 bp
+        <br/>
+        Mean: 287 bp
+        <br/>
+        Max: 4 400 bp
+        <br/>
+        5%: 200 bp
+        <br/>
+        50%: 200 bp
+        <br/>
+        95%: 800 bp
+        <br/>
+        <br/>
+        Track error score:
+        <br/>
+        Total error: 50% (3/6)
+        <br/>
+        No peaks error: 0% (0/2)
+        <br/>
+        Peaks error: 100% (2/2)
+        <br/>
+        Peak start error: 0% (0/1)
+        <br/>
+        Peak end error: 100% (1/1)
+    </code>
+    <br/>
+    You may notice that with default option we get much less peaks for OD7 and peak are shorter.
+    <br/>
+    Now you may import <a
+            href="http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/labels/H3K4me1_labels.bed">annotations</a>
+    which we've made for this project and compare peak calling tuning results with 6 annotations
+    from this tutorial:
+</p>
+<img src="jbr_span_models_tuned2.png"
+     style="height: 100%; width: 100%; object-fit: contain"/>
+<p>
+    You can notice that OD7 peaks become more consistent with OD8 peaks although OD7 track has
+    worse signal to noise ratio.
+    </br>
+    Peak calling tuning helped us to get more consistent peak calling for our ULI ChIP-Seq data
+    and rescue some tracks which were considered as failed using other peak callers.
 </p>
 
