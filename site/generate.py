@@ -146,8 +146,8 @@ def generate_download_data_page(page):
 
 
 def generate_jbr_data(page):
-    build = '1.0.beta.nnnn'
-    date = 'Jun 13, 2018'
+    build = '1.0.beta.4075'
+    date = 'Jun 26, 2018'
 
     # ---------------
     template = FOLDER + '/_jbr.html'
@@ -157,8 +157,8 @@ def generate_jbr_data(page):
         template_html = f.read()
 
     def create_tr(dd, build):
-        code_base = "https://download.jetbrains.com/biolabs/jbr_browser/"
-        fname = "{}{}".format(build, dd.suffix)
+        code_base = "https://download.jetbrains.com/biolabs/jbr_browser"
+        fname = "jbr-{}{}".format(build, dd.suffix)
         url = "{}/{}/{}".format(code_base, dd.folder, fname)
         return """
         <tr>
@@ -181,7 +181,7 @@ def generate_jbr_data(page):
 
         content = template_html. \
             replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs])) \
-            .replace('@BUILD@', '1.0.beta.nnnn') \
+            .replace('@BUILD@', build) \
             .replace('@DATE@', date)
 
         seen_file_names = set()
@@ -204,17 +204,18 @@ def generate_span_data(page):
     def create_tr(build):
         return """
         <tr>
-            <td> <a href="url">todo {}</a></td>
+            <td> <a href="https://download.jetbrains.com/biolabs/span/{0}">{0}</a></td>
             <td> Multi-platform JAR package </td>
         </tr>
-        """.format(build)
+        """.format("span-{0}.jar".format(build))
 
-    build = '1.0.beta.nnnn'
+    build = '0.6.0.4075'
+    date = 'Jun 26, 2018'
     with open(OUT_FOLDER + '/' + page, 'w') as f:
         f.write(template_html.
                 replace('@TABLE@', create_tr(build)).
                 replace('@BUILD@', build).
-                replace('@DATE@', 'Jun 13, 2018')
+                replace('@DATE@', date)
                 )
 
 
