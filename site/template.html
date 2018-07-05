@@ -12,6 +12,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+          crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -19,18 +23,83 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript"
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
     @SCRIPTS@
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#includedContent').load("@CONTENT@");
+            $('#includedContent').load("@CONTENT@", function (responseTxt, statusTxt, xhr) {
+                if (statusTxt == "success") {
+                    // Anchors issue: by default doesn't work due to content not loaded yet
+                    let target = $(location).attr("hash");
+                    let offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+                    let targetOffset = $(target).offset();
+                    if (typeof targetOffset !== 'undefined') {
+                        console.log("fooo4: ", targetOffset);
+                        $('body,html').animate({
+                            scrollTop: $(target).offset().top - offset
+                        }, 700);
+                    }
+
+                    // Pretty tooltips support using: data-toggle="tooltip" title="foo"
+                    $('[data-toggle="tooltip"]').tooltip({
+                        placement: 'bottom'
+                    });
+
+                    // Automatic tooltip for copy to clipboard buttons
+                    $('.clipboard-btn').tooltip({
+                        placement: 'bottom'
+                    }).attr('data-original-title', "Copy to clipboard");
+                }
+            });
+
+            // Clipboard Copied Tooltip
+            function setTooltip(e, message) {
+                let source = $(e.trigger);
+                source.tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                source.tooltip('hide')
+                    .attr('data-original-title-prev', source.attr('data-original-title'))
+                    .attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(e) {
+                setTimeout(function () {
+                    let source = $(e.trigger);
+                    source.tooltip('hide')
+                        .attr('data-original-title', source.attr('data-original-title-prev'));
+                }, 1000);
+            }
+
+            // Clipboard
+            let clipboard = new ClipboardJS('.clipboard-btn');
+            clipboard.on('success', function (e) {
+                //console.info('Action:', e.action);
+                //console.info('Text:', e.text);
+                //console.info('Trigger:', e.trigger);
+                setTooltip(e, 'Copied!');
+                hideTooltip(e);
+                e.clearSelection();
+            });
+
+            clipboard.on('error', function (e) {
+                console.error('Action:', e.action);
+                //console.error('Trigger:', e.trigger);
+            });
         });
+
         let shiftWindow = function () {
             scrollBy(0, -50)
         };
         if (location.hash) shiftWindow();
         window.addEventListener("hashchange", shiftWindow);
+
     </script>
 </head>
 <body>

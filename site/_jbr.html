@@ -18,93 +18,104 @@
     </ul>
 </div>
 
-<h2 id="jbr-features">Features</h2>
-<ul>
-    <li>Integrated peaks annotating</li>
-    <li>On-the-fly peak calling using <a href="span.html">SPAN</a> models</li>
-    <li>Support for observing multiple genome locations simultaneously</li>
-    <li>Classical genome browser features to view various genome data formats</li>
-    <li>Supported data file formats: BED (including MACS2, SICER peaks), WIG, TDF, BigBed, BigWig
-    </li>
-    <li>Supported sessions formats: JBR *.yaml, IGV *.xml session files</li>
-    <li>Remote URL BigWig/BigBed/BED files support</li>
-    <li>BED track peaks statistics</li>
-    <li>BigWig signal statistics track for multiple locations</li>
-    <li>Optimized for working with large sessions</li>
-    <!--Integrated support for combining tracks, i.e. arithmetic operations.-->
-    <!--Browser can be used as web service in view only mode -->
-</ul>
+<a id="jbr-features">
+    <h2>Features</h2>
+    <ul>
+        <li>Integrated peaks annotating</li>
+        <li>On-the-fly peak calling using <a href="span.html">SPAN</a> models</li>
+        <li>Support for observing multiple genome locations simultaneously</li>
+        <li>Classical genome browser features to view various genome data formats</li>
+        <li>Supported data file formats: BED (including MACS2, SICER peaks), WIG, TDF, BigBed,
+            BigWig
+        </li>
+        <li>Supported sessions formats: JBR *.yaml, IGV *.xml session files</li>
+        <li>Remote URL BigWig/BigBed/BED files support</li>
+        <li>BED track peaks statistics</li>
+        <li>BigWig signal statistics track for multiple locations</li>
+        <li>Optimized for working with large sessions</li>
+        <!--Integrated support for combining tracks, i.e. arithmetic operations.-->
+        <!--Browser can be used as web service in view only mode -->
+    </ul>
+</a>
 
-<h2 id="jbr-system-requirements">System Requirements</h2>
-<ul>
-    <li>Operation System:
-        <ul>
-            <li> Microsoft Windows 10/8/7/Vista/2003/XP (incl.64-bit)</li>
-            <li> MacOS 10.8.3 or higher</li>
-            <li> Linux. Recommended desktops: GNOME, KDE or UNITY</li>
-        </ul>
-    </li>
-    <li>2 GB RAM minimum</li>
-    <li>1024x768 minimum screen resolution</li>
-</ul>
-<p>Pre-installed Java Runtime isn't required, as it is bundled in JBR Genome Browser
-    distribution.</p>
+<a id="jbr-system-requirements">
+    <h2>System Requirements</h2>
+    <ul>
+        <li>Operation System:
+            <ul>
+                <li> Microsoft Windows 10/8/7/Vista/2003/XP (incl.64-bit)</li>
+                <li> MacOS 10.8.3 or higher</li>
+                <li> Linux. Recommended desktops: GNOME, KDE or UNITY</li>
+            </ul>
+        </li>
+        <li>2 GB RAM minimum</li>
+        <li>1024x768 minimum screen resolution</li>
+    </ul>
+    <p>Pre-installed Java Runtime isn't required, as it is bundled in JBR Genome Browser
+        distribution.</p>
+</a>
 
-<h2 id="jbr-downloads">Downloads</h2>
-JBR Genome Browser (build @BUILD@), released on @DATE@
-<table class="table table-bordered table-nonfluid">
-    <thead class="thead-light">
-    <tr>
-        <th>Download</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    @TABLE@
-    </tbody>
-</table>
+<a id="jbr-downloads">
+    <h2>Downloads</h2>
+    JBR Genome Browser (build @BUILD@), released on @DATE@
+    <table class="table table-bordered table-nonfluid">
+        <thead class="thead-light">
+        <tr>
+            <th>Download</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        @TABLE@
+        </tbody>
+    </table>
+</a>
 
-<h2 id="jbr-installation">Installation</h2>
-<p>Download suitable build for your OS from <a href="#jbr-downloads">Downloads</a>
-    section. We recommend choosing 64-bit version if your OS is 64-bit.</p>
+<a id="jbr-installation">
+    <h2>Installation</h2>
+    <p>Download suitable build for your OS from <a href="#jbr-downloads">Downloads</a>
+        section. We recommend choosing 64-bit version if your OS is 64-bit.</p>
 
-<p><b>Windows:</b></p>
-<ul>
-    <li>Unpack the browser @FILENAME-win@ file:
-    <li>Run jbr.exe.</li>
-</ul>
+    <p><b>Windows:</b></p>
+    <ul>
+        <li>Unpack the browser @FILENAME-win@ file:
+        <li>Run jbr.exe.</li>
+    </ul>
 
-<p><b>MacOS:</b></p>
-<ul>
-    <li>Download the @FILENAME-mac@ macOS Disk Image file</li>
-    <li>Mount it as another disk in your system</li>
-    <li>Copy JBR Genome Browser to your Applications folder</li>
-</ul>
-<p>
-    If you wan't to open multiple JBR instances launch second, third, etc
-    instances using commandline:
+    <p><b>MacOS:</b></p>
+    <ul>
+        <li>Download the @FILENAME-mac@ macOS Disk Image file</li>
+        <li>Mount it as another disk in your system</li>
+        <li>Copy JBR Genome Browser to your Applications folder</li>
+    </ul>
+    <p>
+        If you wan't to open multiple JBR instances launch second, third, etc
+        instances using commandline:
 
-    <code class="code-block">
-        open -n "/Applications/JBR 1.0.app"
-    </code>
-</p>
+        <code class="code-block">
+            open -n "/Applications/JBR 1.0.app"
+        </code>
+    </p>
 
-<p><b>Linux:</b></p>
-<ul>
-    <li>Unpack the browser @FILENAME-linux@ file using the following command:
+    <p><b>Linux:</b></p>
+    <ul>
+        <li>Unpack the browser @FILENAME-linux@ file using the following command:
+            <br/>
+            <code>tar -xzf @FILENAME-linux@</code>
+        </li>
+        <li>Run jbr.sh from the bin subdirectory.</li>
+    </ul>
+</a>
+
+<a id="jbr-documentation">
+    <h2>Documentation</h2>
+    <p>
+        <mark>TODO: url to PDF file or smth</mark>
+    </p>
+    <p><b>Visual Peak Calling Tutorial: </b>
         <br/>
-        <code>tar -xzf @FILENAME-linux@</code>
-    </li>
-    <li>Run jbr.sh from the bin subdirectory.</li>
-</ul>
-
-<h2 id="jbr-documentation">Documentation</h2>
-<p>
-    <mark>TODO: url to PDF file or smth</mark>
-</p>
-<p><b>Visual Peak Calling Tutorial: </b>
-    <br/>
-    Comprehensive step-by-step tutorial on using integrated
-    peak calling solution is available in
-    <a href="howto.html">How-To</a> section.
-</p>
+        Comprehensive step-by-step tutorial on using integrated
+        peak calling solution is available in
+        <a href="howto.html">How-To</a> section.
+    </p>
+</a>

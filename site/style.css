@@ -3,6 +3,22 @@ html {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
+
+h2 {
+  margin-top: 35px;
+}
+h3 {
+  margin-top: 30px;
+}
+h4 {
+  margin-top: 25px;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
 #navbar {
     height: 35px;
 }
@@ -13,14 +29,35 @@ code {
 }
 
 .code-grey {
-    background-color: #f6f8fa;
+    background-color: #eee;
+    padding: 3px;
     border-radius: 3px;
 }
 
-pre {
-    padding: 16px;
-    line-height: 1.45;
-    background-color: #f6f8fa;
+.code-line {
+    background-color: #eee;
+    padding: 5px;
+    display: block;
+    border-radius: 5px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.code-block {
+    background-color: #eee;
+    padding: 10px;
+    display: block;
+    border: 1px solid #999;
+    border-radius: 5px;
+
+    margin-bottom: 10px;
+}
+
+.code-menu-action {
+    background-color: #eee;
+    padding: 3px;
+    border-radius: 3px;
 }
 
 .container {
@@ -137,9 +174,15 @@ pre {
     list-style-type: none;
 }
 
-.code-block {
-  background-color: #eee;
-  border: 1px solid #999;
-  display: block;
-  padding: 10px;
+.clipboard-btn {
+    position: relative;
+    float: right;
+
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    margin-top: 5px;
 }
