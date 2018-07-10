@@ -3,7 +3,7 @@
 <div class="page-header">
     <h1>SPAN Peak Analyzer</h1>
 </div>
-<pre id="span-ascii"><code>+----------------------------------+
+<pre id="span-ascii" class="code-grey"><code>+----------------------------------+
 |SPAN Semi-supervised Peak Analyzer|
 +----------------------------|/----+
            ,        ,
@@ -89,25 +89,37 @@
     <table class="table table-bordered table-nonfluid">
         <tbody>
         <tr>
-            <th>Example of regular peak calling</th>
-            <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t
-                ChIP.bam -c Control.bam
-                --cs
-                Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-o Peaks.bed</code></td>
+            <th>Example of regular peak calling
+                <button class="clipboard-btn" data-clipboard-target="#spanCodePeakCalling">
+                    <i class="fas fa-clipboard"></i>
+                </button>
+            </th>
+            <td class="code-grey">
+                <code style="color:black" id="spanCodePeakCalling">
+                    java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs Chrom.sizes \<br>
+                    &nbsp;&nbsp;&nbsp;-o Peaks.bed
+                </code>
+            </td>
         </tr>
         <tr>
-            <th>Example of supervised peak calling</th>
-            <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t
-                ChIP.bam -c Control.bam
-                --cs
-                Chrom.sizes \<br>&nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
+            <th>Example of supervised peak calling
+                <button class="clipboard-btn" data-clipboard-target="#spanCodePeakCallingSupervised">
+                    <i class="fas fa-clipboard"></i>
+                </button>
+            </th>
+            <td class="code-grey"><code style="color:black" id="spanCodePeakCallingSupervised">
+                java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs Chrom.sizes \<br>
+                &nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
         </tr>
         <tr>
-            <th>Example of model fitting</th>
-            <td class="code-grey"><code style="color:black">java -Xmx4G -jar span.jar analyze -t
-                ChIP.bam -c Control.bam
-                --cs
-                Chrom.sizes</code></td>
+            <th>Example of model fitting
+                <button class="clipboard-btn" data-clipboard-target="#spanCodeModelFitting">
+                    <i class="fas fa-clipboard"></i>
+                </button>
+            </th>
+            <td class="code-grey"><code style="color:black" id="spanCodeModelFitting">
+                java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs Chrom.sizes
+            </code></td>
         </tr>
         </tbody>
     </table>
@@ -251,48 +263,48 @@
 </a>
 
 <a id="span-output-files">
-<h2>Output files</h2>
-<ul>
-    <li> If <code class="code-grey">OUTPUT</code> file is given, it will contain predicted and
-        FDR-controlled peaks in
-        the ENCODE <a href="https://genome.ucsc.edu/FAQ/FAQformat.html#format13">broadPeak</a><sup>*</sup>
-        format, i.e. BED 6+3:
-        <br/>
-        <code class="code-line">&lt;chromosome&gt; &lt;peak start&gt; &lt;peak end&gt; &lt;peak
-            name&gt; &lt;score&gt; . &lt;coverage / foldchange&gt; &lt;-log p-value&gt; &lt;-log
-            Q-value&gt;
-        </code>
-        <blockquote>
-            <ul>
-                <li>chromosome name</li>
-                <li>start position of peak</li>
-                <li>end position of peak</li>
-                <li>peak name</li>
-                <li>score of the peak, computed as log10(qvalue) * log(peak length). Useful for
-                    peak ranking with wide
-                    histone modifications.
-                </li>
-                <li>. (represents strand)</li>
-                <li>summary reads coverage in peak averaged over replicates. fold-change in
-                    differential mode.
-                </li>
-                <li>-log10(pvalue) of null-hypothesis that given peak is in <code>ZERO</code> or
-                    <code>LOW</code> state.
-                </li>
-                <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure.
-                    Median value for merged
-                    peak.
-                </li>
-            </ul>
-        </blockquote>
-        <small><sup>*</sup>Same format is used by <a
-                href="https://github.com/taoliu/MACS">MACS2</a> peak caller.
-        </small>
-    </li>
-    <li>In case of <code>SPAN</code> model fitting, it produces model file in binary format.
-        <br> NOTE: after model is trained once, it will be reused automatically in other modes.
-    </li>
-</ul>
+    <h2>Output files</h2>
+    <ul>
+        <li> If <code class="code-grey">OUTPUT</code> file is given, it will contain predicted and
+            FDR-controlled peaks in
+            the ENCODE <a href="https://genome.ucsc.edu/FAQ/FAQformat.html#format13">broadPeak</a><sup>*</sup>
+            format, i.e. BED 6+3:
+            <br/>
+            <code class="code-line">&lt;chromosome&gt; &lt;peak start&gt; &lt;peak end&gt; &lt;peak
+                name&gt; &lt;score&gt; . &lt;coverage / foldchange&gt; &lt;-log p-value&gt; &lt;-log
+                Q-value&gt;
+            </code>
+            <blockquote>
+                <ul>
+                    <li>chromosome name</li>
+                    <li>start position of peak</li>
+                    <li>end position of peak</li>
+                    <li>peak name</li>
+                    <li>score of the peak, computed as log10(qvalue) * log(peak length). Useful for
+                        peak ranking with wide
+                        histone modifications.
+                    </li>
+                    <li>. (represents strand)</li>
+                    <li>summary reads coverage in peak averaged over replicates. fold-change in
+                        differential mode.
+                    </li>
+                    <li>-log10(pvalue) of null-hypothesis that given peak is in <code>ZERO</code> or
+                        <code>LOW</code> state.
+                    </li>
+                    <li>-log10(qvalue), calculated from p-values using Benjamini-Hochberg procedure.
+                        Median value for merged
+                        peak.
+                    </li>
+                </ul>
+            </blockquote>
+            <small><sup>*</sup>Same format is used by <a
+                    href="https://github.com/taoliu/MACS">MACS2</a> peak caller.
+            </small>
+        </li>
+        <li>In case of <code>SPAN</code> model fitting, it produces model file in binary format.
+            <br> NOTE: after model is trained once, it will be reused automatically in other modes.
+        </li>
+    </ul>
 </a>
 
 <a id="span-study-cases">
