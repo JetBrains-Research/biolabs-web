@@ -85,11 +85,11 @@
             <b>BAM</b> (or <b>BED</b> / <b>BED.gz</b>) reads coverage files for further processing
             with SPAN.
         </li>
-        <li><b>BIGWIG</b> files for visualization in JBR browser.
+        <li><b>BigWig</b> files for visualization in JBR browser.
             <br/>
-            You can convert BAM / BED signal tracks to BIGWIG using bedtools, samtools and
+            You can convert BAM / BED signal tracks to bigWig using bedtools, samtools and
             bedGraphToBigWig utilities.
-            Or you may use deduplicated reads coverage BIGWIG tracks produced by SPAN as
+            Or you may use deduplicated reads coverage bigWig tracks produced by SPAN as
             approximation
             for
             Chip-Seq reads coverage tracks.
@@ -261,7 +261,7 @@ analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes 
     <p>
         Processed read coverage is deduplicated read starts shifted by half fragment size and
         summarized for bins of given size. For visualization purposes you may consider using SPAN
-        coverage BIGWIG tracks instead of reads coverage bigwig tracks. The tracks are different,
+        coverage bigWig tracks instead of reads coverage bigWig tracks. The tracks are different,
         but
         different isn't very significant for visualization. E.g. at the figure below
         blue tracks are ULI ChIP-Seq reads coverage build from *.bam files; green tracks are
