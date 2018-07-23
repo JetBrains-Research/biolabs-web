@@ -90,10 +90,10 @@ def generate_explore_chipseq_page(page):
     def create_tr_session(hist):
         return '<tr>' + \
                '<th>{}</th>'.format(hist) + \
-               ('<td class="text-center"><a href="{}" title="Basic IGV/JBR session file">Xml</a>'
+               ('<td class="text-center"><a href="{}" title="Basic IGV/JBR session file">xml</a>'
                 '</td>').format(BASIC_IGV_SESSION_PATH.format(hist)) + \
                ('<td class="text-center"><a href="{}" title="Extended IGV/JBR session file">'
-                'Xml</a></td>').format(EXTENDED_IGV_SESSION_PATH.format(hist)) + \
+                'xml</a></td>').format(EXTENDED_IGV_SESSION_PATH.format(hist)) + \
                '</tr>'
 
     with open(OUT_FOLDER + '/' + page, 'w') as file:
@@ -232,11 +232,11 @@ def generate_study_cases_page(page):
                '<th>{}</th>'.format(name[0]) + \
                (('<td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
                 '{0}</a></td>').format(GSM_HIST_MAP[name[0]]) if gsm else '') + \
-               ('<td class="text-center"><a href="{}" title="IGV/JBR session file">Xml</a>'
+               ('<td class="text-center"><a href="{}" title="IGV/JBR session file">xml</a>'
                 '</td>').format(igv_session_path.format(name[1])) + \
                ('<td class="text-center"><a href="{}" title="UCSC custom tracks session">'
                 'Session</a>&nbsp;&sol;&nbsp;'
-                '<a href="{}" title="UCSC custom tracks session file">Txt</a></td>').format(
+                '<a href="{}" title="UCSC custom tracks session file">txt</a></td>').format(
                    ucsc_session_path.format(name[0]), ucsc_session_txt_path.format(name[1])) + \
                '</tr>'
     with open(OUT_FOLDER + '/' + page, 'w') as file:
