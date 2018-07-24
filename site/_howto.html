@@ -6,21 +6,21 @@
 <div>
     <p>This tutorial demonstrates all steps of <a href="tools.html">Peak Calling Solution</a> which
         was successfully applied to data analysis in <a href="index.html">Multiomics dissection of
-            healthy human aging</a> project. The solution is semi-supervised algorithm consisted of
-        three steps: fit unsupervised SPAN model for ChIP-Seq or ULI ChIP-Seq tracks; annotate at
-        least 40 peaks in <a href="jbr.html">JBR Genome Browser</a>; tune model to find best
+            healthy human aging</a> project. The solution is a semi-supervised algorithm that consists of
+        three steps: fit unsupervised SPAN model for ChIP-seq or ULI-ChIP-seq tracks; annotate at
+        least 40 peaks in <a href="jbr.html">JBR Genome Browser</a>; tune model to find the best set of
         parameters matching given annotations from previous step and use them for peak calling.
     </p>
     <p>
         We recommend to complete this tutorial step by step without skipping any parts. All
         necessary tools and data files will be available to download and links will be given in
         <a href="#howto-prerequisites">Prerequisites</a> section and further in text
-        where you will need them.
+        when you will need them.
     </p>
     <p>
-        As an example let's consider 3 ULI Chip-Seq tracks from <a href="index.html">Multiomics
+        As an example let's consider three ULI-ChIP-seq tracks from <a href="index.html">Multiomics
         dissection of healthy human aging</a> experiment (OD7, OD8,
-        OD17) aligned for reference genome is hg19 (GRCh37).
+        OD17) aligned to the reference genome build <b>hg19</b> (GRCh37).
     </p>
 </div>
 
@@ -31,14 +31,14 @@
             will need for this tutorial.
         </li>
         <li><a href="#howto-span-model-fitting">SPAN Model Fitting</a>: Fit unsupervised model for further
-            peak calling
+            peak calling.
         </li>
-        <li><a href="#howto-loading-data">Loading Data Into JBR</a>: Visualize ChIP-Seq
-            data in JBR Genome Browser
+        <li><a href="#howto-loading-data">Loading Data Into JBR</a>: Visualize ChIP-seq
+            data in JBR Genome Browser.
         </li>
         <li>
-            <a href="#howto-annotating-peaks">Annotating Peaks in JBR</a>: Annotate ChIP-Seq
-            signal tracks for models parameters tuning
+            <a href="#howto-annotating-peaks">Annotating Peaks in JBR</a>: Annotate ChIP-seq
+            signal tracks for model parameters tuning.
             <ul>
                 <li><a href="#howto-annotating-peaks-zoom-level">Zoom Level</a></li>
                 <li><a href="#howto-annotating-peaks-label-types">Label Types</a></li>
@@ -50,15 +50,15 @@
         </li>
         <li>
             <a href="#howto-semi-supervised-peak-calling">Semi-Supervised Peak Caller Tuning</a>: Learn how to use
-            annotations to find best model parameters
+            annotations to find best model parameters.
             <ul>
                 <li><a href="#howto-semi-supervised-peak-calling-jbr">Peak Calling In JBR</a></li>
             </ul>
         </li>
 
-        <li><a href="#howto-anns-fine-tuning">Annotations fine tuning</a>: Example how to improve
-            annotations to get better peak calling results especially for tracks with low
-            signal to noise ratio
+        <li><a href="#howto-anns-fine-tuning">Annotations Fine Tuning</a>: Example how to improve
+            annotations to get better peak calling results, especially for the tracks with low
+            signal-to-noise ratio.
         </li>
     </ul>
 </div>
@@ -82,17 +82,16 @@
         data, you need to prepare ChIP-seq signal tracks as:
     <ul>
         <li>
-            <b>BAM</b> (or <b>BED</b> / <b>BED.gz</b>) reads coverage files for further processing
+            <b>BAM</b>, <b>BED</b>, <b>BED.GZ</b> or <b>bigWig</b> reads coverage files for further processing
             with SPAN.
         </li>
         <li><b>BigWig</b> files for visualization in JBR browser.
             <br/>
             You can convert BAM / BED signal tracks to bigWig using bedtools, samtools and
-            bedGraphToBigWig utilities.
-            Or you may use deduplicated reads coverage bigWig tracks produced by SPAN as
-            approximation
-            for
-            Chip-Seq reads coverage tracks.
+            bedGraphToBigWig utilities,
+            <br/>
+            or you may use deduplicated reads coverage bigWig tracks produced by SPAN for storing
+            the ChIP-seq reads coverage data.
         </li>
     </ul>
     </p>
@@ -103,17 +102,15 @@
     <p>
         First we need to fit our unsupervised peak calling algorithm and generate <a
             href="span.html">SPAN</a>
-        models. Model fitting is a time consuming operation but it is performed only once for each
-        ChIP-Seq track and could be done in parallel using computational cluster. Model fitting for
-        each track from this tutorial takes about 50 minutes on a machine with 4 CPU cores and 4 GB
-        RAM memory.
+        models. Model fitting is a time-consuming operation, but it must be performed only once for each
+        ChIP-seq track and could be done in parallel using computational cluster. Model fitting for
+        each track from this tutorial takes about 50 minutes on a machine with four CPU cores and 4GB RAM.
         <br/>
-        Fit model doesn't contain peaks but further peak calling will be rather fast - about 1 sec
-        for
-        given model parameters.
+        Fitted model doesn't contain peaks, but further peak calling will be rather fast, about one second
+        for given model parameters.
     </p>
     <p>
-        You may skip this model fitting step and download already fit SPAN models for this
+        You may skip this model fitting step and download fitted SPAN models for this
         tutorial:
     </p>
     <ul>
@@ -133,7 +130,7 @@
             </a>
         </li>
     </ul>
-    <p>In order to fit models download reads and chromosome sizes data:</p>
+    <p>In order to fit the models download reads and chromosome sizes data:</p>
     <ul>
         <li>
             OD7: <a
@@ -160,7 +157,7 @@
         </a>
         </li>
         <li>
-            hg19 chromosomes size annotations: <a
+            <b>hg19</b> chromosomes size annotations: <a
                 href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.chrom.sizes">
             hg19.chrom.sizes
         </a>
@@ -169,7 +166,7 @@
     <p>
         Run <a href="span.html#span-usage">SPAN</a> locally or on your computational cluster. If
         your
-        run SPAN on multiprocessor machine configure parallelism level for better performance using
+        run SPAN on a multiprocessor machine configure parallelism level for better performance using
         <code class="code-grey">--threads</code> option:
     </p>
 
@@ -248,7 +245,7 @@ analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes 
 [Jul 3, 2018 12:31:52] Model saved: /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200_unique.span</code>
 </pre>
 
-    <p> Working directory contains folders with processed coverage tracks, fit model and logs:</p>
+    <p> Working directory contains folders with processed coverage tracks, fitted model and logs:</p>
     <pre class="code-block">
 <code>./cache/coverage/input_200_unique#1f244.bw
 ./cache/coverage/OD7_k4me1_hg19_200_unique#d0a4d.bw
@@ -261,10 +258,11 @@ analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes 
     <p>
         Processed read coverage is deduplicated read starts shifted by half fragment size and
         summarized for bins of given size. For visualization purposes you may consider using SPAN
-        coverage bigWig tracks instead of reads coverage bigWig tracks. The tracks are different,
-        but
-        different isn't very significant for visualization. E.g. at the figure below
-        blue tracks are ULI ChIP-Seq reads coverage build from *.bam files; green tracks are
+        coverage bigWig tracks (found in the working directory under
+        <code class="code-grey">./cache/coverage/*.bw</code>)
+        instead of reads coverage bigWig tracks. The tracks are slightly different,
+        but the difference isn't very significant for visualization. For instance, the figure below
+        shows ULI-ChIP-Seq reads coverage built from *.bam files as blue tracks, while the green tracks are
         deduplicated coverage tracks produced by SPAN at the previous step. Shown region is
         <code>chr1:90,230,549-90,366,053</code>.
         <img src="jbr_signal_vs_span_coverage.png"
@@ -275,16 +273,16 @@ analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes 
 <h2 id="howto-loading-data">Loading Data Into JBR Genome Browser</h2>
 <div>
     <p>
-        Launch <a href="jbr.html#jbr-installation">JBR</a> Genome Browser. By default it opens new
-        session for latest used genome. If current session isn't <b>hg19</b> then create new
-        hg19 session using <code class="code-menu-action">File | New Session...</code>
+        Launch <a href="jbr.html#jbr-installation">JBR</a> Genome Browser. By default, it opens a new
+        session for the latest used genome. If your current session isn't <b>hg19</b>, create a new
+        <b>hg19</b> session using <code class="code-menu-action">File | New Session...</code>
     </p>
     <img src="jbr_window.png" style="height: 100%; width: 100%; object-fit: contain"/>
 
-    <p>To import track open <code class="code-menu-action">File | Load URL(s)...</code> action:</p>
+    <p>To import track use <code class="code-menu-action">File | Load URL(s)...</code> menu action:</p>
     <img src="jbr_load_url_action.png" style="height: 50%; width: 50%; object-fit: contain"/>
 
-    <p>Copy the urls below:</p>
+    <p>Copy the URLs below:</p>
     <div>
         <button class="clipboard-btn" data-clipboard-target="#jbrSessionText">
             <i class="fas fa-clipboard"></i>
@@ -298,7 +296,7 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
     <p>And paste to the dialog:</p>
     <img src="jbr_load_urls_dialog.png" style="height: 100%; width: 100%; object-fit: contain"/>
 
-    <p>Now let's explore data e.g. zoom track and open location: </p>
+    <p>Now let's explore data. For example, you can zoom in or open a specific location: </p>
     <div>
         <button class="clipboard-btn" data-clipboard-target="#jbrLocus1">
             <i class="fas fa-clipboard"></i>
@@ -316,8 +314,8 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
     <a id="howto-annotating-peaks-zoom-level">
         <h4 >Zoom Level</h4>
         <p>
-            First select appropriate zoom level to make separate peaks distinguishable from
-            background. E.g. open:
+            First select an appropriate zoom level to make separate peaks distinguishable from
+            background. For instance, open the following location:
         </p>
         <div>
             <button class="clipboard-btn" data-clipboard-target="#jbrLocus2">
@@ -335,20 +333,19 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
             <li>Size of nearest gene : H3K36me3</li>
         </ul>
         <p>
-            By default each track is auto-scaled to min and max values in visible area. If you open
-            location without peaks noise will be auto-scaled and you may see something like peak
-            there.
+            By default each track is auto-scaled to min and max values in visible area. If you view
+            a location without any peaks, the always-present noise will be auto-scaled up and
+            may start to look like peaks.
             That is why we recommend you not to change zoom level while annotating peaks.
             Optionally you may turn off auto-scale mode for each tack (select <code
                 class="code-menu-action">Scales Min...</code> and <code class="code-menu-action">Scales Max...</code> from track context
-            menu and set some custom
-            values).
+            menu and set some custom values).
         </p>
     </a>
 
     <a id="howto-annotating-peaks-label-types">
         <h4>Label Types</h4>
-        <p>Four labels types are supported:</p>
+        <p>Four label types are supported:</p>
         <ul>
             <li><span style="color:darkviolet"><b>peaks</b></span> : there is at least one peak in
                 the labeled area
@@ -369,52 +366,54 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
         </ul>
         <img src="jbr_ann_labels_types.png"
              style="height: 100%; width: 100%; object-fit: contain"/>
-        <p>Annotations <span style="color:forestgreen"><b>peakStart</b></span> and <span
-                style="color:crimson"><b>peakEnd</b></span> are not paired and may describe different peaks.</p>
+        <p><span style="color:forestgreen"><b>peakStart</b></span> and <span
+                style="color:crimson"><b>peakEnd</b></span> annotations are not paired and may refer to different peaks.</p>
     </a>
 
     <a id="howto-annotating-peaks-adding-annotations">
         <h4>Adding Annotations</h4>
         <p>
-            Turn on peak annotations mode using JBR main menu <code class="code-menu-action">Annotate
+            Turn on peak annotations mode using JBR main menu action <code class="code-menu-action">Annotate
             | Peaks Annotation Mode</code> or using toggle button:
         </p>
         <img src="jbr_ann_peak_ann_toggle.png"
              style="height: 100%; width: 100%; object-fit: contain"/>
 
         <p>
-            To add annotation first select region:
+            To add an annotation, first select region:
         </p>
         <ul>
-            <li>Move mouse cursor into any track</li>
+            <li>Move cursor into any track</li>
             <li>Press and hold SHIFT key + click and hold left mouse button + move mouse</li>
-            <li>Release shift key and mouse button</li>
+            <li>Release SHIFT key and mouse button</li>
         </ul>
-        <p> Then set annotation type:</p>
+        <p> Then set the annotation type:</p>
         <ul>
-            <li>Mouse click on one of 4 label buttons or press <code class="code-grey">s</code>/<code class="code-grey">e</code>/<code class="code-grey">n</code>/<code class="code-grey">p</code> key on keyboard</li>
+            <li>Click on one of four label buttons or press
+                <code class="code-grey">s</code>/<code class="code-grey">e</code>/<code class="code-grey">n</code>/<code class="code-grey">p</code>
+                key on keyboard</li>
             <li>To clear highlighting press <code class="code-grey">ESC</code></li>
         </ul>
         <img src="jbr_ann_labels_markup_example.png"
              style="height: 100%; width: 100%; object-fit: contain"/>
-        <p>Add several annotation, scroll track left or right, add more annotations.</p>
-        <p> Each annotation has context menu which allows to delete, change annotation type or
-            highlight the
-            annotation:
+        <p>Add several annotations, scroll track left or right, add more annotations.</p>
+        <p> Each annotated region provides a context menu which allows to delete it, change annotation type or
+            highlight the annotation:
         </p>
         <img src="jbr_ann_context_menu.png" style="height: 50%; width: 50%"/>
 
         <p>
-        Now please read <a href="#howto-annotating-peaks-labeling-recommendations">Labeling
-        Recommendations</a> in a section below and label at least 10 annotations of each type.
+        Now that you are familiar with the procedure,
+        please read <a href="#howto-annotating-peaks-labeling-recommendations">Labeling
+        Recommendations</a> section below and create at least 10 annotations of each type.
         </p>
         <img src="jbr_ann_10_done.png" style="height: 100%; width: 100%"/>
 
         <p>
-            If you close JBR Genome Browser annotations will be lost so we recommend to
-            export them to a BED file: press <code
+            If you close JBR Genome Browser annotations will be lost, thus we recommend
+            exporting them to a BED file: press <code
                 class="code-menu-action">Export</code> button or select <code
-                class="code-menu-action">Annotate | Export Annotations...</code> in main menu.
+                class="code-menu-action">Annotate | Export Annotations...</code> in the main menu.
         </p>
     </a>
 
@@ -423,28 +422,28 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
 
         <ul>
             <li>Add the same number of annotations for each label type.</li>
-            <li>Add at lest 10 annotations of each type. Current annotations number is shown on
-                labeling
-                buttons.
+            <li>Add at least 10 annotations of each type. Current annotations number is shown on
+                labeling buttons.
             </li>
-            <li>Not be confused by peak start and end annotations. It isn't supposed that two closely
-                located annotations describe characteristics of the same peak. Space between peak
-                start and end annotations may be interpreted as series of short peaks. If you
-                leave minimal gap between peak start and end annotations this will help to call
-                only one peak instead of several short ones.
-            </li>
-            <li>
-                If you not sure whether you see single long peak or several short peaks it is
-                better to label it using peaks annotation. As an alternative you may use short
-                peak start and peak end annotations to mark start/end of possible first/last short
-                peak.
+            <li>Keep in mind that <span style="color:forestgreen"><b>peakStart</b></span> and <span style="color:crimson"><b>peakEnd</b></span>
+                annotations are not supposed to describe the same peak. However, if you
+                leave only a minimal gap between adjacent <span style="color:forestgreen"><b>peakStart</b></span> and
+                <span style="color:crimson"><b>peakEnd</b></span> annotations, this will help to call
+                only one peak in the area instead of several short ones.
             </li>
             <li>
-                Do not put annotations if your are not sure - choose another location.
+                If you not sure whether you see a single long peak or several short peaks, it's
+                better to label the region using the <span style="color:darkviolet"><b>peaks</b></span> annotation.
+                Alternatively, use short <span style="color:forestgreen"><b>peakStart</b></span> and
+                <span style="color:crimson"><b>peakEnd</b></span> annotations to mark the start/end
+                of a possible first/last short peak.
             </li>
             <li>
-                In case of noisy data you may need more annotations. First try recommended
-                minimal number of annotations and add more if you aren't satisfied with peak
+                Do not create annotations if you're not sure about them - just choose another location.
+            </li>
+            <li>
+                In the case of noisy data you might need more annotations. First try the recommended
+                minimal number of annotations, then add more if you're not satisfied with the peak
                 calling results.
             </li>
         </ul>
@@ -456,80 +455,81 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
 <a id="howto-semi-supervised-peak-calling">
     <h2>Semi-Supervised Peak Caller Tuning</h2>
     <p>
-        Semi-Supervised peak caller tuning means that best SPAN peak calling parameters are
-        chosen in order to get peaks consistent with given peaks annotations. In this
+        Semi-supervised peak caller tuning means that SPAN peak calling parameters are
+        chosen so that the peaks called are maximally consistent with provided peaks annotations. In this
         section we will use <code class="code-grey">peak calling</code> term for peak caller
-        parameters tuning followed by peak calling with optimal parameters.
+        parameters tuning followed by peak calling with the optimal parameters.
         <br/>
-        After you've got peaks annotations you can tune peak calling parameters and call peaks
-        using two scenarios:
+        Once you've got peak annotations, you can tune peak calling parameters and call peaks
+        using one of the two scenarios:
     </p>
     <ul>
         <li>Using JBR Genome Browser.</li>
-        <li>In command line using SPAN.</li>
+        <li>Using SPAN command line interface.</li>
     </ul>
     <p>
         Peak calling in JBR Genome Browser allows you to get faster feedback because peaks
-        will be immediately visualized after tuning. In case of noisy ChIP-Seq data
-        or inaccurate labeling you may add/change annotations and rerun tuning procedure to
+        will be immediately visualized after tuning. In the case of noisy ChIP-seq data
+        or inaccurate labeling you may immediately add or edit the annotations and
+        rerun the tuning procedure to hopefully
         get better results. The tuning procedure and further peak calling takes about
-        1 minute for each track if SPAN models have been already fit. Also you can manually
-        change SPAN parameters (FDR and GAP) from track control menu to see how it affects
-        peak calling.
+        one minute for each track if SPAN models have been already fitted. Also you can manually
+        change SPAN parameters (FDR and GAP) from the track control menu to see how it affects
+        called peaks.
     </p>
     <p>
-        Tuning in cmdline could be convenient if you are sure in your annotations and you
-        need to rerun your processing pipeline. SPAN does tuning if
+        Tuning via command line could be convenient if you are sure of your annotations and you
+        need to rerun your processing pipeline. SPAN does tuning when
         <code class="code-grey" >--labels</code> and <code class="code-grey" >--output</code>
-        options are specified. Also you can pass these options while fitting model, SPAN will
-        do tuning after model fitting.
+        options are specified. You can also pass these options while fitting the model, SPAN will
+        proceed with the tuning immediately after fitting.
     </p>
 
     <a id="howto-semi-supervised-peak-calling-jbr">
         <h4>Peak Calling In JBR Genome Browser</h4>
         <p>
-            Please ensure that you've already downloaded or fit SPAN models (see <a
+            Please ensure that you've already downloaded or fitted SPAN models (see <a
                 href="howto.html#howto-span-model-fitting">SPAN Model Fitting</a> section), enabled
             <code class="code-menu-action">Annotate | Peaks Annotation Mode</code> toggle and
             annotated at least 10 peaks of each type in JBR (see <a
                 href="howto.html#howto-annotating-peaks">Annotating
-            Peaks in JBR</a> section). If you have got a file with annotations you can import
-            it instead of manual peak annotating, see <code class="code-menu-action">Annotate | Import
-            Annotations...</code> action.
+            Peaks in JBR</a> section). If you've got a BED file with annotations, you can import
+            it using <code class="code-menu-action">Annotate | Import
+            Annotations...</code> menu action instead of annotating peaks manually.
         </p>
-        <p><b>SPAN Models Loading</b></p>
+        <p><b>Loading SPAN Models</b></p>
         <p>
-            Load SPAN models generated in <a href="#howto-span-model-fitting">SPAN Models
+            Load SPAN models generated during <a href="#howto-span-model-fitting">SPAN Models
             Fitting</a> step using JBR main menu <code class="code-menu-action">File | Load SPAN
-            model...</code> action. While importing SPAN models JBR does peak calling with default
-            SPAN parametes (FDR 1.0E-6, GAP 5). Optionally reorder tracks: select track; hold
+            model...</code> action. While importing SPAN models, JBR does preliminary peak calling with default
+            SPAN parametes (<code>FDR=1.0E-6, GAP=5</code>). Reorder the tracks as needed: select a track; hold
             <code class="code-grey">Alt</code> (MacOS: <code class="code-grey">Option</code>) key
             and press <code class="code-grey">up</code>/<code class="code-grey">down</code> arrow
-            key to move track.
+            key to move the track up or down.
         </p>
         <img src="jbr_span_models_defaults.png"
              style="height: 100%; width: 100%; object-fit: contain"/>
 
         <p><b>Parameters Tuning</b></p>
         <p>
-            Next step is to tune peak calling parameters using peak annotations from
+            The next step is to tune the peak calling parameters using peak annotations from
             <a href="#howto-annotating-peaks">Annotating Peaks in JBR</a> step. To tune all SPAN
-            models loaded in JBR select in main menu <code class="code-menu-action">Annotate | Tune
-            SPAN models...</code>. To tune only selected SPAN model track(s) chose
+            models loaded in JBR, select <code class="code-menu-action">Annotate | Tune
+            SPAN models...</code> action from the main menu. To tune only selected SPAN model track(s), choose
             <code class="code-menu-action">Tune SPAN model</code> from context menu.
             <br/>
-            Tuning takes about 1 minute per each model.</p>
+            Tuning takes about one minute per model track.</p>
         <img src="jbr_span_models_tuning_result.png"
                  style="height: 100%; width: 100%; object-fit: contain"/>
 
-        In <a href="index.html">Multiomics dissection of healthy human aging</a>  project peak
-        calling tuning helped us to get more consistent peak calling for our ULI ChIP-Seq
-        data and rescue some tracks which were considered as failed using other peak callers.
+        In <a href="index.html">Multiomics dissection of healthy human aging</a>  project this peak
+        calling tuning helped us to get more consistent peaks for our ULI-ChIP-seq
+        data and rescue some of the tracks which appeared failed when using other peak callers.
 
         <p><b>Peaks Export</b></p>
         <p>
-            To export peaks for all loaded SPAN model tracks select in main menu
-            <code class="code-menu-action">Annotate | Export SPAN Peaks...</code> and select
+            To export peaks for all loaded SPAN model tracks, select
+            <code class="code-menu-action">Annotate | Export SPAN Peaks...</code> action from the main menu and choose the
             target directory.
         </p>
             <img src="jbr_span_models_tuning_export_dialog.png"
@@ -537,8 +537,8 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
             <img src="jbr_span_models_tuning_export_results.png"
                      style="height: 100%; width: 100%; object-fit: contain"/>
        <p>
-           As an alternative you can export peaks only for selected track(s): choose
-           <code class="code-menu-action">Export SPAN model peaks...</code> from context menu.
+           Alternatively, you can export peaks for selected track(s) only: choose
+           <code class="code-menu-action">Export SPAN model peaks...</code> from the context menu.
         </p>
             <img src="jbr_span_models_tuning_context_menu_export_peaks.png"
                      style="height: 50%; width: 50%; object-fit: contain"/>
@@ -547,19 +547,19 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
 </a>
 
 <a id="howto-anns-fine-tuning">
-    <h2>Annotations fine tuning</h2>
+    <h2>Annotations Fine Tuning</h2>
     <p>
-        In case of low quality tracks it could be difficult to separate signal from background
-        using minimal annotations number. You may need iteratively update annotations to improve
-        peak calling results.
+        In the case of low quality tracks the signal can be difficult to separate from the background
+        using just the minimal annotations number. You may need iteratively update annotations to improve
+        the peak calling results.
     </p>
     <p>
-        For this tutorial we selected tracks with different signal to noise ratio. OD7 has the
-        worst one, OD17 is better, OD8 has best signal to noise ratio among these 3 tracks. On
-        the picture below we show two peak calling results for each
-        track. Red peaks called with <span style="color:crimson"><b>default</b></span> parameters,
-        <span style="color:#fea23b"><b>orange</b></span> with parameters tuned on 40 labels made
-        for this tutorial.
+        For this tutorial we selected tracks with different signal-to-noise ratios. OD7 has the
+        worst one, OD17 is better, OD8 has best signal-to-noise ratio of all three.
+        The picture below shows two peak calling results for each
+        track. <span style="color:crimson"><b>Red peaks</b></span> were called with <span style="color:crimson"><b>default</b></span> parameters,
+        <span style="color:#fea23b"><b>orange peaks</b></span> were called after <span style="color:#fea23b"><b>tuning</b></span>
+        the parameters on the 40 labels made for this tutorial.
     </p>
     <img src="jbr_span_peaks_default_vs_tuned.png"
          style="height: 100%; width: 100%; object-fit: contain"/>
@@ -568,27 +568,27 @@ http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/Y20O20/bi
         You may notice that the tuning procedure improves peak calling for OD7 compared to
         default settings but it merges neighbour peaks in OD8, OD17, e.g. see at
         <code class="code-grey">peak_678</code> in OD17. Let's update
-        annotations to force split peak. For this just make shorter
-        <code class="code-grey">peakStart</code> annotation from the screenshot and insert two new
-        <code class="code-grey">peakEnd</code> <code class="code-grey">peakStart</code>
-        labels. After we've rerun tuning for with updated annotations we will get:
+        annotations to encourage peak splitting. To this end, just make
+        <code class="code-grey">peakStart</code> annotation from the screenshot shorter and create two new
+        <code class="code-grey">peakEnd</code> and <code class="code-grey">peakStart</code>
+        labels. When we rerun tuning with updated annotations, we'll get:
     </p>
     <img src="jbr_span_peaks_default_vs_tuned_improved.png"
          style="height: 100%; width: 100%; object-fit: contain"/>
     <p>
-        New peaks generated by updated annotations highlighted with <span
-            style="color:#000080"><b>blue</b></span> color. You can notice that <code
-            class="code-grey">peak_678</code> is split
-        in two peaks as desired and also <code class="code-grey">peak_680</code> on the right is
-        also split in several short peaks. OD8 and OD17 peaks are pretty consistent and OD7 is
-        also close to them.
+        New peaks generated by <span
+            style="color:#000080"><b>updated annotations</b></span> are displayed in <span
+            style="color:#000080"><b>blue</b></span>. You can notice that <code
+            class="code-grey">peak_678</code> is now split
+        in two peaks as desired, and <code class="code-grey">peak_680</code> on the right is
+        also split in several short peaks. OD8 and OD17 peaks are pretty consistent, and OD7 is
+        fairly close to them.
     </p>
     <p>
         You may notice that <code class="code-grey">peak_508</code> in OD7 wasn't split in two
-        small peaks in spite of updated annotations. It is because the tuning procedure choose
-        parameters set to call peaks as close to given annotations as possible but cannot guarantee
-        full match. You may check annotations mismatches using
-        <code class="code-menu-action">About Track</code> action in context menu.
+        shorter peaks in spite of updated annotations. That's because the tuning procedure tries to call peaks as close
+        to given annotations as possible but cannot guarantee a full match. You may check annotation mismatches using
+        <code class="code-menu-action">About Track</code> action in the context menu.
     </p>
 
      <img src="jbr_span_models_about_action.png"
@@ -618,7 +618,7 @@ Peaks Statistics:
     Peak end error: 25% (3/12)</code></pre>
 
     <p>
-        Error rate for tracks with better signal to noise ratio is better:
+        Error rate for tracks with a better signal-to-noise ratio is smaller:
     </p>
     <pre class="code-block">
 <code>============ Track (1 / 2): 'OD8 [FDR: 1.0E-6, GAP: 5] improved anns' ============
