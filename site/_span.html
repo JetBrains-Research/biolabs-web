@@ -97,7 +97,7 @@
             <td class="code-grey">
                 <code style="color:black" id="spanCodePeakCalling">
                     java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs Chrom.sizes \<br>
-                    &nbsp;&nbsp;&nbsp;-o Peaks.bed
+                    &nbsp;&nbsp;&nbsp;-p Peaks.bed
                 </code>
             </td>
         </tr>
@@ -109,7 +109,7 @@
             </th>
             <td class="code-grey"><code style="color:black" id="spanCodePeakCallingSupervised">
                 java -Xmx4G -jar span.jar analyze -t ChIP.bam -c Control.bam --cs Chrom.sizes \<br>
-                &nbsp;&nbsp;&nbsp;-l Labels.bed -o Peaks.bed</code></td>
+                &nbsp;&nbsp;&nbsp;-l Labels.bed -p Peaks.bed</code></td>
         </tr>
         <tr>
             <th>Example of model fitting
@@ -166,8 +166,10 @@
             Fragment size used to convert reads into tags. Default value is half the read length.
         </p>
         <p>
-            <strong>-o, --output OUTPUT</strong><br>
-            Resulting BED file. If omitted, only model fitting step is performed.
+            <strong>-p, --peaks PEAKS</strong><br>
+            Resulting peaks file in ENCODE <a
+                href="https://genome.ucsc.edu/FAQ/FAQformat.html#format13">broadPeak</a><sup>*</sup> (BED 6+3) format.
+            If omitted, only model fitting step is performed.
         </p>
         <p>
             <strong>-f, --fdr FDR</strong><br>
