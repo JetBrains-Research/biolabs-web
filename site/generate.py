@@ -146,8 +146,8 @@ def generate_download_data_page(page):
 
 
 def generate_jbr_data(page):
-    build = '1.0.beta.4112'
-    date = 'Jul 7, 2018'
+    build = '1.0.beta.4254'
+    date = 'Sep 11, 2018'
 
     # ---------------
     template = FOLDER + '/_jbr.html'
@@ -195,6 +195,9 @@ def generate_jbr_data(page):
 
 
 def generate_span_data(page):
+    build = '0.7.0.4254'
+    date = 'Sep 11, 2018'
+
     template = FOLDER + '/_span.html'
 
     print('Creating download data page {} by template {}'.format(page, template))
@@ -209,8 +212,6 @@ def generate_span_data(page):
         </tr>
         """.format("span-{0}.jar".format(build))
 
-    build = '0.6.0.4112'
-    date = 'Jul 7, 2018'
     with open(OUT_FOLDER + '/' + page, 'w') as f:
         f.write(template_html.
                 replace('@TABLE@', create_tr(build)).
