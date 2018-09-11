@@ -88,10 +88,10 @@
         <li><b>BigWig</b> files for visualization in JBR browser.
             <br/>
             You can convert BAM / BED signal tracks to bigWig using bedtools, samtools and
-            bedGraphToBigWig utilities,
-            <br/>
-            or you may use deduplicated reads coverage bigWig tracks produced by SPAN for storing
-            the ChIP-seq reads coverage data.
+            bedGraphToBigWig utilities.
+            <!--<br/>-->
+            <!--or you may use deduplicated reads coverage bigWig tracks produced by SPAN for storing-->
+            <!--the ChIP-seq reads coverage data.-->
         </li>
     </ul>
     </p>
@@ -255,19 +255,19 @@ analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes 
     <p>We will use <code class="code-grey">./cache/fit/OD7_k4me1_hg19_input_200_unique.span</code>
         file later for peak calling tuning.
     </p>
-    <p>
-        Processed read coverage is deduplicated read starts shifted by half fragment size and
-        summarized for bins of given size. For visualization purposes you may consider using SPAN
-        coverage bigWig tracks (found in the working directory under
-        <code class="code-grey">./cache/coverage/*.bw</code>)
-        instead of reads coverage bigWig tracks. The tracks are slightly different,
-        but the difference isn't very significant for visualization. For instance, the figure below
-        shows ULI-ChIP-Seq reads coverage built from *.bam files as blue tracks, while the green tracks are
-        deduplicated coverage tracks produced by SPAN at the previous step. Shown region is
-        <code>chr1:90,230,549-90,366,053</code>.
-        <img src="jbr_signal_vs_span_coverage.png"
-             style="height: 100%; width: 100%; object-fit: contain"/>
-    </p>
+    <!--<p>-->
+        <!--Processed read coverage is deduplicated read starts shifted by half fragment size and-->
+        <!--summarized for bins of given size. For visualization purposes you may consider using SPAN-->
+        <!--coverage bigWig tracks (found in the working directory under-->
+        <!--<code class="code-grey">./cache/coverage/*.bw</code>)-->
+        <!--instead of reads coverage bigWig tracks. The tracks are slightly different,-->
+        <!--but the difference isn't very significant for visualization. For instance, the figure below-->
+        <!--shows ULI-ChIP-Seq reads coverage built from *.bam files as blue tracks, while the green tracks are-->
+        <!--deduplicated coverage tracks produced by SPAN at the previous step. Shown region is-->
+        <!--<code>chr1:90,230,549-90,366,053</code>.-->
+        <!--<img src="jbr_signal_vs_span_coverage.png"-->
+             <!--style="height: 100%; width: 100%; object-fit: contain"/>-->
+    <!--</p>-->
 </a>
 
 <h2 id="howto-loading-data">Loading Data Into JBR Genome Browser</h2>
