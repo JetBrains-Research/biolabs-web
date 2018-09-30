@@ -22,7 +22,7 @@ FASTQC_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/c
 PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
              "/Y20O20/peaks/{}/{}"
 SPAN_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                     "/Y20O20/span"
+                   "/Y20O20/span"
 
 BASIC_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
@@ -39,25 +39,24 @@ EXTENDED_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/sup
 EXTENDED_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                             "/chipseq/sessions/Y20O20/{}_aging_session_extended.xml"
 ENCODE_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                         "/sessions/cd14encode/{}_encode_session.xml"
+                          "/sessions/cd14encode/{}_encode_session.xml"
 ENCODE_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
-                          "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
-                          "hgS_otherUserSessionName={}%20Encode"
+                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
+                           "hgS_otherUserSessionName={}%20Encode"
 ENCODE_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
-                              "/chipseq/sessions/cd14encode/{}_encode_session.txt"
+                               "/chipseq/sessions/cd14encode/{}_encode_session.txt"
 ULI_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                         "/sessions/GSE63523/GSE63523_{}.xml"
+                       "/sessions/GSE63523/GSE63523_{}.xml"
 ULI_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&" \
                         "hgS_otherUserName=Biolabs&hgS_otherUserSessionName=GSE63523%20{}"
 ULI_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
-                              "/chipseq/sessions/GSE63523/GSE63523_{}.txt"
+                            "/chipseq/sessions/GSE63523/GSE63523_{}.txt"
 MCGILL_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                         "/sessions/mcgill/mcgill_igv_session{}.xml"
+                          "/sessions/mcgill/mcgill_igv_session{}.xml"
 MCGILL_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit" \
                            "&hgS_otherUserName=Biolabs&hgS_otherUserSessionName={}"
 MCGILL_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
-                              "/chipseq/sessions/mcgill/mcgill_ucsc_session{}.txt"
-
+                               "/chipseq/sessions/mcgill/mcgill_ucsc_session{}.txt"
 
 GSM_URL = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={}"
 
@@ -65,11 +64,11 @@ FOLDER = os.path.dirname(__file__)
 OUT_FOLDER = FOLDER + '/out'
 
 
-def generate_explore_chipseq_page(page):
-    explore_chipseq_template = FOLDER + '/_explore_chipseq.html'
+def generate_explore_page(page):
+    explore_template = FOLDER + '/_explore_data.html'
     print('Creating explore data page {} by template {}'.format(page,
-                                                                explore_chipseq_template))
-    with open(explore_chipseq_template, 'r') as file:
+                                                                explore_template))
+    with open(explore_template, 'r') as file:
         template_html = file.read()
 
     def create_tr_online(hist):
@@ -125,6 +124,7 @@ def generate_download_data_page(page):
                 '<a href="howto.html" title="Visual peak calling how to">' +
                 '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(SPAN_MODELS_PATH) + \
                '</tr>'
+
     table_chipseq = '\n'.join([create_tr_chipseq(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
     def create_tr_encode(hist):
@@ -232,7 +232,7 @@ def generate_study_cases_page(page):
         return '<tr>' + \
                '<th>{}</th>'.format(name[0]) + \
                (('<td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={0}">' +
-                '{0}</a></td>').format(GSM_HIST_MAP[name[0]]) if gsm else '') + \
+                 '{0}</a></td>').format(GSM_HIST_MAP[name[0]]) if gsm else '') + \
                ('<td class="text-center"><a href="{}" title="IGV/JBR session file">xml</a>'
                 '</td>').format(igv_session_path.format(name[1])) + \
                ('<td class="text-center"><a href="{}" title="UCSC custom tracks session">'
@@ -240,21 +240,22 @@ def generate_study_cases_page(page):
                 '<a href="{}" title="UCSC custom tracks session file">txt</a></td>').format(
                    ucsc_session_path.format(name[0]), ucsc_session_txt_path.format(name[1])) + \
                '</tr>'
+
     with open(OUT_FOLDER + '/' + page, 'w') as file:
         file.write(template_html
                    .replace('@ENCODE_TABLE@', '\n'.join([create_tr_session(
-                            (hist, hist), ENCODE_IGV_SESSION_PATH, ENCODE_UCSC_SESSION_PATH,
-                            ENCODE_UCSC_SESSION_TXT_PATH, True)
-                            for hist in sorted(GSM_HIST_MAP.keys())]))
+            (hist, hist), ENCODE_IGV_SESSION_PATH, ENCODE_UCSC_SESSION_PATH,
+            ENCODE_UCSC_SESSION_TXT_PATH, True)
+            for hist in sorted(GSM_HIST_MAP.keys())]))
                    .replace('@ULI_TABLE@', '\n'.join([create_tr_session(
-                            hist, ULI_IGV_SESSION_PATH, ULI_UCSC_SESSION_PATH,
-                            ULI_UCSC_SESSION_TXT_PATH) for hist in [("H3K27me3", "k27me3"),
-                                                                    ("H3K4me3", "k4me3")]]))
+            hist, ULI_IGV_SESSION_PATH, ULI_UCSC_SESSION_PATH,
+            ULI_UCSC_SESSION_TXT_PATH) for hist in [("H3K27me3", "k27me3"),
+                                                    ("H3K4me3", "k4me3")]]))
                    .replace('@MCGILL_TABLE@', '\n'.join([create_tr_session(
-                            name, MCGILL_IGV_SESSION_PATH, MCGILL_UCSC_SESSION_PATH,
-                            MCGILL_UCSC_SESSION_TXT_PATH) for name in
-                            [("McGill", ""),
-                             ("McGill Input", "_input")]]))
+            name, MCGILL_IGV_SESSION_PATH, MCGILL_UCSC_SESSION_PATH,
+            MCGILL_UCSC_SESSION_TXT_PATH) for name in
+            [("McGill", ""),
+             ("McGill Input", "_input")]]))
                    )
 
 
@@ -295,14 +296,12 @@ def _cli():
                   title='Visual peak calling how to', scripts='', content='_howto.html')
     generate_page('team.html',
                   title='Team', scripts='', content='_team.html')
-    generate_page('explore_rnaseq.html',
-                  title='Explore RNA-Seq', scripts='', content='_explore_rnaseq.html')
 
     print('Creating explore data pages')
-    content_page = '_explore_chipseq.html'
-    generate_explore_chipseq_page(content_page)
-    generate_page('explore_chipseq.html',
-                  title='Explore ChIP-Seq', scripts='', content=content_page)
+    content_page = '_explore_data.html'
+    generate_explore_page(content_page)
+    generate_page('explore_data.html',
+                  title='Explore Data', scripts='', content=content_page)
 
     print('Creating download page')
     content_page = '_download_data.html'
