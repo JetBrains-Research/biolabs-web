@@ -22,7 +22,7 @@ FASTQC_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/c
 PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
              "/Y20O20/peaks/{}/{}"
 SPAN_MODELS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
-                   "/Y20O20/span"
+                   "/Y20O20/span/{}"
 
 BASIC_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                           "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
@@ -122,8 +122,8 @@ def generate_download_data_page(page):
                '<td class="text-center"><a href="{}">Labels</a></td>'.format(LABELS_URL.format(hist)) + \
                ('<td class="text-center"><a href="{}">Models</a>&nbsp;' +
                 '<a href="howto.html" title="Visual peak calling how to">' +
-                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(SPAN_MODELS_PATH) + \
-               '</tr>'
+                '<img class="icon-url" src="glyphicons-195-question-sign.png"/></a></td>').format(
+                   SPAN_MODELS_PATH.format(hist)) + '</tr>'
 
     table_chipseq = '\n'.join([create_tr_chipseq(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
