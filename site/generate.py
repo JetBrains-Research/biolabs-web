@@ -195,8 +195,8 @@ def generate_jbr_data(page):
 
 
 def generate_span_data(page):
-    build = '0.7.0.4254'
-    date = 'Sep 11, 2018'
+    build = '0.7.1.4272'
+    date = 'Oct 2, 2018'
 
     template = FOLDER + '/_span.html'
 
