@@ -207,50 +207,57 @@
     <p> SPAN output example: </p>
 
     <pre class="code-block">
-<code>$ java -Xmx4G -jar span-0.6.0.4075.jar analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes --threads 4
-[Jul 3, 2018 11:53:54] SPAN 0.6.0.4075 built on June 26, 2018
-[Jul 3, 2018 11:53:54] COMMAND:
+<code>$ java -Xmx4G -jar span.jar analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes --threads 4
+[Oct 2, 2018 15:41:50] SPAN 0.7.1.4271 built on October 01, 2018
+[Oct 2, 2018 15:41:50] COMMAND:
 analyze -c input.bed.gz -t OD7_k4me1_hg19.bed.gz --chrom.sizes hg19.chrom.sizes --threads 4
-[Jul 3, 2018 11:53:54] LOG: /mnt/stripe/span_demo/logs/OD7_k4me1_hg19_input_200.log
-[Jul 3, 2018 11:53:54] WORKING DIR: /mnt/stripe/span_demo
-[Jul 3, 2018 11:53:54] TREATMENT: /mnt/stripe/span_demo/OD7_k4me1_hg19.bed.gz
-[Jul 3, 2018 11:53:54] CONTROL: /mnt/stripe/span_demo/input.bed.gz
-[Jul 3, 2018 11:53:54] CHROM.SIZES: /mnt/stripe/span_demo/hg19.chrom.sizes
-[Jul 3, 2018 11:53:54] GENOME: hg19
-[Jul 3, 2018 11:53:54] FRAGMENT: null
-[Jul 3, 2018 11:53:54] BIN: 200
-[Jul 3, 2018 11:53:54] NO output path given, process model fitting only.
-[Jul 3, 2018 11:53:54] LABELS, FDR, GAP options are ignored.
-[Jul 3, 2018 11:53:54] THREADS: 4
-[Jul 3, 2018 11:53:54] Model fit: recalculating /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200_unique.span...
-[Jul 3, 2018 11:53:55] 0.00% (0/250), Elapsed time: 551 μs
-[Jul 3, 2018 11:53:55] Binned coverage for OD7_k4me1_hg19.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage/OD7_k4me1_hg19_200_unique#d0a4d.bw...
-[Jul 3, 2018 11:55:51] Loading reads input.bed.gz: 1, Elapsed time: 14 s
-[Jul 3, 2018 11:56:01] Loading reads input.bed.gz: 11,806,849, Elapsed time: 24 s, Throughput: 2 μs/item
-[Jul 3, 2018 11:56:11] Loading reads input.bed.gz: 23,562,509, Elapsed time: 34 s, Throughput: 1 μs/item
-[Jul 3, 2018 11:56:21] Loading reads input.bed.gz: 35,328,282, Elapsed time: 44 s, Throughput: 1 μs/item
-[Jul 3, 2018 11:56:26] Loading reads input.bed.gz: 41,019,338, Elapsed time: 49 s, Throughput: 1 μs/item [done]
-[Jul 3, 2018 11:56:46] Binned coverage for input.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage/input_200_unique#1f244.bw: done in 1.159 min
-[Jul 3, 2018 11:57:28] 1.20% (3/250), Elapsed time: 3 min 33 s, Throughput: 1 min/item, ETA: 4 h 52 min
-[Jul 3, 2018 11:57:49] 2.00% (5/250), Elapsed time: 3 min 54 s, Throughput: 1 items/min, ETA: 3 h 11 min
-[Jul 3, 2018 11:58:21] 3.20% (8/250), Elapsed time: 4 min 26 s, Throughput: 1 items/min, ETA: 2 h 14 min
-[Jul 3, 2018 11:58:43] 4.00% (10/250), Elapsed time: 4 min 48 s, Throughput: 2 items/min, ETA: 1 h 55 min
-[Jul 3, 2018 11:59:15] 5.20% (13/250), Elapsed time: 5 min 20 s, Throughput: 2 items/min, ETA: 1 h 37 min
-[Jul 3, 2018 11:59:36] 6.00% (15/250), Elapsed time: 5 min 41 s, Throughput: 2 items/min, ETA: 1 h 29 min
+[Oct 2, 2018 15:41:50] LOG: /mnt/stripe/span_demo/logs/OD7_k4me1_hg19_input_200.log
+[Oct 2, 2018 15:41:50] WORKING DIR: /mnt/stripe/span_demo
+[Oct 2, 2018 15:41:50] TREATMENT: /mnt/stripe/span_demo/OD7_k4me1_hg19.bed.gz
+[Oct 2, 2018 15:41:50] CONTROL: /mnt/stripe/span_demo/input.bed.gz
+[Oct 2, 2018 15:41:50] CHROM.SIZES: /mnt/stripe/span_demo/hg19.chrom.sizes
+[Oct 2, 2018 15:41:50] GENOME: hg19
+[Oct 2, 2018 15:41:50] FRAGMENT: null
+[Oct 2, 2018 15:41:50] BIN: 200
+[Oct 2, 2018 15:41:50] NO output path given, process model fitting only.
+[Oct 2, 2018 15:41:50] LABELS, FDR, GAP options are ignored.
+[Oct 2, 2018 15:41:50] THREADS: 4
+[Oct 2, 2018 15:41:50] Model fit: recalculating /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200#de526.span...
+[Oct 2, 2018 15:41:50] 0.00% (0/250), Elapsed time: 1 ms
+[Oct 2, 2018 15:41:50] Coverage for OD7_k4me1_hg19.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage_OD7_k4me1_hg19_unique#832e2.npz...
+[Oct 2, 2018 15:42:09] Loading reads OD7_k4me1_hg19.bed.gz: 1, Elapsed time: 18 s
+[Oct 2, 2018 15:42:19] Loading reads OD7_k4me1_hg19.bed.gz: 11,040,895, Elapsed time: 28 s, Throughput: 2 μs/item
+[Oct 2, 2018 15:42:29] Loading reads OD7_k4me1_hg19.bed.gz: 22,652,150, Elapsed time: 38 s, Throughput: 1 μs/item
+[Oct 2, 2018 15:42:39] Loading reads OD7_k4me1_hg19.bed.gz: 34,442,332, Elapsed time: 48 s, Throughput: 1 μs/item
+[Oct 2, 2018 15:42:49] Loading reads OD7_k4me1_hg19.bed.gz: 46,168,754, Elapsed time: 58 s, Throughput: 1 μs/item
+[Oct 2, 2018 15:42:57] Loading reads OD7_k4me1_hg19.bed.gz: 55,287,288, Elapsed time: 1 min 6 s, Throughput: 1 μs/item [done]
+[Oct 2, 2018 15:43:05] Coverage for OD7_k4me1_hg19.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage_OD7_k4me1_hg19_unique#832e2.npz: done in 1.243 min
+[Oct 2, 2018 15:43:06] Coverage for input.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage_input_unique#2c66b.npz...
+[Oct 2, 2018 15:43:20] Loading reads input.bed.gz: 1, Elapsed time: 14 s
+[Oct 2, 2018 15:43:30] Loading reads input.bed.gz: 11,628,124, Elapsed time: 24 s, Throughput: 2 μs/item
+[Oct 2, 2018 15:43:40] Loading reads input.bed.gz: 23,298,965, Elapsed time: 34 s, Throughput: 1 μs/item
+[Oct 2, 2018 15:43:50] Loading reads input.bed.gz: 34,930,974, Elapsed time: 44 s, Throughput: 1 μs/item
+[Oct 2, 2018 15:43:56] Loading reads input.bed.gz: 41,019,338, Elapsed time: 49 s, Throughput: 1 μs/item [done]
+[Oct 2, 2018 15:44:02] Coverage for input.bed.gz: recalculating /mnt/stripe/span_demo/cache/coverage_input_unique#2c66b.npz: done in 55.78 s
+[Oct 2, 2018 15:44:50] 1.20% (3/250), Elapsed time: 2 min 59 s, Throughput: 1 items/min, ETA: 4 h 6 min
+[Oct 2, 2018 15:45:13] 2.00% (5/250), Elapsed time: 3 min 23 s, Throughput: 1 items/min, ETA: 2 h 45 min
+[Oct 2, 2018 15:45:45] 3.20% (8/250), Elapsed time: 3 min 54 s, Throughput: 2 items/min, ETA: 1 h 58 min
+[Oct 2, 2018 15:46:05] 4.00% (10/250), Elapsed time: 4 min 15 s, Throughput: 2 items/min, ETA: 1 h 42 min
 ...
-[Jul 3, 2018 12:29:14] 72.00% (180/250), Elapsed time: 35 min 19 s, Throughput: 5 items/min, ETA: 13 min 44 s
-[Jul 3, 2018 12:29:47] 73.20% (183/250), Elapsed time: 35 min 52 s, Throughput: 5 items/min, ETA: 13 min 8 s
-[Jul 3, 2018 12:30:09] 74.00% (185/250), Elapsed time: 36 min 14 s, Throughput: 5 items/min, ETA: 12 min 44 s
-[Jul 3, 2018 12:31:52] Model fit: recalculating /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200_unique.span: done in 37.95 min
-[Jul 3, 2018 12:31:52] Model saved: /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200_unique.span</code>
+
+[Oct 2, 2018 15:54:01] 22.00% (55/250), Elapsed time: 12 min 10 s, Throughput: 4 items/min, ETA: 43 min 10 s
+[Oct 2, 2018 15:54:32] 23.20% (58/250), Elapsed time: 12 min 41 s, Throughput: 4 items/min, ETA: 42 min 1 s
+[Oct 2, 2018 15:56:10] Model fit: recalculating /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200#de526.span: done in 14.33 min
+[Oct 2, 2018 15:56:10] Model saved: /mnt/stripe/span_demo/fit/OD7_k4me1_hg19_input_200#de526.span</code>
 </pre>
 
     <p> Working directory contains folders with processed coverage tracks, fitted model and logs:</p>
     <pre class="code-block">
-<code>./cache/coverage/input_200_unique#1f244.bw
-./cache/coverage/OD7_k4me1_hg19_200_unique#d0a4d.bw
-./cache/fit/OD7_k4me1_hg19_input_200_unique.span
-./cache/logs/OD7_k4me1_hg19_input_200.log</code></pre>
+
+<code>./cache/coverage_OD7_k4me1_hg19_unique#2c66b.npz
+./cache/coverage_input_unique#832e2.npz
+./fit/OD7_k4me1_hg19_input_200#de526.span
+./logs/OD7_k4me1_hg19_input_200.log</code></pre>
 
     <p>We will use <code class="code-grey">./cache/fit/OD7_k4me1_hg19_input_200_unique.span</code>
         file later for peak calling tuning.
