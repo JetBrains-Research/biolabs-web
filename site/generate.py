@@ -8,7 +8,12 @@ from collections import namedtuple
 # Hardcoded URLs with data
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
-DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
+# Tools versions
+SPAN_BUILD = '0.7.1.4518'
+SPAN_DATE = 'Nov 21, 2018'
+
+JBR_BUILD = '1.0.beta.4254'
+JBR_DATE = 'Sep 11, 2018'
 
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
@@ -145,11 +150,10 @@ def generate_download_data_page(page):
                    replace('@TABLE_ENCODE@', table_encode))
 
 
-def generate_jbr_data(page):
-    build = '1.0.beta.4254'
-    date = 'Sep 11, 2018'
+DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
 
-    # ---------------
+
+def generate_jbr_data(page):
     template = FOLDER + '/_jbr.html'
 
     print('Creating download data page {} by template {}'.format(page, template))
@@ -180,24 +184,21 @@ def generate_jbr_data(page):
         ]
 
         content = template_html. \
-            replace('@TABLE@', '\n'.join([create_tr(d, build) for d in descrs])) \
-            .replace('@BUILD@', build) \
-            .replace('@DATE@', date)
+            replace('@TABLE@', '\n'.join([create_tr(d, JBR_BUILD) for d in descrs])) \
+            .replace('@BUILD@', JBR_BUILD) \
+            .replace('@DATE@', JBR_DATE)
 
         seen_file_names = set()
         for dd in descrs:
             fname = '@FILENAME-{}@'.format(dd.folder)
             if fname not in seen_file_names:
                 seen_file_names.add(fname)
-                content = content.replace(fname, "{}{}".format(build, dd.suffix))
+                content = content.replace(fname, "{}{}".format(JBR_BUILD, dd.suffix))
 
         f.write(content)
 
 
 def generate_span_data(page):
-    build = '0.7.1.4272'
-    date = 'Oct 2, 2018'
-
     template = FOLDER + '/_span.html'
 
     print('Creating download data page {} by template {}'.format(page, template))
@@ -214,9 +215,9 @@ def generate_span_data(page):
 
     with open(OUT_FOLDER + '/' + page, 'w') as f:
         f.write(template_html.
-                replace('@TABLE@', create_tr(build)).
-                replace('@BUILD@', build).
-                replace('@DATE@', date)
+                replace('@TABLE@', create_tr(SPAN_BUILD)).
+                replace('@BUILD@', SPAN_BUILD).
+                replace('@DATE@', SPAN_DATE)
                 )
 
 
