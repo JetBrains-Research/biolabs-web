@@ -9,11 +9,11 @@ from collections import namedtuple
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
 # Tools versions
-SPAN_BUILD = '0.7.1.4518'
-SPAN_DATE = 'Nov 21, 2018'
+SPAN_BUILD = '0.7.1.4530'
+SPAN_DATE = 'Nov 22, 2018'
 
-JBR_BUILD = '1.0.beta.4523'
-JBR_DATE = 'Nov 21, 2018'
+JBR_BUILD = '1.0.beta.4530'
+JBR_DATE = 'Nov 22, 2018'
 
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
