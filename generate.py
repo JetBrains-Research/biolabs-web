@@ -282,7 +282,7 @@ def generate_page(page, title, scripts, content):
                    replace('@TITLE@', title).
                    replace('@SCRIPTS@', scripts).
                    replace('@CONTENT@', content).
-                   replace('@DATE@', datetime.datetime.now().strftime('%c')))
+                   replace('@DATE@', '{} UTC'.format(datetime.datetime.now(datetime.timezone.utc).strftime('%c'))))
 
 
 def _cli():
