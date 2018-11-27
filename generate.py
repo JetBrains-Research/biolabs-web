@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+"""
+This is the website source code for the paper "Multiomics dissection of healthy human aging".
+See: https://artyomovlab.wustl.edu/aging/
+
+NOTE: python3 required
+> source activate py3.5
+
+author oleg.shpynov@jetbrains.com
+"""
 import datetime
 import os
 import re
@@ -65,12 +75,12 @@ MCGILL_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_
 
 GSM_URL = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={}"
 
-FOLDER = os.path.dirname(__file__)
-OUT_FOLDER = FOLDER + '/out'
+SITE_FOLDER = os.path.join(os.path.dirname(__file__), 'site')
+OUT_FOLDER = os.path.join(os.path.dirname(__file__), 'out')
 
 
 def generate_explore_page(page):
-    explore_template = FOLDER + '/_explore_data.html'
+    explore_template = os.path.join(SITE_FOLDER, '_explore_data.html')
     print('Creating explore data page {} by template {}'.format(page,
                                                                 explore_template))
     with open(explore_template, 'r') as file:
@@ -100,7 +110,7 @@ def generate_explore_page(page):
                 'xml</a></td>').format(EXTENDED_IGV_SESSION_PATH.format(hist)) + \
                '</tr>'
 
-    with open(OUT_FOLDER + '/' + page, 'w') as file:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as file:
         file.write(template_html
                    .replace('@TABLE@',
                             '\n'.join([create_tr_online(hist) for hist in sorted(GSM_HIST_MAP.keys())]))
@@ -109,7 +119,7 @@ def generate_explore_page(page):
 
 
 def generate_download_data_page(page):
-    download_data_template = FOLDER + '/_download_data.html'
+    download_data_template = os.path.join(SITE_FOLDER, '_download_data.html')
     print('Creating download data page {} by template {}'.format(page, download_data_template))
     with open(download_data_template, 'r') as file:
         template_html = file.read()
@@ -144,7 +154,7 @@ def generate_download_data_page(page):
 
     table_encode = '\n'.join([create_tr_encode(hist) for hist in sorted(GSM_HIST_MAP.keys())])
 
-    with open(OUT_FOLDER + '/' + page, 'w') as file:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as file:
         file.write(template_html.
                    replace('@TABLE_CHIPSEQ@', table_chipseq).
                    replace('@TABLE_ENCODE@', table_encode))
@@ -154,7 +164,7 @@ DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
 
 
 def generate_jbr_data(page):
-    template = FOLDER + '/_jbr.html'
+    template = os.path.join(SITE_FOLDER, '_jbr.html')
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
@@ -171,7 +181,7 @@ def generate_jbr_data(page):
         </tr>
         """.format(url, fname, dd.title)
 
-    with open(OUT_FOLDER + '/' + page, 'w') as f:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as f:
         descrs = [
             DistrDescriptor("Windows 64-bit ZIP archive (includes bundled 64-bit Java Runtime)",
                             "_x64.zip", "win"),
@@ -199,7 +209,7 @@ def generate_jbr_data(page):
 
 
 def generate_span_data(page):
-    template = FOLDER + '/_span.html'
+    template = os.path.join(SITE_FOLDER, '_span.html')
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
@@ -213,7 +223,7 @@ def generate_span_data(page):
         </tr>
         """.format("span-{0}.jar".format(build))
 
-    with open(OUT_FOLDER + '/' + page, 'w') as f:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as f:
         f.write(template_html.
                 replace('@TABLE@', create_tr(SPAN_BUILD)).
                 replace('@BUILD@', SPAN_BUILD).
@@ -222,7 +232,7 @@ def generate_span_data(page):
 
 
 def generate_study_cases_page(page):
-    study_cases_template = FOLDER + '/_study_cases.html'
+    study_cases_template = os.path.join(SITE_FOLDER, '_study_cases.html')
     print('Creating study cases page {} by template {}'.format(page,
                                                                study_cases_template))
     with open(study_cases_template, 'r') as file:
@@ -242,7 +252,7 @@ def generate_study_cases_page(page):
                    ucsc_session_path.format(name[0]), ucsc_session_txt_path.format(name[1])) + \
                '</tr>'
 
-    with open(OUT_FOLDER + '/' + page, 'w') as file:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as file:
         file.write(template_html
                    .replace('@ENCODE_TABLE@', '\n'.join([create_tr_session(
             (hist, hist), ENCODE_IGV_SESSION_PATH, ENCODE_UCSC_SESSION_PATH,
@@ -261,13 +271,13 @@ def generate_study_cases_page(page):
 
 
 def generate_page(page, title, scripts, content):
-    template_path = FOLDER + '/template.html'
+    template_path = os.path.join(SITE_FOLDER, 'template.html')
     print('Creating page {} by template {}\ntitle={}\nscripts={}\ncontent={}'.format(
         page, template_path, title, scripts, content
     ))
     with open(template_path, 'r') as file:
         template_html = file.read()
-    with open(OUT_FOLDER + '/' + page, 'w') as file:
+    with open(os.path.join(OUT_FOLDER, page), 'w') as file:
         file.write(template_html.
                    replace('@TITLE@', title).
                    replace('@SCRIPTS@', scripts).
@@ -282,7 +292,7 @@ def _cli():
     print('Generating site structure in {}'.format(OUT_FOLDER))
 
     print('Copying resources')
-    for file in os.listdir(FOLDER):
+    for file in os.listdir(SITE_FOLDER):
         if re.match('.*\.(html|css|png|svg)', file) and not re.match('template\\.html', file):
             shutil.copy(file, OUT_FOLDER)
 

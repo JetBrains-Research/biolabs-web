@@ -1,6 +1,8 @@
 Aging paper website
 ===================
-Website content available at http://artyomovlab.wustl.edu/aging/
+This is the website source code for the paper "Multiomics dissection of healthy human aging".
+
+See: https://artyomovlab.wustl.edu/aging/
 
 Project
 -------
@@ -9,7 +11,7 @@ Project
 
 How do I generate site content?
 -------------------------------
-Execute script `site/generate.py`. Site content will be created in `site/out` folder.
+Execute script `generate.py`. Site content will be created in `out` folder.
 
 
 Useful links
