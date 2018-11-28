@@ -294,7 +294,7 @@ def _cli():
     print('Copying resources')
     for file in os.listdir(SITE_FOLDER):
         if re.match('.*\.(html|css|png|svg)', file) and not re.match('template\\.html', file):
-            shutil.copy(file, OUT_FOLDER)
+            shutil.copy(os.path.join(SITE_FOLDER, file), OUT_FOLDER)
 
     print('Generate static pages')
     generate_page('index.html', title='Multiomics dissection of healthy human aging',
