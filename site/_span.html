@@ -39,6 +39,8 @@
         <li>Part of integrated peak calling <a href="tools.html">solution</a></li>
         <li>Works with both conventional and ultra-low-input ChIP-seq data</li>
         <li>Works with both narrow and wide modifications</li>
+        <li>Works with both single-end and paired-end libraries</li>
+        <li>Fragment size prediction for single-end libraries</li>
         <li>Capable to process tracks with different signal-to-noise ratio</li>
         <li>Supports optional control track</li>
         <li>Supports replicates on model level</li>
@@ -170,7 +172,8 @@
         </p>
         <p>
             <strong>--fragment FRAGMENT</strong><br>
-            Fragment size used to convert reads into tags. Default value is half the read length.
+            Fragment size used to convert reads into tags in single-end libraries. If not provided,
+            will be estimated from the data using maximum cross-correlation approach.
         </p>
         <p>
             <strong>-p, --peaks PEAKS</strong><br>
@@ -241,7 +244,8 @@
         <h3>Model fitting</h3>
         <code>SPAN</code> workflow consists of several steps:
         <ol>
-            <li>Convert raw reads to tags using <code class="code-grey">FRAGMENT</code> parameter.
+            <li>Convert raw reads to tags using user-supplied <code class="code-grey">FRAGMENT</code> parameter
+                or maximum cross-correlation estimate.
             </li>
             <li>Compute coverage for all genome tiled into bins of <code
                     class="code-grey">BIN</code>
