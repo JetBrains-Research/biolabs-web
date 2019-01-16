@@ -19,8 +19,8 @@ from collections import namedtuple
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
 # Tools versions
-SPAN_BUILD = '0.9.1.4601'
-SPAN_DATE = 'Dec 14, 2018'
+SPAN_BUILD = '0.9.2.4618'
+SPAN_DATE = 'Jan 15, 2019'
 
 JBR_BUILD = '1.0.beta.4530'
 JBR_DATE = 'Nov 22, 2018'
