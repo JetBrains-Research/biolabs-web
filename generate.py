@@ -130,7 +130,7 @@ def generate_download_data_page(page):
                '<td class="text-center"><a href="{}">Alignment</a></td>'.format(BEDGZ_PATH.format(hist)) + \
                '<td class="text-center"><a href="{}">QC</a></td>'.format(FASTQC_PATH.format(hist)) + \
                ('<td class="text-center"><a href="{}">BigWigs</a>&nbsp;' +
-                '<a href="explore_chipseq.html" title="Explore data">'
+                '<a href="explore_data.html" title="Explore data">'
                 '<img class="icon-url" src="glyphicons-52-eye-open.png"/></a></td>').format(
                    Y20O20_BW_PATH.format(hist)) + \
                '<td class="text-center"><a href="{}">Peaks</a></td>'.format(PEAKS_PATH.format(hist, 'span')) + \
