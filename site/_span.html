@@ -83,7 +83,8 @@
 
 <a id="span-galaxy">
     <h2>Galaxy</h2>
-    SPAN is available as tool in the official <a href="https://toolshed.g2.bx.psu.edu/view/jetbrains/span/66b2c9a128ab">ToolShed</a> for
+    SPAN is available as tool in the official <a href="https://toolshed.g2.bx.psu.edu/view/jetbrains/span/66b2c9a128ab">ToolShed</a>
+    for
     <a href="https://galaxyproject.org">Galaxy</a>. You can ask your Galaxy administrator to install it.
 </a>
 
@@ -172,8 +173,19 @@
         </p>
         <p>
             <strong>--fragment FRAGMENT</strong><br>
-            Fragment size used to convert reads into tags in single-end libraries. If not provided,
-            will be estimated from the data using maximum cross-correlation approach.
+            Fragment size. If provided, reads are shifted appropriately. If not provided,
+            the shift is estimated from the data.<br>
+            <code class="code-grey">--fragment 0</code> argument is necessary for ATAC-Seq data processing.
+
+        </p>
+        <p>
+            <strong>-k, --keep-dup</strong><br>
+            Keep duplicates. By default SPAN filters out redundant reads, aligned at the same genomic position.<br>
+            <code class="code-grey">--keep-dup</code> argument is necessary for single cell ATAC-Seq data processing.
+        </p>
+        <p>
+            <strong>-m, --model MODEL</strong><br>
+            This option is used to specify SPAN model path, if not provided, model name is formed by input names and other arguments.
         </p>
         <p>
             <strong>-p, --peaks PEAKS</strong><br>
@@ -388,7 +400,7 @@
 </a>
 
 <a id="span-bugtracker">
-<b>Error reporting</b><br/>
-Report any errors or comments in the public SPAN issue <a
+    <b>Error reporting</b><br/>
+    Report any errors or comments in the public SPAN issue <a
         href="https://github.com/JetBrains-Research/span/issues">tracker</a>.
 </a>
