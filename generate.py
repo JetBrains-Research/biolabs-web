@@ -22,8 +22,8 @@ from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENC
 SPAN_BUILD = '0.10.0.4787'
 SPAN_DATE = 'March 22, 2019'
 
-JBR_BUILD = '1.0.beta.4787'
-JBR_DATE = 'March 22, 2019'
+JBR_BUILD = '1.0.beta.4800'
+JBR_DATE = 'March 26, 2019'
 
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
