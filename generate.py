@@ -164,7 +164,7 @@ DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
 
 
 def generate_jbr_data(page):
-    template = os.path.join(SITE_FOLDER, '_jbr.html')
+    template = os.path.join(SITE_FOLDER, 'jetbrains_research_jbr.html')
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
@@ -209,7 +209,7 @@ def generate_jbr_data(page):
 
 
 def generate_span_data(page):
-    template = os.path.join(SITE_FOLDER, '_span.html')
+    template = os.path.join(SITE_FOLDER, 'jetbrains_research_span.html')
 
     print('Creating download data page {} by template {}'.format(page, template))
     with open(template, 'r') as f:
@@ -320,23 +320,19 @@ def _cli():
     generate_page('download_data.html',
                   title='Download Data', scripts='', content=content_page)
 
-    print('Creating download tools page')
-    content_page = '_jbr.html'
-    generate_jbr_data(content_page)
-    generate_page('jbr.html',
-                  title='JBR Genome Browser', scripts='', content=content_page)
-
-    print('Creating download tools page')
-    content_page = '_span.html'
-    generate_span_data(content_page)
-    generate_page('span.html',
-                  title='SPAN Peak Analyzer', scripts='', content=content_page)
-
     print('Creating study cases page')
     content_page = '_study_cases.html'
     generate_study_cases_page(content_page)
     generate_page('study_cases.html',
                   title='Study cases', scripts='', content=content_page)
+
+    print('Creating JetBrains Research JBR page')
+    content_page = 'jetbrains_research_jbr.html'
+    generate_jbr_data(content_page)
+
+    print('Creating JetBrains Research SPAN page')
+    content_page = 'jetbrains_research_span.html'
+    generate_span_data(content_page)
 
     print('Done')
 
