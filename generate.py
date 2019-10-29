@@ -53,20 +53,20 @@ EXTENDED_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/sup
                                  "/chipseq/sessions/Y20O20/{}_aging_session_extended.txt"
 EXTENDED_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                             "/chipseq/sessions/Y20O20/{}_aging_session_extended.xml"
-ENCODE_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+ENCODE_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                           "/sessions/cd14encode/{}_encode_session.xml"
 ENCODE_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?" \
                            "hgS_doOtherUser=submit&hgS_otherUserName=Biolabs&" \
                            "hgS_otherUserSessionName={}%20Encode"
 ENCODE_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                                "/chipseq/sessions/cd14encode/{}_encode_session.txt"
-ULI_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+ULI_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                        "/sessions/GSE63523/GSE63523_{}.xml"
 ULI_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit&" \
                         "hgS_otherUserName=Biolabs&hgS_otherUserSessionName=GSE63523%20{}"
 ULI_UCSC_SESSION_TXT_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging" \
                             "/chipseq/sessions/GSE63523/GSE63523_{}.txt"
-MCGILL_IGV_SESSION_PATH = "http://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
+MCGILL_IGV_SESSION_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                           "/sessions/mcgill/mcgill_igv_session{}.xml"
 MCGILL_UCSC_SESSION_PATH = "https://genome.ucsc.edu/cgi-bin/hgTracks?hgS_doOtherUser=submit" \
                            "&hgS_otherUserName=Biolabs&hgS_otherUserSessionName={}"
