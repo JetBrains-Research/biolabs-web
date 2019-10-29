@@ -3,46 +3,42 @@
 <div class="page-header">
     <h1>Multiomics dissection of healthy human aging</h1>
 </div>
-<p>This page contains description and materials of the experiment.</p>
+<p>This page contains description and materials for the experiment.</p>
 <div>
     <ul>
         <li><a href="#experiment">Experiment</a> section contains summary information</li>
-        <li><a href="methods.html">Methods</a> section contains detailed description of experimental protocols and
+        <li><a href="methods.html">Methods</a> section contains a detailed description of experimental protocols and
             computational pipelines
         </li>
-        <li><a href="tools.html">Tools</a> section describes novel semi-supervised peak calling approach used to process
-            dataset
+        <li><a href="tools.html">Tools</a> section describes a novel semi-supervised peak calling approach used to process
+            the dataset
         </li>
         <li><a href="explore_data.html">Explore Data</a> section allows easy visualisation of generated datasets</li>
         <li><a href="download_data.html">Download Data</a> section provides links for download of the data</li>
     </ul>
 </div>
 <h2 id="experiment">Experiment</h2>
-<p>The impact of healthy aging on circulating immune cells and their environment is poorly
-    understood. Here, we report transcriptomic, epigenomic (DNA methylation and
-    chromatin profiling for 5 major histone modifications) proteomic, and metabolomic data
-    for plasma and classical monocytes, isolated from healthy cohorts of young and older
-    adults without inflammatory health conditions with comparable body-mass indices. In
-    order to perform multi-omics analysis from single blood draws, we have optimized
-    ultra-low-input ChIP-seq (ULI-ChIP-seq) data acquisition and analysis pipelines, and
-    also developed novel computational approaches to deal with the natural variability of
-    ULI-ChIP-seq profiles for multiple human samples.
+<p>The impact of healthy aging on circulating immune cells and their environment is poorly understood. Here, we report
+    transcriptomic, epigenomic (DNA methylation and chromatin profiling for five major histone modifications) proteomic,
+    and metabolomic data for plasma and classical monocytes, isolated from healthy cohorts of young and older adults
+    without inflammatory health conditions with comparable body-mass indices. In order to perform multi-omics analysis
+    from single blood draws, we have optimized ultra-low-input ChIP-seq (ULI-ChIP-seq) data acquisition and analysis
+    pipelines, and also developed novel computational approaches to deal with the natural variability of ULI-ChIP-seq
+    profiles for multiple human samples.
     <br>
-    Our data revealed that healthy
-    aging was accompanied by significant differences in metabolic and proteomic
-    composition of plasma, as well as DNA methylation levels in monocytes, but no
-    significant changes in transcriptomes or histone modifications. However, integrative
-    analysis of the specific chromatin patterns revealed distinct positional clues to age associated
-    hyper- and hypo-methylation of DNA.
+    Our data revealed that healthy aging was accompanied by significant differences in the metabolic and proteomic
+    composition of plasma, as well as DNA methylation levels in monocytes, but no significant changes in transcriptomes
+    or histone modifications. However, integrative analysis of the specific chromatin patterns revealed distinct
+    positional clues to age-associated hyper- and hypo-methylation of DNA.
 </p>
 <img src="experiment.png" style="height: 100%; width: 100%; object-fit: contain"/>
 <br/>
 <br/>
 <h2>Analysis</h2>
 <p>
-    To our knowledge, the comparative epigenetic study of this scale has never been undertaken previously in the context of human aging.
-    Since the peak calling routine presents significant challenge in working with large scale human epigenetic data,
-    we developed a novel semi-supervised peak calling approach applicable to datasets of this scale.
+    To our knowledge, the comparative epigenetic study of this scale has never been undertaken previously in the context
+    of human aging. Since the peak calling routine presents a significant challenge in working with large scale human
+    epigenetic data, we developed a novel semi-supervised peak calling approach applicable to datasets of this scale.
     <br>
     Along with a pioneer dataset, we provide a completely <a href="tools.html">new integrative solution</a>
     for ChIP-seq analysis.

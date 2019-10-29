@@ -4,7 +4,8 @@
     <h1>Study Cases</h1>
 </div>
 
-<p>This page contains description of three study cases of <a href="tools">semi-supervised peak calling approach</a>.</p>
+<p>This page contains a description of three study cases of a <a href="tools">semi-supervised peak calling approach</a>.
+</p>
 <div>
     <ul>
         <li><a href="#span-usage-encode">CD14+ ENCODE Data</a></li>
@@ -52,23 +53,23 @@ Materials included in this table:
     </li>
 </ul>
 
-Each session contains reads, peaks and labels:<br>
+Each session contains reads, peaks, and labels:<br>
 <ul>
     <li>
-    reads are taken from the corresponding ENCODE projects for the CD14+ monocytes;
+        reads are taken from the corresponding ENCODE projects for the CD14+ monocytes;
     </li>
     <li>
-    peaks called by MACS2 broad, SICER and <code>SPAN</code> were computed by us, peaks called by MACS2 narrow
-    are taken from ENCODE project;
+        peaks called by MACS2 broad, SICER and <code>SPAN</code> were computed by us, peaks called by MACS2 narrow
+        are taken from ENCODE project;
     </li>
     <li>
-    labels used in <a href="tools.html">semi-supervised peaks analysis</a> were produced by a visual inspection.
+        labels used in <a href="tools.html">semi-supervised peaks analysis</a> were produced by a visual inspection.
     </li>
 </ul>
 
 <h2 id="span-usage-uli">ULI-ChIP-seq Data</h2>
 <p>
-    As a benchmark we decided to apply SPAN peak calling approach to another ULI-ChIP-seq dataset.
+    As a benchmark, we decided to apply SPAN peak calling approach to another ULI-ChIP-seq dataset.
 </p>
 <p>
     <a href="https://www.ncbi.nlm.nih.gov/pubmed/25607992">Chen, C. <i>et al.</i></a> presented an ultra-low-input
@@ -78,16 +79,17 @@ Each session contains reads, peaks and labels:<br>
         href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63523">GSE63523</a> there are H3K4me3 tracks for
     5,000, 10,000 and 100,000 cells and H3K27me3 for 1,000, 10,000 and 100,000 cells.
     We used these tracks to assess the semi-supervised approach in extreme conditions.
-    Raw reads were processed using technical pipeline described in the section <a href="methods.html">Processing</a>.
-    The only difference was in paired end sequencing and alignment. Also, we used MACS2 with <code>FDR=0.05</code>
+    Raw reads were processed using technical pipeline described in section <a href="methods.html">Processing</a>.
+    The only difference was in paired-end sequencing and alignment. Also, we used MACS2 with <code>FDR=0.05</code>
     and <code>FDR=1E-6</code>.
 <p>
     <code>SPAN</code> pipeline yielded ~10,000 H3K4me3 peaks and ~20,000 H3K27me3 peaks for 100,000
     cells,
-    which is comparable with ENCODE and aging study peaks. <code>SPAN</code> produced approximately the same number of peaks for
+    which is comparable with ENCODE and aging study peaks. <code>SPAN</code> produced approximately the same number of
+    peaks for
     H3K27me3 for 10,000 and 100,000 cells (~20,000) and half of the peaks for 1,000 cells, while
     MACS2 with relaxed FDR produces too many peaks in all cases and too few peaks for 10,000 cells (~7,000 peaks).
-    Situation is even worse for H3K4me3 modification, as MACS2 produced too many peaks for relaxed and too few for
+    The situation is even worse for H3K4me3 modification, as MACS2 produced too many peaks for relaxed and too few for
     stringent FDR control, while SPAN produced ~17,000 peaks, which is comparable to what we see in other study cases
     and the project data.
 </p>
@@ -96,7 +98,7 @@ Each session contains reads, peaks and labels:<br>
     required for high-quality peak calling.
 </p>
 <p>
-    The table below contains preconfigured IGV and UCSC sessions with ULI-ChIP-seq data including raw signal and peaks:
+    The table below contains preconfigured IGV and UCSC sessions with ULI-ChIP-seq data, including raw signal and peaks:
 </p>
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
@@ -134,38 +136,41 @@ Each session contains reads, peaks and labels.<br>
 
 <h2 id="span-usage-mcgill">McGill Data</h2>
 <p>
-    SPAN tuning mode was inspired by the article by <a href="https://www.ncbi.nlm.nih.gov/pubmed/27797775">Hocking, T. D.
+    SPAN tuning mode was inspired by the article by <a href="https://www.ncbi.nlm.nih.gov/pubmed/27797775">Hocking, T.
+    D.
     <i>et al.</i></a>, in which authors investigated the benefits of tuning approach for golden standard peak callers.
-    The authors used the <a href="https://epigenomesportal.ca/edcc/about.html">McGill Epigenomics Mapping Centre data</a>
+    The authors used the <a href="https://epigenomesportal.ca/edcc/about.html">McGill Epigenomics Mapping Centre
+    data</a>
     (McGill University, Montréal, Canada).
     <br>
-    The Hocking <i>et al.</i> experimental dataset consisted of 37 human cell samples. T cells, B cells and monocytes were
-    grouped as "immune" (27 samples), while kidney, skeletal muscle and leukemic B cells were grouped as
+    The Hocking <i>et al.</i> experimental dataset consisted of 37 human cell samples. T cells, B cells, and monocytes
+    were
+    grouped as "immune" (27 samples), while kidney, skeletal muscle, and leukemic B cells were grouped as
     "other" (10 samples). Each sample was subjected to H3K4me3-specific ChIP-seq procedure, and 29 samples were
     additionally subjected to H3K36me3-specific procedure (21 immune and 8 other).
     <br>
-    A set of cell-type specific labels was created for each dataset. Each label belongs to one of the same four types
+    A set of cell-type-specific labels was created for each dataset. Each label belongs to one of the same four types
     that we use for semi-supervised <code>SPAN</code> peak calling (<code>peaks</code>, <code>noPeaks</code>,
     <code>peakStart</code>, <code>peakEnd</code>).
     The peak caller settings that optimized the total dataset error were determined, and the peaks obtained with
     those settings were compared to the peaks produced by the caller with the default settings.
 </p>
 <p>
-    Our proposed tuning method differs from original one: in our case, tuning is performed for each track
+    Our proposed tuning method differs from the original one: in our case, tuning is performed for each track
     individually, meaning we assign an optimal parameter value to each track in each dataset,
     while the McGill experiment selects a single one that optimizes the total dataset error.
-    SPAN approach offers tangible benefits, since we have empirically confirmed that different quality
+    SPAN approach offers tangible benefits since we have empirically confirmed that different quality
     tracks require different FDR cutoffs.
     <br>
     Nevertheless, we have also investigated <code>SPAN</code> in the original way and achieved remarkably good results:
-    <code>SPAN</code> performed comparable with MACS2 on H3K4me3 and significantly outperformed both MACS2 and SICER
+    <code>SPAN</code> performed comparably with MACS2 on H3K4me3 and significantly outperformed both MACS2 and SICER
     on wide modification H3K36me3.
 </p>
 <p>
     We have also used the McGill data to investigate how much do the labels used for tuning influence the called peaks.
     We selected two cell types, specifically monocytes and T cells, which we expected to have fairly different H3K4me3
     enrichment profiles. We selected 11 good quality (top signal-to-noise ratio) H3K4me3 tracks for these cell
-    types from the McGill data (five monocyte tracks and six T cell tracks). We've generated a single set of labels
+    types from the McGill data (five monocyte tracks and six T cell tracks). We have generated a single set of labels
     applicable to all
     tracks by labeling the transcription start sites of some of the housekeeping genes. As expected, these
     TSSes were enriched in all tracks. To produce the negative control <code>noPeaks</code> labels,
@@ -174,15 +179,15 @@ Each session contains reads, peaks and labels.<br>
     individually using this label set.
     <br>
     We expected to see that monocyte peaks would be observably different from the T cell peaks, despite having been
-    tuned on the exact same label set, while different monocyte tracks would be similar, as well as different T cell
+    tuned on the same label set, while different monocyte tracks would be similar, as well as different T cell
     tracks. The results confirmed our expectations readily.
     <br>
-    <code>SPAN</code> was able to produce reasonable number of peaks for H3K4me3 for both cell types, comparable to
-    aging study data. Thus, we confirmed our expectations that cell type differences are be preserved even when the
+    <code>SPAN</code> was able to produce a reasonable number of peaks for H3K4me3 for both cell types, comparable to
+    aging study data. Thus, we confirmed our expectations that cell type differences are preserved even when the
     label set is the same for all tracks.
 </p>
 <p>
-    The table below contains preconfigured IGV and UCSC sessions with McGill data including raw signal and peaks:
+    The table below contains preconfigured IGV and UCSC sessions with McGill data, including raw signal and peaks:
 </p>
 <table class="table table-bordered table-nonfluid">
     <thead class="thead-light">
@@ -206,7 +211,7 @@ Materials included in this table:
     </li>
 </ul>
 
-Each session contains reads, peaks and labels:<br>
+Each session contains reads, peaks, and labels:<br>
 <ul>
     <li>
         Reads are taken from the McGill data;
@@ -222,5 +227,6 @@ Each session contains reads, peaks and labels:<br>
 
 <h2>Summary</h2>
 <p>
-    <code>SPAN</code> Peak Analyzer can be used as a general purpose peak calling solution, applicable to any type of ChIP-Seq experiments.
+    <code>SPAN</code> Peak Analyzer can be used as a general-purpose peak calling solution, applicable to any type of
+    ChIP-Seq experiments.
 </p>
