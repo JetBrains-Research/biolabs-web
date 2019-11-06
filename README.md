@@ -1,6 +1,6 @@
 Aging paper website
 ===================
-This is the website source code for the paper "Multiomics dissection of healthy human aging".
+This is the website source code for the paper "Epigenetic changes in aging human monocytes".
 
 See: https://artyomovlab.wustl.edu/aging/
 
