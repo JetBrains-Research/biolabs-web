@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This is the website source code for the paper "Multiomics dissection of healthy human aging".
+This is the website source code for the paper "Epigenetic changes in aging human monocytes".
 See: https://artyomovlab.wustl.edu/aging/
 
 NOTE: python3 required
@@ -297,7 +297,7 @@ def _cli():
             shutil.copy(os.path.join(SITE_FOLDER, file), OUT_FOLDER)
 
     print('Generate static pages')
-    generate_page('index.html', title='Multiomics dissection of healthy human aging',
+    generate_page('index.html', title='Epigenetic changes in aging human monocytes',
                   scripts='', content='_index.html')
     generate_page('methods.html',
                   title='Methods', scripts='', content='_methods.html')
