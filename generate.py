@@ -160,77 +160,6 @@ def generate_download_data_page(page):
                    replace('@TABLE_ENCODE@', table_encode))
 
 
-DistrDescriptor = namedtuple('DistrDescriptor', ['title', 'suffix', 'folder'])
-
-
-def generate_jbr_data(page):
-    template = os.path.join(SITE_FOLDER, 'jetbrains_research_jbr.html')
-
-    print('Creating download data page {} by template {}'.format(page, template))
-    with open(template, 'r') as f:
-        template_html = f.read()
-
-    def create_tr(dd, build):
-        code_base = "https://download.jetbrains.com/biolabs/jbr_browser"
-        fname = "jbr-{}{}".format(build, dd.suffix)
-        url = "{}/{}/{}".format(code_base, dd.folder, fname)
-        return """
-        <tr>
-            <td> <a href="{}">{}</a></td>
-            <td>{}</td>
-        </tr>
-        """.format(url, fname, dd.title)
-
-    with open(os.path.join(OUT_FOLDER, page), 'w') as f:
-        descrs = [
-            DistrDescriptor("Windows 64-bit ZIP archive (includes bundled 64-bit Java Runtime)",
-                            "_x64.zip", "win"),
-            DistrDescriptor("Windows 32-bit ZIP archive (includes bundled 32-bit Java Runtime)",
-                            "_x86.zip", "win"),
-            DistrDescriptor("Mac installer (includes bundled 64-bit Java Runtime)",
-                            ".dmg", "mac"),
-            DistrDescriptor("Linux archive (includes bundled 64-bit Java Runtime)",
-                            ".tar.gz", "linux"),
-        ]
-
-        content = template_html. \
-            replace('@TABLE@', '\n'.join([create_tr(d, JBR_BUILD) for d in descrs])) \
-            .replace('@BUILD@', JBR_BUILD) \
-            .replace('@DATE@', JBR_DATE)
-
-        seen_file_names = set()
-        for dd in descrs:
-            fname = '@FILENAME-{}@'.format(dd.folder)
-            if fname not in seen_file_names:
-                seen_file_names.add(fname)
-                content = content.replace(fname, "{}{}".format(JBR_BUILD, dd.suffix))
-
-        f.write(content)
-
-
-def generate_span_data(page):
-    template = os.path.join(SITE_FOLDER, 'jetbrains_research_span.html')
-
-    print('Creating download data page {} by template {}'.format(page, template))
-    with open(template, 'r') as f:
-        template_html = f.read()
-
-    def create_tr(build):
-        return """
-        <tr>
-            <td> <a href="https://download.jetbrains.com/biolabs/span/{0}">{0}</a></td>
-            <td> Multi-platform JAR package </td>
-        </tr>
-        """.format("span-{0}.jar".format(build))
-
-    with open(os.path.join(OUT_FOLDER, page), 'w') as f:
-        f.write(template_html.
-                replace('@TABLE@', create_tr(SPAN_BUILD)).
-                replace('@BUILD@', SPAN_BUILD).
-                replace('@DATE@', SPAN_DATE)
-                )
-
-
 def generate_study_cases_page(page):
     study_cases_template = os.path.join(SITE_FOLDER, '_study_cases.html')
     print('Creating study cases page {} by template {}'.format(page,
@@ -325,14 +254,6 @@ def _cli():
     generate_study_cases_page(content_page)
     generate_page('study_cases.html',
                   title='Study cases', scripts='', content=content_page)
-
-    print('Creating JetBrains Research JBR page')
-    content_page = 'jetbrains_research_jbr.html'
-    generate_jbr_data(content_page)
-
-    print('Creating JetBrains Research SPAN page')
-    content_page = 'jetbrains_research_span.html'
-    generate_span_data(content_page)
 
     print('Done')
 
