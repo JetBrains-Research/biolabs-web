@@ -13,8 +13,6 @@ import os
 import re
 import shutil
 
-from collections import namedtuple
-
 # Hardcoded URLs with data
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
