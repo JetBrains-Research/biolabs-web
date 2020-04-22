@@ -17,7 +17,6 @@
 <ul>
     <li><a href="#span-features">Features</a></li>
     <li><a href="#span-installation">Installation</a></li>
-    <li><a href="#span-galaxy">Galaxy</a></li>
     <li><a href="#span-usage">Usage of SPAN</a></li>
     <li>
         <ul>
@@ -28,6 +27,7 @@
     </li>
     <li><a href="#span-output-files">Output Files</a></li>
     <li><a href="#span-study-cases">Study Cases</a></li>
+    <li><a href="#span-galaxy">Galaxy</a></li>
     <li><a href="#span-error-reporting">Error reporting</a></li>
     <li><a href="#span-faq">FAQ</a></li>
 </ul>
@@ -43,6 +43,7 @@
     <li>Supports replicates on model level</li>
     <li>False Discovery Rate correction</li>
     <li>Experimental: differential peak calling</li>
+    <li><b>New</b> Multistart during model fitting</li>
 </ul>
 
 <h2><a id="span-installation">Installation</a></h2>
@@ -78,12 +79,6 @@
         used in our study.
     </li>
 </ol>
-
-<h2><a id="span-galaxy">Galaxy</a></h2>
-<p>SPAN is available as tool in the official <a
-        href="https://toolshed.g2.bx.psu.edu/view/jetbrains/span/66b2c9a128ab">ToolShed</a>
-    for <a href="https://galaxyproject.org">Galaxy</a>. You can ask your Galaxy administrator to install it.
-</p>
 
 <h2><a id="span-usage">Usage of SPAN</a></h2>
 <p><code class="code-grey">java -Xmx4G -jar span-@BUILD@.jar [-h] [--version] analyze</code></p>
@@ -181,7 +176,7 @@
 </p>
 <p>
     <strong>-f, --fdr FDR</strong><br>
-    Minimum FDR cutoff to call significant regions, default value is <code class="code-grey">1.0E-6</code>.
+    Minimum FDR cutoff to call significant regions, default value is 1.0E-6.
     <br>
     <code class="code-grey">SPAN</code> reports p- and q- values for the
     null hypothesis that a given bin is not enriched with a histone modification. Peaks are
@@ -228,6 +223,18 @@
     matrices
     computations in
     <a href="https://kotlinlang.org/">Kotlin</a> programming language.
+</p>
+<p>
+    <strong>--ms, --multistarts</strong> <br>
+    Number of multistart runs using different model initialization. Use 0 to disable (default: 5)
+</p>
+<p>
+    <strong>--ms-iterations, --msi</strong><br>
+    Number of iterations for each multistart run (default: 5)
+</p>
+<p>
+    <strong>--threshold, --tr</strong><br>
+    Convergence threshold for EM algorithm, use --debug option to see detailed info (default: 0.1)
 </p>
 <h3>Supervised peak calling</h3>
 <p> When <code class="code-grey">LABELS</code> parameter is given,
@@ -337,6 +344,12 @@
     <br>
     This suggests that SPAN Peak Analyzer can be used as a general purpose peak calling
     solution.
+</p>
+
+<h2><a id="span-galaxy">Galaxy</a></h2>
+<p>SPAN is available as tool in the official <a
+        href="https://toolshed.g2.bx.psu.edu/view/jetbrains/span/66b2c9a128ab">ToolShed</a>
+    for <a href="https://galaxyproject.org">Galaxy</a>. You can ask your Galaxy administrator to install it.
 </p>
 
 <h2><a id="span-error-reporting">Error reporting</a></h2>

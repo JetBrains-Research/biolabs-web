@@ -10,17 +10,16 @@ author oleg.shpynov@jetbrains.com
 """
 import datetime
 import os
-import re
 import shutil
 
 from collections import namedtuple
 
 # Tools versions
-SPAN_BUILD = '0.11.0.4882'
-SPAN_DATE = 'May 17, 2019'
+SPAN_BUILD = '0.12.0.5096'
+SPAN_DATE = 'Apr 21, 2020'
 
-JBR_BUILD = '1.0.beta.4882'
-JBR_DATE = 'May 17, 2019'
+JBR_BUILD = '1.0.beta.5189'
+JBR_DATE = 'Apr 22, 2020'
 
 DIR = os.path.dirname(__file__)
 OUT_FOLDER = os.path.join(DIR, 'out')
@@ -46,10 +45,8 @@ def generate_jbr_data():
 
     with open(os.path.join(OUT_FOLDER, template), 'w') as f:
         descrs = [
-            DistrDescriptor("Windows 64-bit ZIP archive (includes bundled 64-bit Java Runtime)",
-                            "_x64.zip", "win"),
-            DistrDescriptor("Windows 32-bit ZIP archive (includes bundled 32-bit Java Runtime)",
-                            "_x86.zip", "win"),
+            DistrDescriptor("Windows archive (includes bundled 64-bit Java Runtime)",
+                            ".zip", "win"),
             DistrDescriptor("Mac installer (includes bundled 64-bit Java Runtime)",
                             ".dmg", "mac"),
             DistrDescriptor("Linux archive (includes bundled 64-bit Java Runtime)",

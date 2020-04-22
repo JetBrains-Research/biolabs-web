@@ -11,34 +11,40 @@
 
 <a id="jbr-features"><h2>Features</h2></a>
 <ul>
-    <li>Integrated peaks annotating</li>
-    <li>On-the-fly peak calling using <a href="https://research.jetbrains.org/groups/biolabs/tools/span-peak-analyzer">SPAN</a> models</li>
+    <li>On-the-fly peak calling using <a href="https://research.jetbrains.org/groups/biolabs/tools/span-peak-analyzer">SPAN</a>
+        models
+    </li>
+    <li>Integrated peaks annotating for semi-supervised peak calling</li>
     <li>Support for observing multiple genome locations simultaneously</li>
     <li>Classical genome browser features to view various genome data formats</li>
-    <li>Supported data file formats: BED (including MACS2, SICER peaks), WIG, TDF, BigBed,
-        bigWig
-    </li>
+    <li>Supported data file formats: BED (including MACS2, SICER peaks), BigWig, Wig, BigBed, Tdf</li>
     <li>Supported sessions formats: JBR *.yaml, IGV *.xml session files</li>
-    <li>Remote URL bigWig/BigBed/BED files support</li>
-    <li>BED track peaks statistics</li>
-    <li>BigWig signal statistics track for multiple locations</li>
+    <li>Remote URL BigWig/BigBed/BED files support</li>
+    <li>Show track statistics</li>
+    <li>BED tracks overlap analysis</li>
     <li>Optimized for working with large sessions</li>
+    <li>Support for screenshots in PNG or SVG formats</li>
+    <li><b>New</b> Support for searching and loading tracks from <a href="https://www.encodeproject.org">ENCODE</a> portal</li>
+    <li><b>New</b> Server mode visualizing single or multiple sessions in web browser.<br>
+        See example at <a href="https://artyomovlab.wustl.edu/jbr/">https://artyomovlab.wustl.edu/jbr/</a></li>
+    <li><b>New</b> Full support of High DPI displays</li>
 </ul>
+<p>
+<b>NOTE:</b> JBR Genome Browser @BUILD@ support model produced by the SPAN version 0.12+
+</p>
 
 <a id="jbr-system-requirements"><h2>System Requirements</h2></a>
 <ul>
     <li>Operation System:
         <ul>
-            <li> Microsoft Windows 10/8/7/Vista/2003/XP (incl.64-bit)</li>
-            <li> MacOS 10.8.3 or higher</li>
+            <li> Microsoft Windows 10/8/7</li>
+            <li> MacOS 10.8 or higher</li>
             <li> Linux. Recommended desktops: GNOME, KDE or UNITY</li>
         </ul>
     </li>
     <li>2 GB RAM minimum</li>
     <li>1024x768 minimum screen resolution</li>
 </ul>
-<p>Pre-installed Java Runtime isn't required, as it is bundled in JBR Genome Browser
-    distribution.</p>
 
 <a id="jbr-downloads"><h2>Downloads</h2></a>
 <p>JBR Genome Browser (build @BUILD@), released on @DATE@</p>
@@ -55,8 +61,7 @@
 </table>
 
 <a id="jbr-installation"><h2>Installation</h2></a>
-<p>Download suitable build for your OS from <a href="#jbr-downloads">Downloads</a>
-    section. We recommend choosing 64-bit version if your OS is 64-bit.</p>
+<p>Download suitable build for your OS from <a href="#jbr-downloads">Downloads</a> section.</p>
 
 <p><b>Windows:</b></p>
 <ul>
@@ -71,8 +76,8 @@
     <li>Copy JBR Genome Browser to your Applications folder</li>
 </ul>
 <p>
-    If you wan't to open multiple JBR instances launch second, third, etc
-    instances using commandline:
+    If you wan't to open multiple JBR instances launch second, third, etc.
+    instances using command:<br/>
     <code class="code-grey">
         open -n "/Applications/JBR 1.0.app"
     </code>
@@ -84,14 +89,14 @@
         <br/>
         <code class="code-grey">tar -xzf @FILENAME-linux@</code>
     </li>
-    <li>Run <code class="code-grey">jbr.sh</code> from the bin subdirectory.</li>
+    <li>Run <code class="code-grey">jbr.sh</code> from the bin subfolder.</li>
 </ul>
 
 <a id="jbr-documentation"><h2>Documentation</h2></a>
-<!--<p>-->
-<!--    <mark>TODO: url to PDF file or smth</mark>-->
-<!--</p>-->
-<p><b>Visual Peak Calling Tutorial: </b>
+<p><b>General</b><br>
+    See JBR <a href="https://github.com/JetBrains-Research/jbr/wiki">Wiki</a> on GitHub.
+</p>
+<p><b>Visual Peak Calling Tutorial</b>
     <br/>
     Comprehensive step-by-step tutorial on using integrated
     peak calling solution is available in
@@ -99,8 +104,7 @@
 </p>
 
 <a id="jbr-bugtracker"><h2>Errors Reporting</h2></a>
-    <b>Error reporting</b><br/>
-    Report any errors or comments in the public JBR Genome browser issue <a
+Report any errors or comments in the public JBR Genome browser issue <a
         href="https://github.com/JetBrains-Research/jbr/issues">tracker</a>.
 
 <p><small>Modified @MDATE@</small></p>
