@@ -1,6 +1,6 @@
 Aging paper website
 ===================
-This is the website source code for the paper "Epigenetic changes in aging human monocytes".
+This is the website source code for the paper "Epigenetic aging of classical monocytes from healthy individuals".
 
 See: https://artyomovlab.wustl.edu/aging/
 

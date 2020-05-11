@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This is the website source code for the paper "Epigenetic changes in aging human monocytes".
+This is the website source code for the paper "Epigenetic aging of classical monocytes from healthy individuals".
 See: https://artyomovlab.wustl.edu/aging/
 
 NOTE: python3 required
@@ -224,7 +224,7 @@ def _cli():
             shutil.copy(os.path.join(SITE_FOLDER, file), OUT_FOLDER)
 
     print('Generate static pages')
-    generate_page('index.html', title='Epigenetic changes in aging human monocytes',
+    generate_page('index.html', title='Epigenetic aging of classical monocytes from healthy individuals',
                   scripts='', content='_index.html')
     generate_page('methods.html',
                   title='Methods', scripts='', content='_methods.html')
