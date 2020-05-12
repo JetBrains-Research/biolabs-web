@@ -16,13 +16,6 @@ import shutil
 # Hardcoded URLs with data
 from sessions.aging_session import GSM_HIST_MAP, LABELS_URL, Y20O20_BW_PATH, ENCODE_BW_PATH
 
-# Tools versions
-SPAN_BUILD = '0.11.0.4882'
-SPAN_DATE = 'May 17, 2019'
-
-JBR_BUILD = '1.0.beta.4882'
-JBR_DATE = 'May 17, 2019'
-
 ENCODE_PEAKS_PATH = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq" \
                     "/cd14encode/peaks/{}"
 ENCODE_LABELS_URL = "https://artyomovlab.wustl.edu/publications/supp_materials/aging/chipseq/cd14encode" \
