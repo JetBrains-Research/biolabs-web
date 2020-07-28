@@ -46,105 +46,420 @@
     <div class="page-header">
         <h1>Explore</h1>
     </div>
-
-    This page contains materials for the data processed.
-    <div>
-        <ul>
-            <li>scRNA-seq of mouse immune cells from 4 organs in Single Cell Explorer</li>
-            <li>Gene expression scRNA-seq of mouse immune cells from 4 organs in Phantasus</li>
-            <li>scRNA-seq of human blood T cells</li>
-            <li>scATAC-seq of mouse immune cells (spleen)</li>
-            <li>scATAC-seq of mouse immune cells (spleen) visualization in JBR genome browser</li>
-        </ul>
-    </div>
+    <p>This page contains our own data and public data processed.</p>
     <br>
+    <a href="#our-datasets"><h5 style="color: black">Our datasets</h5></a>
+    <ul>
+        <li>scRNA-seq of CD45+ cells from the spleen, peritoneum, lungs and the liver from young and aged male mice</li>
+        <li>Bulk RNA-seq of splenic naïve (TN), effector memory (TEM) and age-associated (TAA) CD8 T cells from aged
+            mice
+        </li>
+        <li>scRNA-seq of splenic CD8 T cells from young donor (ALAW-4) 1 month post transfer into aged host and splenic
+            CD8 T cells from the host (ALAW-3)
+        </li>
+        <li>scATAC-seq of CD45+ cells from the spleen from young and aged male mice</li>
+        <li>scRNA-seq of PBMC from 10 young and 10 old healthy male donors</li>
+        <li>scATAC-seq of PBMC from 3 young and 3 old healthy male donors</li>
+    </ul>
+    <a href="#public-datasets"><h5 style="color: black">Public datasets</h5></a>
+    <ul>
+        <li>scRNA-seq of immune cells selected from Tabula Muris Senis <br>
+            (The Tabula Muris Consortium, Nature 2020 [<a href="https://doi.org/10.1038/s41586-020-2496-1">10.1038/s41586-020-2496-1</a>])
+        </li>
+        <li>scRNA-seq of kidney, lung, and spleen tissue from young (7-8 months) and old (22-23 months) male mice
+            (GSE132901) <br>
+            (Kimmel et al., Genome Reseach 2019 [<a href="https://doi.org/doi:10.1101/gr.253880.119">
+                doi:10.1101/gr.253880.119</a>)
+        </li>
+        <li>scRNA-seq: Identification of tissue regulatory T cell precursors in lymphoid organs (GSE130879) <br>
+            (Delacher et al. Immunity 2020 [<a href="https://doi.org/10.1016/j.immuni.2019.12.002">10.1016/j.immuni.2019.12.002</a>])
+        </li>
+        <li>scRNA-seq of LCMV antigen specific CD8 T cells during early phase of acute and chronic infection <br>
+            (Chen et al., Immunity 2019 [<a href="https://doi.org/10.1016/j.immuni.2019.09.013">10.1016/j.immuni.2019.09.013</a>])
+        </li>
+    </ul>
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-9">
-                <h5 class="d-flex justify-content-center">scRNA-seq of mouse immune cells from 4 organs</h5>
-                <div class="row">
-                    <div class="col-3">
-                        <img src="Asset 1.png" style="width:100%;">
-                        <br>
-                        <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Spleen">DT-1481_Spleen</a>
-                    </div>
-                    <div class="col-3">
-                        <img src="Asset 2.png" style="width:100%;">
-                        <br>
-                        <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Peritoneal">DT-1481_Peritoneal</a>
-                    </div>
-                    <div class="col-3">
-                        <img src="Asset 3.png" style="width:100%;">
-                        <br>
-                        <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Lung">DT-1481_Lung</a>
-                    </div>
-                    <div class="col-3">
-                        <img src="Asset 4.png" style="width:100%;">
-                        <br>
-                        <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Liver">DT-1481_Liver</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <h5 class="d-flex justify-content-center">Average gene expression per cluster:</h5>
-                <a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Spleen_a">Denis_DT_1481_Spleen_a</a>
-                <a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Peritoneal_a">Denis_DT_1481_Peritoneal_a</a>
-                <a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Lung_a">Denis_DT_1481_Lung_a</a>
-                <a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Liver_a">Denis_DT_1481_Liver_a</a>
-            </div>
-        </div>
+        <h3 id="our-datasets">Our datasets</h3>
         <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq of CD45+ cells from the spleen, peritoneum, lungs and the
+            liver from young and aged male mice
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img width="200" src="images/Mouse4organs_scRNAseq.png" alt="Mouse4organs_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_filtered">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_filtered</a></td>
+                <td>CD45+ cells from the 4 organs</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseLungs_scRNAseq.png" alt="MouseLungs_scRNAseq.png"/>
+                </td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Lung">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_Lung</a></td>
+                <td>CD45+ cells from lungs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Lung_av2">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Lung_av2</a></td>
+                <td>Average expression per cluster in lungs</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseLiver_scRNAseq.png" alt="MouseLiver_scRNAseq.png"/>
+                </td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Liver">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_Liver</a></td>
+                <td>CD45+ cells from the liver</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Liver">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Liver</a></td>
+                <td>Average expression per cluster in the liver</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseSpleen_scRNAseq.png" alt="MouseSpleen_scRNAseq.png"/>
+                </td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Spleen">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_Spleen</a></td>
+                <td>CD45+ cells from the spleen</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Spleen">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Spleen</a></td>
+                <td>Average expression per cluster in the spleen</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MousePer_scRNAseq.png" alt="MousePer_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Peritoneal">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_Peritoneal</a></td>
+                <td>CD45+ cells from peritoneum</td>
+            </tr>
+            <tr>
 
-        <div class="row">
-            <div class="col-3">
-                <h5 class="d-flex justify-content-center">scRNA-seq of mouse<br> B cells (4 organs)</h5>
-                <img src="Asset 5.png" style="width:100%;">
-                <br>
-                <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_B-cells">DT-1481_B-cells</a>
-            </div>
-            <div class="col-3">
-                <h5 class="d-flex justify-content-center">scRNA-seq of mouse<br> CD4 T cells (4 organs)</h5>
-                <img src="Asset 6.png" style="width:100%;">
-                <br>
-                <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD4">DT-1481_CD4</a>
-            </div>
-            <div class="col-3">
-                <h5 class="d-flex justify-content-center">scRNA-seq of mouse<br> CD8 T cells (4 organs)</h5>
-                <img src="Asset 7.png" style="width:100%;">
-                <br>
-                <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD8">DT-1481_CD8</a>
-            </div>
-            <div class="col-3">
-                <h5 class="d-flex justify-content-center">scATAC-seq of mouse immune cells (spleen)</h5>
-                <img src="Asset 8.png" style="width:100%;">
-                <a href="https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_Denis">2019_scatacseq_Denis</a>
-            </div>
-        </div>
-
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Peritoneal">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Denis_DT_1481_Peritoneal
+                </a>
+                </td>
+                <td>Average expression per cluster in peritoneum</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseBcells_scRNAseq.png" alt="MouseBcells_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_B-cells">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_B-cells</a></td>
+                <td>B cells from the 4 organs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_B_Cells">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_B_Cells</a></td>
+                <td>Average expression per cluster in B cells</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseCD4Tcells_scRNAseq.png" alt="MouseCD4Tcells_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD4">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD4</a></td>
+                <td>CD4 T cells from the 4 organs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_CD4">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_CD4</a></td>
+                <td>Average expression per cluster in CD4 T cells
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img width="200" src="images/MouseCD8Tcells_scRNAseq.png" alt="MouseCD8Tcells_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD8">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_CD8</a></td>
+                <td>CD8 T cells from the 4 organs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_CD8">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT_1481_CD8</a></td>
+                <td>Average expression per cluster in CD8 T cells</td>
+            </tr>
+            <tr>
+                <td><img width="200" src="images/MouseMacDC_scRNAseq.png" alt="MouseMacDC_scRNAseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1481_Myeloid">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1481_Myeloid</a></td>
+                <td>Macrophages and cDCs from the 4 organs</td>
+            </tr>
+            </tbody>
+        </table>
         <br>
-        <div class="row">
-            <div class="col-2">
-                <img src="Asset 9.png" style="width:100%;">
-            </div>
-            <div class="col-2">
-                <br>
-                <h5 class="d-flex justify-content-center">Human blood<br> CD3 T cells</h5>
-                <a href="http://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3">DT-1812_new_CD3</a>
-            </div>
-            <div class="col-2">
-                <img src="Asset 10.png" style="width:100%;">
-            </div>
-            <div class="col-2">
-                <br>
-                <h5 class="d-flex justify-content-center">Human blood<br> CD8 T cells</h5>
-                <a href="https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD8">DT-1812_new_CD3_CD8</a>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-3">
-                <img src="Asset 11.png" style="width:100%;">
-                <a href="http://artyomovlab.wustl.edu/jbr/2019_gxfer1_DT1634_Denis">2019_gxfer1_DT1634_Denis</a>
-            </div>
-        </div>
+        <h5 class="d-flex justify-content-center">
+            Bulk RNA-seq of splenic naïve (TN), effector memory (TEM) and age-associated (TAA) CD8 T cells from aged
+            mice
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img width="200" src="images/MouseCD8_bulkRNAseq.png" alt="MouseCD8_bulkRNAseq.png"/>
+                </td>
+                <td>
+                    <a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/Denis_SWA12925_log2_quantile_12K">
+                        https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/Denis_SWA12925_log2_quantile_12K</a>
+                </td>
+                <td>Sorted CD8 T cell populations from 4 aged mice</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq of splenic CD8 T cells from young donor (ALAW-4) 1 month
+            post transfer into aged host and
+            splenic CD8 T cells from the host (ALAW-3)
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img width="200" src="images/Transfer.png" alt="Transfer.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-2233_M2_filter">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-2233_M2_filter</a></td>
+                <td>CD8 T cells: transfer experiment</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">
+            scATAC-seq of CD45+ cells from the spleen from young and aged male mice
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="3"><img width="200" src="images/MouseSpleen_scATACseq.png" alt="MouseSpleen_scATACseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_Denis">
+                    https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_Denis</a></td>
+                <td>Single-cell Browser: peak coordinates</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_Denis_genes">
+                    https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_Denis_genes</a></td>
+                <td>Single-cell Browser: genes associated with peaks</td>
+            </tr>
+            <tr>
+                <td><a href="http://artyomovlab.wustl.edu/jbr/2019_gxfer1_DT1634_Denis/#chr13:113140458-113257058">
+                    http://artyomovlab.wustl.edu/jbr/2019_gxfer1_DT1634_Denis/#chr13:113140458-113257058</a></td>
+                <td>JBR Genome Browser session</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">
+            scRNA-seq of PBMC from 10 young and 10 old healthy male donors
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="6"><img width="200" src="images/HumanPBMC_scRNAseq.png" alt="HumanPBMC_scRNAseq.png"/></td>
+                <td><a href="http://artyomovlab.wustl.edu/sce/?token=DT-1812_PC40_final_new">
+                    http://artyomovlab.wustl.edu/sce/?token=DT-1812_PC40_final_new</a></td>
+                <td>Total PBMC</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3</a></td>
+                <td>CD3 T cells</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD8">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD8</a></td>
+                <td>CD8 T cells</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD4">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD4</a></td>
+                <td>CD4 T cells</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD8_Monocle_antibodies_removed">
+                    https://artyomovlab.wustl.edu/sce/?token=DT-1812_new_CD3_CD8_Monocle_antibodies_removed</a></td>
+                <td>Monocle analysis of CD8 T cells</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT-1812_Final">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=Pandhey/Denis/DT-1812_Final</a></td>
+                <td>Average expression per cluster in PBMC</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">
+            scATAC-seq of PBMC from 3 young and 3 old healthy male donors
+        </h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="3"><img width="200" src="images/HumanPBMC_scATACseq.png" alt="HumanPBMC_scATACseq.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_human_3vs3_pbmc">
+                    https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_human_3vs3_pbmc</a></td>
+                <td>Single-cell Browser: peak coordinates</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_human_3vs3_pbmc_genes">
+                    https://artyomovlab.wustl.edu/sce/?token=2019_scatacseq_human_3vs3_pbmc_genes</a></td>
+                <td>Single-cell Browser: genes associated with peaks</td>
+            </tr>
+            <tr>
+                <td><a href="http://artyomovlab.wustl.edu/jbr/2019_scatac_DT1755_3vs3_human_pbmc">
+                    http://artyomovlab.wustl.edu/jbr/2019_scatac_DT1755_3vs3_human_pbmc</a></td>
+                <td>JBR Genome Browser session</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h3 id="public-datasets">Processed data from public datasets</h3>
+        <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq of immune cells selected from Tabula Muris Senis</h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="2"><img src="images/TMS_CD3_scRNAseq.png" alt="TMS_CD3_scRNAseq.png"/></td>
+                <td><a href="http://artyomovlab.wustl.edu/sce/?token=tabula_muris_senis_start">
+                    http://artyomovlab.wustl.edu/sce/?token=tabula_muris_senis_start</a></td>
+                <td>CD45 cells</td>
+            </tr>
+            <tr>
+                <td><a href="http://artyomovlab.wustl.edu/sce/?token=tabula_muris_senis_start_CD3_doublets_removed">
+                    http://artyomovlab.wustl.edu/sce/?token=tabula_muris_senis_start_CD3_doublets_removed</a></td>
+                <td>CD3 T cells</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq of kidney, lung, and spleen tissue from young (7-8 months) and old (22-23 months) male mice (GSE132901)</h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="7"><img src="images/GSE132901.png" alt="GSE132901.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE132901">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE132901</a></td>
+                <td>Spleen, lungs, kidney</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE132901_Spleen">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE132901_Spleen</a></td>
+                <td>Spleen</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE132901_Lung">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE132901_Lung</a></td>
+                <td>Lungs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE132901_Kidney">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE132901_Kidney</a></td>
+                <td>Kidney</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Spleen">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Spleen</a></td>
+                <td>Average expression per cluster in the spleen</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Lung">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Lung</a></td>
+                <td>Average expression per cluster in lungs</td>
+            </tr>
+            <tr>
+                <td><a href="https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Kidney">
+                    https://artyomovlab.wustl.edu/phantasus/?preloaded=GSE132901_Kidney
+                </a></td>
+                <td>Average expression per cluster in kidney</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq: Identification of tissue regulatory T cell precursors in lymphoid organs (GSE130879)</h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img src="images/GSE130879.png" alt="GSE130879.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE130879">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE130879</a></td>
+                <td>CD4 Treg cells</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <h5 class="d-flex justify-content-center">scRNA-seq of LCMV antigen specific CD8 T cells during early phase of acute and chronic infection</h5>
+        <table class="table table-sm table-bordered table-nonfluid">
+            <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th class="text-center">URL</th>
+                <th class="text-center">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img src="images/GSE131535.png" alt="GSE131535.png"/></td>
+                <td><a href="https://artyomovlab.wustl.edu/sce/?token=GSE131535">
+                    https://artyomovlab.wustl.edu/sce/?token=GSE131535</a></td>
+                <td>LCMV-Ag-specific CD8 T cells</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
