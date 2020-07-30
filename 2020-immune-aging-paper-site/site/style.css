@@ -5,18 +5,20 @@ html {
 
 
 h2 {
-  margin-top: 35px;
+    margin-top: 35px;
 }
+
 h3 {
-  margin-top: 30px;
+    margin-top: 30px;
 }
+
 h4 {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 p {
-  margin-top: 20px;
-  margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 #navbar {
@@ -51,3 +53,6 @@ p {
     list-style-type: none;
 }
 
+td.top {
+    border-top: 2pt solid black;
+}
