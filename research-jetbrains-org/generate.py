@@ -15,11 +15,11 @@ import shutil
 from collections import namedtuple
 
 # Tools versions
-SPAN_BUILD = '0.12.0.5096'
-SPAN_DATE = 'Apr 21, 2020'
+SPAN_BUILD = '0.13.5244'
+SPAN_DATE = 'Aug 12, 2020'
 
-JBR_BUILD = '1.0.beta.5189'
-JBR_DATE = 'Apr 22, 2020'
+JBR_BUILD = '1.0.beta.5244'
+JBR_DATE = 'Aug 12, 2020'
 
 DIR = os.path.dirname(__file__)
 OUT_FOLDER = os.path.join(DIR, 'out')
