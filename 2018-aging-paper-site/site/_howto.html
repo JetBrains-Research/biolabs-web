@@ -4,33 +4,36 @@
     <h1>Visual Peak Calling How-To</h1>
 </div>
 <div>
-    This tutorial demonstrates all steps of <a href="tools.html">Peak Calling Solution</a> which
-    was successfully applied to data analysis in <a href="index.html">Multiomics dissection of
-    healthy human aging</a> project.<br>
-    Here we provide a step by step tutorial for integrated semi-supervised peak calling solution that includes <a
-        href="https://research.jetbrains.org/groups/biolabs/tools/span-peak-analyzer"
-        target="_blank">SPAN</a> peak caller and <a
-        href="https://research.jetbrains.org/groups/biolabs/tools/jbr-genome-browser" target="_blank">JBR
-    Genome Browser</a>.<br>
-    SPAN is a semi-supervised general-purpose peak caller capable of processing a broad range of ChIP-seq experiments.
-    SPAN procedure consists of two parts: building a model for the signal, and peak calling based on the model and
-    manual/user supplied markup. The model output is then transferred to visualization environment JBR browser where
-    annotation is done directly over the visual representation of genomic coordinates and ChIP-seq signal. Given the
-    model and annotation, peak calling can be executed on-the-fly in the JBR environment and yields immediate
-    visualization of the peaks and signals. <br>
+    <p>
+        This tutorial demonstrates step by step <a href="tools.html">Peak Calling Solution</a> which
+        was successfully applied to data analysis in <a href="index.html">Multiomics dissection of
+        healthy human aging</a> project. The tools used are: <a
+            href="https://research.jetbrains.org/groups/biolabs/tools/span-peak-analyzer"
+            target="_blank">SPAN</a> peak caller and <a
+            href="https://research.jetbrains.org/groups/biolabs/tools/jbr-genome-browser" target="_blank">JBR
+        </a> Genome Browser.<br>
+    </p>
+    <p>
+        SPAN is a semi-supervised general-purpose peak caller capable of processing a broad range of ChIP-seq experiments.
+        SPAN procedure consists of two parts: building a model for the signal, and peak calling based on the model and
+        manual/user supplied markup. The model output is then transferred to visualization environment JBR browser where
+        annotation is done directly over the visual representation of genomic coordinates and ChIP-seq signal. Given the
+        model and annotation, peak calling can be executed on-the-fly in the JBR environment and yields immediate
+        visualization of the peaks and signals.
+    </p>
+    <p>
+        The workflow consists of three major steps: fit unsupervised SPAN model for ChIP-seq or ULI-ChIP-seq tracks;
+        create markup by annotating at least 40 genomic positions in JBR; and finally, compute SPAN model hyperparameters
+        for obtaining the best peak calling results for each individual sample.<br>
 
-    The workflow consists of three major steps: fit unsupervised SPAN model for ChIP-seq or ULI-ChIP-seq tracks;
-    create markup by annotating at least 40 genomic positions in JBR; and finally, compute SPAN model hyperparameters
-    for obtaining the best peak calling results for each individual sample.<br>
+        We recommend to complete this tutorial step by step without skipping any parts. All
+        necessary tools and data files will be available to download and links will be given in
+        <a href="#howto-prerequisites">Prerequisites</a> section and further in text
+        when you will need them.<br>
 
-    We recommend to complete this tutorial step by step without skipping any parts. All
-    necessary tools and data files will be available to download and links will be given in
-    <a href="#howto-prerequisites">Prerequisites</a> section and further in text
-    when you will need them.<br>
-    As an example let's consider three ULI-ChIP-seq tracks from <a href="index.html">Multiomics
-    dissection of healthy human aging</a> experiment (OD7, OD8,
-    OD17) aligned to the reference genome build <b>hg19</b> (GRCh37).
-
+        This tutorial will guide you through the analysis of three ULI-ChIP-seq tracks from <a href="index.html">Multiomics
+        dissection of healthy human aging</a> experiment (OD7, OD8, OD17) aligned to the reference genome build hg19 (GRCh37).
+    </p>
 </div>
 
 <h2>Contents</h2>
@@ -76,7 +79,7 @@
 <a id="howto-prerequisites">
     <h2>Prerequisites</h2>
     <p>
-        In order to complete this tutorial you will need to install two tools: <a
+        First of all please ensure that all necessary tools are installed: <a
             href="https://research.jetbrains.org/groups/biolabs/tools/span-peak-analyzer" target="_blank">SPAN</a>
         peak caller and
         <a href="https://research.jetbrains.org/groups/biolabs/tools/jbr-genome-browser" target="_blank">JBR</a> Genome
